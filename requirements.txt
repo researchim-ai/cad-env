@@ -1,0 +1,34 @@
+# CAD Environment Dependencies
+# Note: FreeCAD must be installed separately on Windows
+# Download from: https://www.freecadweb.org/downloads.php
+numpy>=1.21.0
+opencv-python>=4.5.0
+pillow>=8.0.0
+matplotlib>=3.3.0
+scipy>=1.7.0
+
+# LLM/RL Support
+gym>=0.21.0
+stable-baselines3>=1.6.0
+transformers>=4.20.0
+torch>=1.12.0
+datasets>=4.0.0
+
+# API and Web Interface
+fastapi>=0.78.0
+uvicorn>=0.18.0
+websockets>=10.0
+pydantic>=1.9.0
+
+# Development and Testing
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.950
+
+# Additional ML dependencies
+huggingface-hub>=0.34.0
+tokenizers>=0.22.0
+safetensors>=0.4.3
+regex>=2023.0.0
+

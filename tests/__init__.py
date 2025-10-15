@@ -1,0 +1,4 @@
+"""
+Тесты для CAD Environment
+"""
+

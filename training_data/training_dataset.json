@@ -1,0 +1,2432 @@
+{
+  "metadata": {
+    "total_samples": 200,
+    "generated_at": "C:\\Users\\user\\OneDrive\\Desktop\\workspace\\cad-env",
+    "version": "1.0"
+  },
+  "samples": [
+    {
+      "id": "sample_000000",
+      "description": "Создай конус с радиусом основания 15.2 и высотой 18.5",
+      "intent": "create_cone",
+      "parameters": {
+        "radius1": 15.2,
+        "height": 18.5
+      },
+      "generated_code": "# Создание конуса\ncone = doc.addObject(\"Part::Cone\", \"Cone_r15_r20_h18.5\")\ncone.Radius1 = 5\ncone.Radius2 = 0\ncone.Height = 18.5\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000001",
+      "description": "Создай коробку размером 27.8x44.6x38.2",
+      "intent": "create_box",
+      "parameters": {
+        "length": 27.8,
+        "width": 44.6,
+        "height": 38.2
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 27.8, 'width': 44.6, 'height': 38.2}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000002",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000003",
+      "description": "Поверни объект на 180 градусов вокруг оси X",
+      "intent": "rotate",
+      "parameters": {
+        "angle": 180,
+        "axis": "X"
+      },
+      "generated_code": "# Поворот объекта\nimport math\nrotation_angle = math.radians(180.0)\nif \"X\".upper() == \"X\":\n    rotation_axis = FreeCAD.Vector(1, 0, 0)\nelif \"X\".upper() == \"Y\":\n    rotation_axis = FreeCAD.Vector(0, 1, 0)\nelse:  # Z\n    rotation_axis = FreeCAD.Vector(0, 0, 1)\n\n# Применяем поворот к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(rotation_axis, rotation_angle))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000004",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000005",
+      "description": "Создай фаску размером 1.4",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 1.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000006",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000007",
+      "description": "Выдави объект на 2.1 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 2.1
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 2.1\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000008",
+      "description": "Создай конус с радиусом основания 15.6 и высотой 8.1",
+      "intent": "create_cone",
+      "parameters": {
+        "radius1": 15.6,
+        "height": 8.1
+      },
+      "generated_code": "# Создание конуса\ncone = doc.addObject(\"Part::Cone\", \"Cone_r15_r20_h8.1\")\ncone.Radius1 = 5\ncone.Radius2 = 0\ncone.Height = 8.1\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000009",
+      "description": "Создай коробку размером 46.4x31.9x12.7",
+      "intent": "create_box",
+      "parameters": {
+        "length": 46.4,
+        "width": 31.9,
+        "height": 12.7
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 46.4, 'width': 31.9, 'height': 12.7}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000010",
+      "description": "Перемести объект на 13.0 единиц по оси Z",
+      "intent": "translate",
+      "parameters": {
+        "distance": 13.0,
+        "axis": "Z"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000011",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000012",
+      "description": "Создай фаску размером 1.7",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 1.7
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000013",
+      "description": "Перемести объект на 8.6 единиц по оси Z",
+      "intent": "translate",
+      "parameters": {
+        "distance": 8.6,
+        "axis": "Z"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000014",
+      "description": "Создай скругление радиусом 2.4",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 2.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 2.4}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000015",
+      "description": "Создай тор с внешним радиусом 22.1 и внутренним 6.5",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 22.1,
+        "radius2": 6.5
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000016",
+      "description": "Выдави объект на 13.7 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 13.7
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 13.7\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000017",
+      "description": "Перемести объект на 21.2 единиц по оси X",
+      "intent": "translate",
+      "parameters": {
+        "distance": 21.2,
+        "axis": "X"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000018",
+      "description": "Создай тор с внешним радиусом 8.9 и внутренним 4.4",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 8.9,
+        "radius2": 4.4
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000019",
+      "description": "Увеличь объект в 2.2 раз",
+      "intent": "scale",
+      "parameters": {
+        "factor": 2.2
+      },
+      "generated_code": "# Масштабирование объекта\nscale_factor = 2\n\n# Применяем масштабирование к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(), FreeCAD.Vector(scale_factor, scale_factor, scale_factor))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000020",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000021",
+      "description": "Создай сферу радиусом 14.4",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 14.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 14.4}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000022",
+      "description": "Создай коробку размером 30.1x49.1x25.7",
+      "intent": "create_box",
+      "parameters": {
+        "length": 30.1,
+        "width": 49.1,
+        "height": 25.7
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 30.1, 'width': 49.1, 'height': 25.7}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000023",
+      "description": "Создай сферу радиусом 14.4",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 14.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 14.4}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000024",
+      "description": "Создай скругление радиусом 1.2",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 1.2
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 1.2}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000025",
+      "description": "Создай сферу радиусом 14.0",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 14.0
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 14.0}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000026",
+      "description": "Выдави объект на 14.3 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 14.3
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 14.3\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000027",
+      "description": "Создай тор с внешним радиусом 19.5 и внутренним 6.0",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 19.5,
+        "radius2": 6.0
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000028",
+      "description": "Создай скругление радиусом 2.0",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 2.0
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 2.0}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000029",
+      "description": "Создай тор с внешним радиусом 19.2 и внутренним 4.1",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 19.2,
+        "radius2": 4.1
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000030",
+      "description": "Перемести объект на 14.8 единиц по оси X",
+      "intent": "translate",
+      "parameters": {
+        "distance": 14.8,
+        "axis": "X"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000031",
+      "description": "Создай сферу радиусом 8.3",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 8.3
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 8.3}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000032",
+      "description": "Создай тор с внешним радиусом 11.8 и внутренним 4.1",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 11.8,
+        "radius2": 4.1
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000033",
+      "description": "Создай тор с внешним радиусом 18.1 и внутренним 5.3",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 18.1,
+        "radius2": 5.3
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000034",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000035",
+      "description": "Увеличь объект в 1.5 раз",
+      "intent": "scale",
+      "parameters": {
+        "factor": 1.5
+      },
+      "generated_code": "# Масштабирование объекта\nscale_factor = 2\n\n# Применяем масштабирование к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(), FreeCAD.Vector(scale_factor, scale_factor, scale_factor))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000036",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000037",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000038",
+      "description": "Перемести объект на 9.1 единиц по оси Z",
+      "intent": "translate",
+      "parameters": {
+        "distance": 9.1,
+        "axis": "Z"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000039",
+      "description": "Увеличь объект в 0.8 раз",
+      "intent": "scale",
+      "parameters": {
+        "factor": 0.8
+      },
+      "generated_code": "# Масштабирование объекта\nscale_factor = 2\n\n# Применяем масштабирование к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(), FreeCAD.Vector(scale_factor, scale_factor, scale_factor))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000040",
+      "description": "Создай конус с радиусом основания 10.4 и высотой 12.2",
+      "intent": "create_cone",
+      "parameters": {
+        "radius1": 10.4,
+        "height": 12.2
+      },
+      "generated_code": "# Создание конуса\ncone = doc.addObject(\"Part::Cone\", \"Cone_r15_r20_h12.2\")\ncone.Radius1 = 5\ncone.Radius2 = 0\ncone.Height = 12.2\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000041",
+      "description": "Увеличь объект в 2.3 раз",
+      "intent": "scale",
+      "parameters": {
+        "factor": 2.3
+      },
+      "generated_code": "# Масштабирование объекта\nscale_factor = 2\n\n# Применяем масштабирование к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(), FreeCAD.Vector(scale_factor, scale_factor, scale_factor))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000042",
+      "description": "Создай скругление радиусом 0.6",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 0.6
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 0.6}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000043",
+      "description": "Создай фаску размером 1.4",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 1.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000044",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000045",
+      "description": "Создай цилиндр радиусом 12.3 и высотой 25.1",
+      "intent": "create_cylinder",
+      "parameters": {
+        "radius": 12.3,
+        "height": 25.1
+      },
+      "generated_code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r12.3_h25.1\")\ncylinder.Radius = 12.3\ncylinder.Height = 25.1\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000046",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000047",
+      "description": "Создай фаску размером 1.4",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 1.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000048",
+      "description": "Создай коробку размером 27.4x6.3x39.9",
+      "intent": "create_box",
+      "parameters": {
+        "length": 27.4,
+        "width": 6.3,
+        "height": 39.9
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 27.4, 'width': 6.3, 'height': 39.9}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000049",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000050",
+      "description": "Создай цилиндр радиусом 17.0 и высотой 13.4",
+      "intent": "create_cylinder",
+      "parameters": {
+        "radius": 17.0,
+        "height": 13.4
+      },
+      "generated_code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r17.0_h13.4\")\ncylinder.Radius = 17.0\ncylinder.Height = 13.4\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000051",
+      "description": "Перемести объект на 11.2 единиц по оси X",
+      "intent": "translate",
+      "parameters": {
+        "distance": 11.2,
+        "axis": "X"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000052",
+      "description": "Создай сферу радиусом 10.6",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 10.6
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 10.6}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000053",
+      "description": "Создай фаску размером 0.7",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 0.7
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000054",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000055",
+      "description": "Создай сферу радиусом 6.4",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 6.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 6.4}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000056",
+      "description": "Выдави объект на 4.0 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 4.0
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 4.0\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000057",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000058",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000059",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000060",
+      "description": "Создай фаску размером 0.8",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 0.8
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000061",
+      "description": "Создай коробку размером 18.2x35.8x40.7",
+      "intent": "create_box",
+      "parameters": {
+        "length": 18.2,
+        "width": 35.8,
+        "height": 40.7
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 18.2, 'width': 35.8, 'height': 40.7}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000062",
+      "description": "Поверни объект на 90 градусов вокруг оси Z",
+      "intent": "rotate",
+      "parameters": {
+        "angle": 90,
+        "axis": "Z"
+      },
+      "generated_code": "# Поворот объекта\nimport math\nrotation_angle = math.radians(90.0)\nif \"Z\".upper() == \"X\":\n    rotation_axis = FreeCAD.Vector(1, 0, 0)\nelif \"Z\".upper() == \"Y\":\n    rotation_axis = FreeCAD.Vector(0, 1, 0)\nelse:  # Z\n    rotation_axis = FreeCAD.Vector(0, 0, 1)\n\n# Применяем поворот к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(rotation_axis, rotation_angle))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000063",
+      "description": "Создай тор с внешним радиусом 20.9 и внутренним 7.7",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 20.9,
+        "radius2": 7.7
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000064",
+      "description": "Создай сферу радиусом 7.1",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 7.1
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 7.1}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000065",
+      "description": "Перемести объект на 19.8 единиц по оси Y",
+      "intent": "translate",
+      "parameters": {
+        "distance": 19.8,
+        "axis": "Y"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000066",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000067",
+      "description": "Создай фаску размером 0.6",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 0.6
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000068",
+      "description": "Создай сферу радиусом 14.3",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 14.3
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 14.3}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000069",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000070",
+      "description": "Создай конус с радиусом основания 4.3 и высотой 21.0",
+      "intent": "create_cone",
+      "parameters": {
+        "radius1": 4.3,
+        "height": 21.0
+      },
+      "generated_code": "# Создание конуса\ncone = doc.addObject(\"Part::Cone\", \"Cone_r15_r20_h21.0\")\ncone.Radius1 = 5\ncone.Radius2 = 0\ncone.Height = 21.0\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000071",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000072",
+      "description": "Вычти один объект из другого",
+      "intent": "cut",
+      "parameters": {},
+      "generated_code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000073",
+      "description": "Выдави объект на 8.2 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 8.2
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 8.2\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000074",
+      "description": "Создай конус с радиусом основания 16.9 и высотой 10.6",
+      "intent": "create_cone",
+      "parameters": {
+        "radius1": 16.9,
+        "height": 10.6
+      },
+      "generated_code": "# Создание конуса\ncone = doc.addObject(\"Part::Cone\", \"Cone_r15_r20_h10.6\")\ncone.Radius1 = 5\ncone.Radius2 = 0\ncone.Height = 10.6\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000075",
+      "description": "Создай сферу радиусом 2.8",
+      "intent": "create_sphere",
+      "parameters": {
+        "radius": 2.8
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 2.8}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000076",
+      "description": "Найди пересечение объектов",
+      "intent": "intersection",
+      "parameters": {},
+      "generated_code": "# Пересечение объектов\nif len(doc.Objects) >= 2:\n    intersection_obj = doc.addObject(\"Part::Common\", \"Intersection\")\n    intersection_obj.Base = doc.Objects[-2]\n    intersection_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000077",
+      "description": "Перемести объект на 10.7 единиц по оси Z",
+      "intent": "translate",
+      "parameters": {
+        "distance": 10.7,
+        "axis": "Z"
+      },
+      "generated_code": "# Перемещение объекта\ntranslation_vector = FreeCAD.Vector(0, 0, 0)\n\n# Применяем перемещение к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(translation_vector, FreeCAD.Rotation())\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000078",
+      "description": "Создай скругление радиусом 1.2",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 1.2
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 1.2}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000079",
+      "description": "Создай скругление радиусом 0.5",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 0.5
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 0.5}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000080",
+      "description": "Поверни объект на 45 градусов вокруг оси Z",
+      "intent": "rotate",
+      "parameters": {
+        "angle": 45,
+        "axis": "Z"
+      },
+      "generated_code": "# Поворот объекта\nimport math\nrotation_angle = math.radians(45.0)\nif \"Z\".upper() == \"X\":\n    rotation_axis = FreeCAD.Vector(1, 0, 0)\nelif \"Z\".upper() == \"Y\":\n    rotation_axis = FreeCAD.Vector(0, 1, 0)\nelse:  # Z\n    rotation_axis = FreeCAD.Vector(0, 0, 1)\n\n# Применяем поворот к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(rotation_axis, rotation_angle))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000081",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000082",
+      "description": "Создай коробку размером 31.5x40.4x31.3",
+      "intent": "create_box",
+      "parameters": {
+        "length": 31.5,
+        "width": 40.4,
+        "height": 31.3
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 31.5, 'width': 40.4, 'height': 31.3}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000083",
+      "description": "Создай коробку размером 7.3x31.4x34.4",
+      "intent": "create_box",
+      "parameters": {
+        "length": 7.3,
+        "width": 31.4,
+        "height": 34.4
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 7.3, 'width': 31.4, 'height': 34.4}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000084",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000085",
+      "description": "Выдави объект на 14.3 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 14.3
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 14.3\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000086",
+      "description": "Создай скругление радиусом 0.8",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 0.8
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 0.8}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000087",
+      "description": "Создай скругление радиусом 0.8",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 0.8
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 0.8}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000088",
+      "description": "Создай тор с внешним радиусом 22.3 и внутренним 6.9",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 22.3,
+        "radius2": 6.9
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000089",
+      "description": "Создай тор с внешним радиусом 17.8 и внутренним 7.2",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 17.8,
+        "radius2": 7.2
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000090",
+      "description": "Создай коробку размером 25.1x19.5x41.6",
+      "intent": "create_box",
+      "parameters": {
+        "length": 25.1,
+        "width": 19.5,
+        "height": 41.6
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'length': 25.1, 'width': 19.5, 'height': 41.6}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000091",
+      "description": "Объедини два объекта",
+      "intent": "union",
+      "parameters": {},
+      "generated_code": "# Объединение объектов\nif len(doc.Objects) >= 2:\n    union_obj = doc.addObject(\"Part::Fuse\", \"Union\")\n    union_obj.Base = doc.Objects[-2]\n    union_obj.Tool = doc.Objects[-1]\n    doc.recompute()",
+      "complexity": "medium",
+      "category": "boolean"
+    },
+    {
+      "id": "sample_000092",
+      "description": "Создай тор с внешним радиусом 21.5 и внутренним 4.3",
+      "intent": "create_torus",
+      "parameters": {
+        "radius1": 21.5,
+        "radius2": 4.3
+      },
+      "generated_code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000093",
+      "description": "Выдави объект на 9.6 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 9.6
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 9.6\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000094",
+      "description": "Увеличь объект в 1.3 раз",
+      "intent": "scale",
+      "parameters": {
+        "factor": 1.3
+      },
+      "generated_code": "# Масштабирование объекта\nscale_factor = 2\n\n# Применяем масштабирование к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(), FreeCAD.Vector(scale_factor, scale_factor, scale_factor))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000095",
+      "description": "Увеличь объект в 2.5 раз",
+      "intent": "scale",
+      "parameters": {
+        "factor": 2.5
+      },
+      "generated_code": "# Масштабирование объекта\nscale_factor = 2\n\n# Применяем масштабирование к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(), FreeCAD.Vector(scale_factor, scale_factor, scale_factor))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000096",
+      "description": "Поверни объект на 180 градусов вокруг оси Z",
+      "intent": "rotate",
+      "parameters": {
+        "angle": 180,
+        "axis": "Z"
+      },
+      "generated_code": "# Поворот объекта\nimport math\nrotation_angle = math.radians(180.0)\nif \"Z\".upper() == \"X\":\n    rotation_axis = FreeCAD.Vector(1, 0, 0)\nelif \"Z\".upper() == \"Y\":\n    rotation_axis = FreeCAD.Vector(0, 1, 0)\nelse:  # Z\n    rotation_axis = FreeCAD.Vector(0, 0, 1)\n\n# Применяем поворот к последнему объекту\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    last_obj.Placement = last_obj.Placement * FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(rotation_axis, rotation_angle))\ndoc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "sample_000097",
+      "description": "Создай фаску размером 1.6",
+      "intent": "create_chamfer",
+      "parameters": {
+        "distance": 1.6
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000098",
+      "description": "Создай скругление радиусом 1.6",
+      "intent": "create_fillet",
+      "parameters": {
+        "radius": 1.6
+      },
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'radius': 1.6}",
+      "complexity": "low",
+      "category": "creation"
+    },
+    {
+      "id": "sample_000099",
+      "description": "Выдави объект на 2.2 единиц",
+      "intent": "extrude",
+      "parameters": {
+        "distance": 2.2
+      },
+      "generated_code": "# Выдавливание объекта\nextrude_distance = 2.2\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()",
+      "complexity": "medium",
+      "category": "transformation"
+    },
+    {
+      "id": "scenario_000000",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000001",
+      "title": "Создай трубу",
+      "description": "Создай трубу: создай цилиндр, вычти внутренний цилиндр",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "вычти внутренний цилиндр",
+          "code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: вычти внутренний цилиндр\n# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000002",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000003",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000004",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000005",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000006",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000007",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000008",
+      "title": "Создай болт с резьбой",
+      "description": "Создай болт с резьбой: создай цилиндр, добавь головку, создай резьбу",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь головку",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай резьбу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь головку\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай резьбу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000009",
+      "title": "Создай колонну",
+      "description": "Создай колонну: создай цилиндр, добавь капитель, создай базу",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь капитель",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай базу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь капитель\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай базу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000010",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000011",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000012",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000013",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000014",
+      "title": "Создай болт с резьбой",
+      "description": "Создай болт с резьбой: создай цилиндр, добавь головку, создай резьбу",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь головку",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай резьбу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь головку\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай резьбу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000015",
+      "title": "Создай колонну",
+      "description": "Создай колонну: создай цилиндр, добавь капитель, создай базу",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь капитель",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай базу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь капитель\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай базу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000016",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000017",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000018",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000019",
+      "title": "Создай трубу",
+      "description": "Создай трубу: создай цилиндр, вычти внутренний цилиндр",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "вычти внутренний цилиндр",
+          "code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: вычти внутренний цилиндр\n# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000020",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000021",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000022",
+      "title": "Создай корпус",
+      "description": "Создай корпус: создай коробку, вычти внутреннее пространство, добавь отверстия",
+      "steps": [
+        {
+          "description": "создай коробку",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "вычти внутреннее пространство",
+          "code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()"
+        },
+        {
+          "description": "добавь отверстия",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай коробку\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: вычти внутреннее пространство\n# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()\n\n# Шаг 3: добавь отверстия\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000023",
+      "title": "Создай трубу",
+      "description": "Создай трубу: создай цилиндр, вычти внутренний цилиндр",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "вычти внутренний цилиндр",
+          "code": "# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: вычти внутренний цилиндр\n# Вычитание объектов\nif len(doc.Objects) >= 2:\n    cut_obj = doc.addObject(\"Part::Cut\", \"Cut\")\n    cut_obj.Base = doc.Objects[-2]\n    cut_obj.Tool = doc.Objects[-1]\n    doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000024",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000025",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000026",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000027",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000028",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000029",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000030",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000031",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000032",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000033",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000034",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000035",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000036",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000037",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000038",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000039",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000040",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000041",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000042",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000043",
+      "title": "Создай арку",
+      "description": "Создай арку: создай полукруг, выдави, добавь опоры",
+      "steps": [
+        {
+          "description": "создай полукруг",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        },
+        {
+          "description": "добавь опоры",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай полукруг\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Шаг 3: добавь опоры\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000044",
+      "title": "Создай шестерню",
+      "description": "Создай шестерню: создай цилиндр, добавь зубья, создай отверстие",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь зубья",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай отверстие",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь зубья\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай отверстие\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000045",
+      "title": "Создай подшипник",
+      "description": "Создай подшипник: создай внешнее кольцо, внутреннее кольцо, шарики",
+      "steps": [
+        {
+          "description": "создай внешнее кольцо",
+          "code": "# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()"
+        },
+        {
+          "description": "внутреннее кольцо",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "шарики",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай внешнее кольцо\n# Создание тора\ntorus = doc.addObject(\"Part::Torus\", \"Torus_r110_r23\")\ntorus.Radius1 = 10\ntorus.Radius2 = 3\ndoc.recompute()\n\n# Шаг 2: внутреннее кольцо\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: шарики\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000046",
+      "title": "Создай болт с резьбой",
+      "description": "Создай болт с резьбой: создай цилиндр, добавь головку, создай резьбу",
+      "steps": [
+        {
+          "description": "создай цилиндр",
+          "code": "# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()"
+        },
+        {
+          "description": "добавь головку",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "создай резьбу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай цилиндр\n# Создание цилиндра\ncylinder = doc.addObject(\"Part::Cylinder\", \"Cylinder_r5_h10\")\ncylinder.Radius = 5\ncylinder.Height = 10\ndoc.recompute()\n\n# Шаг 2: добавь головку\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 3: создай резьбу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000047",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000048",
+      "title": "Создай купол",
+      "description": "Создай купол: создай сферу, обрежь нижнюю часть",
+      "steps": [
+        {
+          "description": "создай сферу",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "обрежь нижнюю часть",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай сферу\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: обрежь нижнюю часть\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "scenario_000049",
+      "title": "Создай пружину",
+      "description": "Создай пружину: создай спираль, выдави по траектории",
+      "steps": [
+        {
+          "description": "создай спираль",
+          "code": "# Неизвестная команда: unknown\n# Параметры: {}"
+        },
+        {
+          "description": "выдави по траектории",
+          "code": "# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()"
+        }
+      ],
+      "full_script": "import FreeCAD\nimport Part\nimport Draft\n\n# Создание документа\ndoc = FreeCAD.newDocument('GeneratedDocument')\n\n# Шаг 1: создай спираль\n# Неизвестная команда: unknown\n# Параметры: {}\n\n# Шаг 2: выдави по траектории\n# Выдавливание объекта\nextrude_distance = 5\n\n# Создаем выдавливание последнего объекта\nif doc.Objects:\n    last_obj = doc.Objects[-1]\n    # Создаем плоскость для выдавливания\n    face = last_obj.Shape.Faces[0] if hasattr(last_obj.Shape, 'Faces') and last_obj.Shape.Faces else None\n    if face:\n        extrude_obj = doc.addObject(\"Part::Extrusion\", \"Extrusion\")\n        extrude_obj.Base = last_obj\n        extrude_obj.Dir = FreeCAD.Vector(0, 0, extrude_distance)\n        doc.recompute()\n\n# Показ документа\nFreeCAD.Gui.SendMsgToActiveView('ViewFit')\n\nprint('Скрипт выполнен успешно!')",
+      "complexity": "high"
+    },
+    {
+      "id": "validation_000000",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000001",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000002",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000003",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000004",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000005",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000006",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000007",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000008",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000009",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000010",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000011",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000012",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000013",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000014",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000015",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000016",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000017",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000018",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000019",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000020",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000021",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000022",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000023",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000024",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000025",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000026",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000027",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000028",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000029",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000030",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000031",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000032",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000033",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000034",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000035",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000036",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000037",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000038",
+      "description": "Создай декоративный элемент: сложная форма из нескольких примитивов",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000039",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000040",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000041",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000042",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000043",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000044",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000045",
+      "description": "Создай архитектурный элемент: колонна высотой 30, диаметром 5, с капителью",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {'height': 30.0}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000046",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000047",
+      "description": "Создай техническую деталь: подшипник с внешним диаметром 20, внутренним 10",
+      "generated_code": "# Неизвестная команда: unknown\n# Параметры: {}",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000048",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    },
+    {
+      "id": "validation_000049",
+      "description": "Создай деталь для механизма: коробка 20x15x10, вычти цилиндр радиусом 3, добавь отверстия",
+      "generated_code": "# Создание коробки\nbox = doc.addObject(\"Part::Box\", \"Box_10x10x10\")\nbox.Length = 10\nbox.Width = 10\nbox.Height = 10\ndoc.recompute()",
+      "complexity": "high",
+      "category": "validation"
+    }
+  ]
+}
