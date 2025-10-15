@@ -18,7 +18,7 @@ CAD Environment - это окружение для обучения языков
 
 ```bash
 # Клонирование репозитория
-git clone <repository-url>
+git clone https://github.com/researchim-ai/cad-env.git
 cd cad-env
 
 # Установка зависимостей
@@ -184,7 +184,7 @@ env = CADEnvironment(config)
 ### Установка для разработки
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/researchim-ai/cad-env.git
 cd cad-env
 pip install -e ".[dev]"
 ```

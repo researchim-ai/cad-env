@@ -21,7 +21,7 @@
 # Скачайте и установите FreeCAD с https://www.freecadweb.org/downloads.php
 
 # 2. Клонирование репозитория
-git clone <repository-url>
+git clone https://github.com/researchim-ai/cad-env.git
 cd cad-env
 
 # 3. Установка зависимостей
@@ -39,7 +39,7 @@ pip install -e .
 # macOS: brew install freecad
 
 # 2. Клонирование и установка
-git clone <repository-url>
+git clone https://github.com/researchim-ai/cad-env.git
 cd cad-env
 pip install -r requirements.txt
 pip install -e .

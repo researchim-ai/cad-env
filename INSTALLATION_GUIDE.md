@@ -31,7 +31,7 @@ brew install freecad
 
 ```bash
 # Клонирование репозитория
-git clone <repository-url>
+git clone https://github.com/researchim-ai/cad-env.git
 cd cad-env
 
 # Установка всех зависимостей одной командой
