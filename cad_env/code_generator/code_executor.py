@@ -3,6 +3,8 @@
 """
 
 import logging
+import re
+import shutil
 import tempfile
 import os
 from typing import Dict, Any, Optional, List
@@ -23,13 +25,12 @@ class CodeExecutor:
     
     def _check_freecad_availability(self) -> bool:
         """Проверка доступности FreeCAD"""
-        try:
-            import FreeCAD
-            return True
-        except ImportError:
-            logger.warning("FreeCAD не доступен. Код будет выполняться в режиме симуляции.")
-            return False
-    
+        configured = os.environ.get('FREECAD_CMD')
+        self.executable = next((shutil.which(name) for name in
+                                ([configured] if configured else ['FreeCADCmd', 'freecadcmd', 'freecadcmd-daily'])
+                                if name and shutil.which(name)), None)
+        return self.executable is not None
+
     def execute_code(self, code: str, timeout: int = 30) -> Dict[str, Any]:
         """
         Выполнение FreeCAD Python кода
@@ -72,7 +73,7 @@ class CodeExecutor:
         try:
             # Выполняем код через FreeCAD
             result = subprocess.run(
-                ['freecad', '-c', temp_file],
+                [self.executable, temp_file],
                 capture_output=True,
                 text=True,
                 timeout=timeout
@@ -81,7 +82,10 @@ class CodeExecutor:
             execution_time = time.time() - start_time
             
             return {
-                "success": result.returncode == 0,
+                "success": False,
+                "process_ok": result.returncode == 0,
+                "validated": False,
+                "validation_note": "Use cad_env.agent for verified CAD execution",
                 "output": result.stdout,
                 "error_output": result.stderr,
                 "execution_time": execution_time,
@@ -120,7 +124,8 @@ class CodeExecutor:
         execution_time = time.time() - start_time
         
         return {
-            "success": True,
+            "success": False,
+            "validated": False,
             "output": simulation_result["output"],
             "simulation": True,
             "execution_time": execution_time,

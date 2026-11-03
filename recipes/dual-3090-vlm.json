@@ -1,0 +1,77 @@
+{
+  "schema_version": "cad-env.recipe.v1",
+  "objective": "FreeCAD API/tools agent with current-state visual feedback",
+  "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "model_license": "qwen-research; see pinned model card and license",
+  "hardware": {
+    "gpus": 2,
+    "vram_gib_each": 24,
+    "distributed": "DDP; memory is not pooled"
+  },
+  "versions": {
+    "torch": "2.7.0",
+    "transformers": "4.57.0",
+    "trl": "0.24.0",
+    "peft": "0.18.1",
+    "datasets": "4.5.0",
+    "accelerate": "1.9.0",
+    "tokenizers": "0.22.1",
+    "safetensors": "0.5.3"
+  },
+  "data_gate": {
+    "min_train": 200,
+    "min_validation": 30,
+    "min_test": 30,
+    "min_groups": 80,
+    "require_feedback": true
+  },
+  "sft": {
+    "export": "train.feedback.jsonl",
+    "max_steps": 200,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "max_length": 4096,
+    "learning_rate": 0.0001,
+    "lora_rank": 16,
+    "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+    "max_pixels": 65536,
+    "save_steps": 50,
+    "freeze_vision": true
+  },
+  "grpo_program_baseline": {
+    "export": "train.grpo.jsonl",
+    "max_steps": 100,
+    "batch_size": 1,
+    "gradient_accumulation": 2,
+    "num_generations": 4,
+    "max_length": 2048,
+    "max_completion_length": 768,
+    "learning_rate": 5e-06,
+    "lora_rank": 16,
+    "kl_beta": 0.0,
+    "cad_workers": 2
+  },
+  "validation": {
+    "attempts": 1,
+    "max_steps": 16,
+    "max_new_tokens": 256,
+    "temperature": 0.0
+  },
+  "status": "Measured Qwen2.5-VL-3B SFT smoke passed: 10 DDP LoRA steps on RTX 3090 Ti + RTX 3090; see docs/TRAINING_PROCESS.md. CAD quality and multi-turn GRPO remain unproven.",
+  "multi_turn_grpo": "Separate IterCAD/ms-swift integration track. Not equivalent to the single-completion TRL baseline. GPU integration and log-probability mask tests are required before use.",
+  "measured_sft_smoke": {
+    "steps": 10,
+    "runtime_seconds": 52.9156,
+    "peak_allocated_gib": [
+      10.1605,
+      10.1663
+    ],
+    "peak_reserved_gib": [
+      21.4199,
+      21.9941
+    ],
+    "artifact": "artifacts/qwen-dual3090-smoke",
+    "scope": "1130 feedback examples checked; 160 training examples consumed; no CAD quality claim"
+  }
+}

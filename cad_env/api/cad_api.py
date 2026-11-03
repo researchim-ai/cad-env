@@ -127,7 +127,7 @@ class CADAPI:
                     **request.parameters
                 )
                 return {
-                    "success": True,
+                    "success": bool(result.get("success", False)),
                     "command": request.command,
                     "result": result
                 }

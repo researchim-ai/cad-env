@@ -1,0 +1,8 @@
+# Optional training stack, separate from the native FreeCAD worker.
+# Entrypoints target the TRL 0.24 API; pin it for repeatable config semantics.
+trl==0.24.0
+transformers>=4.56.1,<5
+peft>=0.17,<0.19
+datasets>=4.0,<5
+torch>=2.2
+accelerate>=1.4

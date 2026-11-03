@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/KnowledgeXLab/IterCAD.git",
+  "commit": "55998c4a4537573f67ca241dedc52ee2840652ca",
+  "inspected_interfaces": ["train/IterCAD_RL.sh", "train/ms-swift/swift/rollout/multi_turn.py", "train/ms-swift/examples/train/grpo/plugin/cad_grpo_plugin.py"],
+  "adapter": "cad_env/learning/swift_plugin.py",
+  "status": "EXPERIMENTAL: native replay and private terminal rewards can be tested locally; full ms-swift/vLLM optimizer/masking/distributed integration has NOT been run.",
+  "required_gpu_gate": ["All assistant turns, including final finish, have aligned token IDs, logprobs and nonzero loss masks", "Environment text and image tokens contribute no policy loss", "Fresh independent environment per GRPO candidate", "Two-GPU smoke and memory measurement", "Checkpoint resume and fixed-seed replay", "Actual SFT-policy groups contain relative reward signal"]
+}

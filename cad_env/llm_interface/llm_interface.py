@@ -50,7 +50,7 @@ class LLMInterface:
             if command:
                 result = self.env.execute_command(command['action'], **command.get('parameters', {}))
                 return {
-                    "success": True,
+                    "success": bool(result.get("success", False)),
                     "intent": intent,
                     "command": command,
                     "result": result,
@@ -154,7 +154,7 @@ class LLMInterface:
             result = self.env.execute_command(action, **parameters)
             
             return {
-                "success": True,
+                "success": bool(result.get("success", False)),
                 "action": action,
                 "parameters": parameters,
                 "result": result

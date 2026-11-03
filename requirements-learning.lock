@@ -1,0 +1,14 @@
+# Direct dependencies of the locally tested Python 3.12 training stack.
+# Install the platform-specific torch/torchvision wheel pair first (see runbook).
+# This pins the ML interfaces; capture pip freeze and GPU driver for every run.
+torch==2.7.0
+torchvision==0.22.0
+transformers==4.57.0
+trl==0.24.0
+peft==0.18.1
+datasets==4.5.0
+accelerate==1.9.0
+tokenizers==0.22.1
+safetensors==0.5.3
+numpy==2.2.6
+Pillow==10.4.0

@@ -158,15 +158,36 @@ class FreeCADWrapper:
         
         if self.freecad:
             try:
-                # Выполнение команды через FreeCAD
-                result = eval(f"self.freecad.{command}", {"self": self, "freecad": self.freecad}, kwargs)
-                return {"success": True, "result": str(result)}
+                doc = self.documents[self.current_doc]
+                primitives = {
+                    'create_box': ('Part::Box', {'length': 'Length', 'width': 'Width', 'height': 'Height'}),
+                    'create_cylinder': ('Part::Cylinder', {'radius': 'Radius', 'height': 'Height'}),
+                    'create_sphere': ('Part::Sphere', {'radius': 'Radius'}),
+                }
+                if command not in primitives:
+                    return {'success': False, 'error': 'Unsupported command; use cad_env.agent for CAD tools'}
+                obj_type, parameters = primitives[command]
+                import math
+                values = {}
+                for name, prop in parameters.items():
+                    value = kwargs.get(name, 10)
+                    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or not 0 < value <= 10000:
+                        raise ValueError('Invalid dimension: ' + name)
+                    values[prop] = value
+                if set(kwargs) - set(parameters):
+                    raise ValueError('Unexpected command parameters')
+                obj = doc.addObject(obj_type, 'Primitive')
+                for prop, value in values.items():
+                    setattr(obj, prop, value)
+                doc.recompute()
+                return {'success': not obj.Shape.isNull() and obj.Shape.isValid(), 'result': obj.Name, 'simulation': False}
             except Exception as e:
                 return {"success": False, "error": str(e)}
         else:
             # Режим симуляции
             return {
-                "success": True, 
+                "success": False,
+                "validated": False,
                 "result": f"Симуляция команды: {command}",
                 "simulation": True
             }

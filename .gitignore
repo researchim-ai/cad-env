@@ -104,6 +104,10 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.venv-*/
+artifacts/
+*.FCStd1
+*.FCStd.*
 env/
 venv/
 ENV/
