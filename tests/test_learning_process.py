@@ -16,6 +16,23 @@ from cad_env.learning.train import check_training_source
 from cad_env.learning.workflow import dataset_readiness, grpo_readiness, training_plan
 
 
+def test_single_action_prompt_migration_has_no_contradictory_contract():
+    from cad_env.agent.observations import (
+        agent_messages,
+        normalize_single_action_prompt,
+    )
+    from cad_env.agent.schema import ACTION_GUIDE
+    from cad_env.agent.tasks import make_task
+
+    old = [{"role": "system", "content": [{"type": "text", "text": ACTION_GUIDE}]}]
+    migrated = normalize_single_action_prompt(old)
+    assert "JSON array" in old[0]["content"][0]["text"]
+    assert "JSON array" not in migrated[0]["content"][0]["text"]
+    assert normalize_single_action_prompt(migrated) == migrated
+    assert '"op":"pad"' in migrated[0]["content"][0]["text"]
+    assert "JSON array" not in str(agent_messages(make_task(), {}))
+
+
 @pytest.fixture(scope="module")
 def backend():
     try:

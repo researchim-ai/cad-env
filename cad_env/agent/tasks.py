@@ -170,6 +170,11 @@ def make_task(
 
 
 def public_task(task):
+    if "public_task" in task:
+        allowed = ("task_id", "family", "mode", "instruction", "max_steps")
+        result = {k: task["public_task"][k] for k in allowed}
+        result["max_steps"] = task["max_steps"]
+        return result
     return {
         k: task[k] for k in ("task_id", "family", "mode", "instruction", "max_steps")
     }
@@ -194,6 +199,8 @@ def expected_metrics(task):
     """Independent closed-form checks, not extracted from the oracle CAD shape."""
     import math
 
+    if "analytic_metrics" in task:
+        return copy.deepcopy(task["analytic_metrics"])
     p, family = task["parameters"], task["family"]
     h = p["height"]
     if family == "plate":

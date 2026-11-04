@@ -7,7 +7,7 @@ from pathlib import Path
 
 from cad_env.agent.backend import FreeCADBackend
 from cad_env.agent.environment import CADAgentEnv
-from cad_env.agent.observations import agent_messages, transition
+from cad_env.agent.observations import agent_messages, policy_images, transition
 
 from .factory import jsonl
 from .metrics import summarize_episodes
@@ -34,7 +34,10 @@ def evaluate_policy(
     model_identity=None,
     final_test=False,
     limit=None,
+    image_condition="full",
 ):
+    if image_condition not in ("full", "no_goal", "wrong_goal", "blank_goal"):
+        raise ValueError("Unknown image condition")
     if split not in ("validation", "test") or (split == "test" and not final_test):
         raise ValueError(
             "Use validation for development; test requires final_test=True after checkpoint selection"
@@ -80,6 +83,7 @@ def evaluate_policy(
         "split": split,
         "attempts": attempts,
         "visual": visual,
+        **({"image_condition": image_condition} if image_condition != "full" else {}),
         "seed": seed,
         "max_steps": max_steps,
         "policy_protocol": policy_protocol or {},
@@ -126,15 +130,54 @@ def evaluate_policy(
                     + attempt
                 )
                 policy = policy_factory(sample_seed)
-                env = CADAgentEnv(out / "episodes", backend, visual=visual)
+                env = CADAgentEnv(
+                    out / "episodes", backend, visual=visual, asset_root=root
+                )
                 observation, _ = env.reset(task)
                 history = []
                 invalid = 0
                 elapsed = time.monotonic()
                 while not env.closed:
-                    messages = agent_messages(task, observation, history, visual=visual)
+                    policy_observation = dict(observation)
+                    if image_condition == "no_goal":
+                        policy_observation["goal_images"] = []
+                    elif visual and image_condition == "wrong_goal":
+                        replacements = task.get("counterfactual_goal_images")
+                        if not replacements:
+                            raise ValueError(
+                                "Wrong-goal control requires a counterfactual peer"
+                            )
+                        resolved = [(root / p).resolve() for p in replacements]
+                        if any(
+                            not p.is_relative_to(root) or not p.is_file()
+                            for p in resolved
+                        ):
+                            raise ValueError("Unsafe counterfactual image")
+                        policy_observation["goal_images"] = list(map(str, resolved))
+                    elif visual and image_condition == "blank_goal":
+                        from PIL import Image
+
+                        blank = out / "blank-goal.png"
+                        if not blank.exists():
+                            Image.new("RGB", (512, 512), "white").save(blank)
+                        policy_observation["goal_images"] = [str(blank)] * len(
+                            observation.get("goal_images", [])
+                        )
+                    messages = agent_messages(
+                        task, policy_observation, history, visual=visual
+                    )
+                    input_record = {
+                        "step": env.attempts,
+                        "prompt_sha256": digest(messages),
+                        "image_sha256": [
+                            hashlib.sha256(Path(p).read_bytes()).hexdigest()
+                            for p in policy_images(policy_observation)
+                        ],
+                    }
+                    with (env.episode_dir / "policy-inputs.jsonl").open("a") as stream:
+                        stream.write(json.dumps(input_record) + "\n")
                     # Only public prompt and image paths are passed to a policy.
-                    response = policy(messages, list(observation.get("images", [])))
+                    response = policy(messages, policy_images(policy_observation))
                     if not isinstance(response, str):
                         raise TypeError("Policy must return JSON text")
                     try:
@@ -154,6 +197,14 @@ def evaluate_policy(
                     "split_group": task["split_group"],
                     "family": task["family"],
                     "mode": task["mode"],
+                    **(
+                        {
+                            "condition_group": task["condition_group"],
+                            "evaluation_tier": task.get("evaluation_tier", "iid"),
+                        }
+                        if "condition_group" in task
+                        else {}
+                    ),
                     "attempt": attempt,
                     "seed": sample_seed,
                     "reward": reward,

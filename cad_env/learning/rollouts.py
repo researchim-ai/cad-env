@@ -8,14 +8,21 @@ import json
 from pathlib import Path
 
 from cad_env.agent.environment import CADAgentEnv
-from cad_env.agent.observations import agent_messages, transition
+from cad_env.agent.observations import agent_messages, policy_images, transition
 
 from .factory import jsonl
 from .rewards import group_statistics
 
 
 def collect_group(
-    task, policy, output_dir, *, num_generations=4, backend=None, visual=False
+    task,
+    policy,
+    output_dir,
+    *,
+    num_generations=4,
+    backend=None,
+    visual=False,
+    asset_root=None,
 ):
     if num_generations < 2:
         raise ValueError("Collect at least two rollouts per task for group diagnostics")
@@ -25,14 +32,16 @@ def collect_group(
     output.mkdir(parents=True, exist_ok=True)
     rows, successful = [], []
     for candidate in range(num_generations):
-        env = CADAgentEnv(output / "episodes", backend, visual=visual)
+        env = CADAgentEnv(
+            output / "episodes", backend, visual=visual, asset_root=asset_root
+        )
         observation, _ = env.reset(task)
         history = []
         decisions = []
         while not env.closed:
             messages = agent_messages(task, observation, history, visual=visual)
             response = (
-                policy(messages, list(observation.get("images", [])))
+                policy(messages, policy_images(observation))
                 if visual
                 else policy(messages)
             )
@@ -43,7 +52,7 @@ def collect_group(
             except ValueError:
                 action = {"op": "invalid_json"}
             prompt = list(messages)
-            prompt_images = list(observation.get("images", []))
+            prompt_images = policy_images(observation)
             observation, reward, done, truncated, info = env.step(action)
             history.append(
                 {**transition(action, info, observation), "response": response[:2000]}

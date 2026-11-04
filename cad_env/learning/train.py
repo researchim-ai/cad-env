@@ -68,7 +68,15 @@ def check_text_supervision(dataset, tokenizer, max_length):
             raise ValueError(f"No assistant target tokens in row {index}")
 
 
-def check_vision_supervision(dataset, processor, max_length, max_images=4):
+def check_vision_supervision(
+    dataset,
+    processor,
+    max_length,
+    max_images=4,
+    *,
+    image_token_ids=(),
+    verify_template_boundary=False,
+):
     from trl.trainer.sft_trainer import DataCollatorForVisionLanguageModeling
 
     collator = DataCollatorForVisionLanguageModeling(
@@ -79,6 +87,21 @@ def check_vision_supervision(dataset, processor, max_length, max_images=4):
         if not 1 <= len(row["images"]) <= max_images:
             raise ValueError(f"Row {index} violates the image-count budget")
         batch = collator([row])
+        if verify_template_boundary:
+            prompt_text = processor.apply_chat_template(
+                row["prompt"], tokenize=False, add_generation_prompt=True
+            )
+            full_text = processor.apply_chat_template(
+                row["prompt"] + row["completion"],
+                tokenize=False,
+                add_generation_prompt=False,
+            )
+            if not full_text.startswith(prompt_text):
+                raise ValueError(f"Visual template boundary mismatch in row {index}")
+        for token_id in image_token_ids:
+            positions = batch["input_ids"] == token_id
+            if not positions.any() or not (batch["labels"][positions] == -100).all():
+                raise ValueError(f"Image tokens missing or supervised in row {index}")
         length = int(batch["attention_mask"][0].sum())
         count = int((batch["labels"][0] != -100).sum())
         if length > max_length:
@@ -94,6 +117,12 @@ def check_vision_supervision(dataset, processor, max_length, max_images=4):
         "max_tokens": max(lengths),
         "max_target_tokens": max(targets),
         "all_completion_masks_checked": True,
+        **({"all_image_tokens_masked": True} if image_token_ids else {}),
+        **(
+            {"all_template_boundaries_checked": True}
+            if verify_template_boundary
+            else {}
+        ),
     }
 
 
@@ -101,8 +130,31 @@ def check_training_source(root, source):
     from .audit import audit_dataset
 
     audit = audit_dataset(root)
+    summary = json.loads((root / "summary.json").read_text())
+    supported = summary.get("supported_training_exports")
+    if supported and Path(source).name not in supported:
+        raise ValueError("This dataset only supports training exports: " + str(supported))
     if not audit["ok"]:
         raise ValueError("Dataset audit failed: " + str(audit["errors"][:3]))
+    if summary.get("benchmark", "").startswith("visual-grounding-"):
+        from .visual_audit import audit_visual
+
+        visual = audit_visual(root, base_report=audit)
+        if not visual["ok"]:
+            raise ValueError("Visual information audit failed: " + str(visual["errors"][:3]))
+        audit["information_control"] = {
+            "counterfactual_groups": visual["condition_groups"],
+            "greedy_no_image_ceiling": visual["greedy_no_image_success_ceiling"],
+        }
+    elif summary.get("benchmark", "").startswith("complex-cad-"):
+        from .curriculum_metrics import audit_complex
+
+        complexity = audit_complex(root, base_report=audit)
+        if not complexity["ok"]:
+            raise ValueError("Compositional audit failed: " + str(complexity["errors"][:3]))
+        audit["compositional_control"] = {
+            k: v for k, v in complexity.items() if k not in ("errors", "base_audit")
+        }
     accepted = {
         r["task_id"]
         for line in (root / "manifest.jsonl").read_text().splitlines()

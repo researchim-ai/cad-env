@@ -1,0 +1,157 @@
+{
+  "schema": "cad-env.vision-experiment.v1",
+  "purpose": "Measured native CAD learning, image interventions and independent construction/OOD checks",
+  "starting_checkpoint": "artifacts/qwen35-sft200-merged",
+  "foundation_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "physical_gpu": 1,
+  "hardware": "RTX 3090 24 GB",
+  "dependency_lock": "requirements-qwen35.lock",
+  "datasets": {
+    "visual-grounding-v1": {
+      "summary_sha256": "f92de32d059a681b98ac22570650bb9205bfa9e9828a0c769b6b8254a5ec526e",
+      "manifest_sha256": "d5c579f91d33bea64da12c8683b96bd2f41e66762b7c3e5b31d01ddcbdbbe95d",
+      "train_feedback_sha256": "26f7188a18e97cb9a8f14bd2dd663e31040a724c19eacf71e59758f7b80c47f6",
+      "accepted": 832,
+      "rejected": 0,
+      "training_feedback_rows": 1500
+    },
+    "visual-grounding-v2": {
+      "summary_sha256": "8a56a64260e512d50127fb7ece5c48fd9d97ed4a4cbc809c8a4023c059b63845",
+      "manifest_sha256": "622942007212b82ddd9d64b020896549377f25dad92102800b52deaf2047d342",
+      "train_feedback_sha256": "d4080cf29be6df321d36fe4db4d14a0bc23b3abfdf4e24e3e0e792a6be9dc3e7",
+      "accepted": 896,
+      "rejected": 0,
+      "training_feedback_rows": 1500
+    },
+    "visual-grounding-v3": {
+      "summary_sha256": "27e9af1b45169bfde90c22002ae954f0407798d7c66c1dfd9020614c07ba1ac7",
+      "manifest_sha256": "28d394364801f70e78ea945ebd0d1d5efbee75d325f42ec7b2f0ccff3f60e615",
+      "train_feedback_sha256": "2f21e3aaecb9ff4326e5d5e213fee5a65361cb8e6be761764ca27451462e8bf0",
+      "accepted": 4224,
+      "rejected": 0,
+      "training_feedback_rows": 7884
+    },
+    "visual-grounding-v4-entities": {
+      "summary_sha256": "e6796c7ef80fe9b8c9f266ef2308757b5468c9879c5c94b1b779914dbc836b51",
+      "manifest_sha256": "94928b5efd5ec9623481c026d269de79419430054618afd88f355f378cf72d1f",
+      "train_feedback_sha256": "9ac3e4b62f52dc0c0b1e2ee198400239955291d455238a8f9326dee0cbf45f2f",
+      "accepted": 896,
+      "rejected": 0,
+      "training_feedback_rows": 1500
+    },
+    "complex-cad-v3": {
+      "summary_sha256": "afeb0407682e4e165713010a10cbbb13e2954322b927a14f30cb2083a32222d8",
+      "manifest_sha256": "e449d43049dad3f4544bd18cd7190e03d7da52a7a880ffe7ab975b13ad6180d2",
+      "train_feedback_sha256": "5d240e5d0049ce35af11d9a95a83570ab830a58417f8bf66b49896726747cf51",
+      "accepted": 424,
+      "rejected": 0,
+      "training_feedback_rows": 2900
+    },
+    "gpu1-corpus-v2": {
+      "summary_sha256": "a86ea3f794cca0616ad6efd0725ce95857b86fe04188d90346936b339069f7ac",
+      "manifest_sha256": "4e8f0f5460566ff9341cf19124c5e85c07a441d0b2cd7c6b2add4983b0e58026",
+      "train_feedback_sha256": "338852d7893c4b2c3d0e059a5fad1da8e8c6cded0971491ee2498ae95b5e663c",
+      "accepted": 912,
+      "rejected": 0,
+      "training_feedback_rows": 2002
+    }
+  },
+  "evaluation_controller_sha256": {
+    "cad_env/agent/worker.py": "0672c03bbbcad868f5cac9d6cf7f76d798519637596593805e09ce6b574702bf",
+    "cad_env/agent/schema.py": "5f408a862bb1f6a65fada4a12fb8e732583829e07732b901120161df13b3459b",
+    "cad_env/agent/environment.py": "681fe42c45e4c402259b052d14f17a713979d56d3fae578f1cec8d29be55a7cc",
+    "cad_env/agent/observations.py": "ad35a98f9b15a891e8271783ffa27be26655c0ee1ec30f3a06ccce8408a9ff8f",
+    "cad_env/agent/tasks.py": "bdd82d3478c7b7153a029073cc1db4fe27bc15aae937d949e3a763fae61faa55",
+    "cad_env/agent/rendering.py": "5079515ccca40589a08dc90ec8a68c26a9e26b292ba4df77558d5a07526d2724",
+    "cad_env/agent/backend.py": "740217de59fde8491f5653bc9a0c5f1d746eb454f22b82728b4b2d5197f1dc67",
+    "cad_env/learning/protocol.py": "2e086ac6d6c66b63d5fdae7bf0d3e17333f70ba8a31128b9ba9b7876c8a2fe80",
+    "cad_env/learning/policy.py": "e264e59f8fe355635f9e925f635e0b2f1a8ab0e2fd52f0670c9b3c293b7c9f0d",
+    "cad_env/learning/metrics.py": "8939c3dad34b62d4bc7b38bdf5273042c1f24cbe86fa38ce8ca25a8620bfc137"
+  },
+  "evaluation": {
+    "temperature": 0.0,
+    "thinking": false,
+    "max_new_tokens": 256,
+    "max_pixels": 327680,
+    "max_context": 8192,
+    "primary_max_steps": 8,
+    "complex_and_retention_max_steps": 16,
+    "attempts": 1,
+    "primary_validation": "visual-grounding-v1",
+    "complex_validation": "complex-cad-v3",
+    "retention_validation": "gpu1-corpus-v2"
+  },
+  "phases": {
+    "a": {
+      "dataset": "visual-grounding-v1",
+      "steps": 200,
+      "vision_lora": false,
+      "numeric_loss_weight": 1,
+      "effective_batch": 8,
+      "learning_rate": 0.0001
+    },
+    "b": {
+      "datasets": [
+        "visual-grounding-v2",
+        "complex-cad-v3",
+        "gpu1-corpus-v2"
+      ],
+      "steps": 300,
+      "vision_lora": true,
+      "numeric_loss_weight": 1,
+      "effective_batch": 8,
+      "learning_rate": 0.0001
+    },
+    "c": {
+      "condition": "B misses native pilot gates",
+      "datasets": [
+        "visual-grounding-v3",
+        "complex-cad-v3",
+        "gpu1-corpus-v2"
+      ],
+      "steps": 200,
+      "vision_lora": true,
+      "numeric_loss_weight": 8,
+      "effective_batch": 8,
+      "learning_rate": 5e-05
+    }
+  },
+  "selection": {
+    "retention_min": 0.95,
+    "primary_min": 0.01,
+    "complex_image_min": 0.21739130434782608,
+    "score": "mean(primary native success, complex image native success)",
+    "tie_break": "fewer additional steps",
+    "fallback": "retain failed gates in report; no broad mastery claim"
+  },
+  "image_controls": [
+    "no_goal",
+    "blank_goal",
+    "wrong_goal",
+    "peer_target_regrading"
+  ],
+  "primary_pilot_gates": {
+    "starting_model": "artifacts/qwen35-sft200-merged",
+    "gpu": 1,
+    "primary_dataset": "artifacts/visual-grounding-v1",
+    "extra_dataset": "artifacts/complex-cad-v3",
+    "target_grounding_success": 0.8,
+    "target_full_vs_state_only_gap": 0.4,
+    "target_complex_image_success": 0.6,
+    "target_retention_success": 0.95,
+    "scope": "Native tools and bounded compositional CAD; no claim of arbitrary FreeCAD coverage.",
+    "test_policy": "Use validation for checkpoints; final OOD/test only after selection; never mine held-out answers.",
+    "ood_modality_control": "Both text and image conditions for unseen construction graphs"
+  },
+  "final_test_policy": {
+    "primary": "all pilot gates pass",
+    "complex_only": "image native success >=.6; retention >=.95; matched-vs-blank image gap >=.4 and positive group-bootstrap lower bound",
+    "entities": "separate parent baseline and matched controls; success >=.8; image gap >=.4; retention >=.95"
+  },
+  "rl": "Train-only one-action native bandit calibration; optimizer update is not implied",
+  "status_root": "artifacts/vision-leap-experiment",
+  "note": "Corpora overlap by parent within the same split; do not sum task rows as independent designs. This manifest documents an experiment, not the legacy workflow recipe schema.",
+  "excluded_data": {
+    "artifacts/visual-grounding-v4-entities-occluded": "Eight marker occlusions detected before any training/evaluation; retained for audit and rejected by the training gate."
+  }
+}

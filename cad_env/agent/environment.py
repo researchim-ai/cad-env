@@ -10,11 +10,14 @@ from .tasks import allowed_edits, expected_metrics, public_task
 
 
 class CADAgentEnv:
-    def __init__(self, work_dir, backend=None, *, visual=False, views=("iso",)):
+    def __init__(
+        self, work_dir, backend=None, *, visual=False, views=("iso",), asset_root=None
+    ):
         self.work_dir = Path(work_dir).resolve()
         self.backend = backend or FreeCADBackend()
         self.visual = visual
         self.views = tuple(views)
+        self.asset_root = Path(asset_root).resolve() if asset_root else None
         self.task = None
         self.closed = True
 
@@ -31,7 +34,7 @@ class CADAgentEnv:
             [],
             self.episode_dir / "reset",
             initial_actions=task["initial_actions"],
-            mesh=self.visual,
+            mesh=self.visual and not task.get("goal_only_observation"),
         )
         if not result["execution_ok"]:
             self.closed = True
@@ -54,12 +57,24 @@ class CADAgentEnv:
             from .rendering import render_mesh
 
             folder = Path(result["output_dir"])
-            observation["images"] = render_mesh(
-                folder / "mesh.json",
-                folder / "public_views",
-                size=256,
-                views=self.views,
+            observation["images"] = (
+                []
+                if self.task.get("goal_only_observation")
+                else render_mesh(
+                    folder / "mesh.json",
+                    folder / "public_views",
+                    size=256,
+                    views=self.views,
+                )
             )
+            observation["goal_images"] = []
+            for relative in self.task.get("goal_images", []):
+                if self.asset_root is None:
+                    raise ValueError("Visual goal tasks require an asset_root")
+                path = (self.asset_root / relative).resolve()
+                if not path.is_relative_to(self.asset_root) or not path.is_file():
+                    raise ValueError("Goal image must exist inside the dataset")
+                observation["goal_images"].append(str(path))
         return observation
 
     def step(self, action):
@@ -81,7 +96,8 @@ class CADAgentEnv:
                 initial_actions=self.task["initial_actions"],
                 reference_actions=self.task["reference_actions"] if finished else None,
                 allowed_edits=allowed_edits(self.task) if finished else None,
-                mesh=self.visual,
+                reward_mode=self.task.get("reward_mode", "dense_geometry"),
+                mesh=self.visual and not self.task.get("goal_only_observation"),
                 tolerance=self.task["tolerance"],
                 expected_metrics=expected_metrics(self.task) if finished else None,
             )

@@ -41,7 +41,12 @@ class FreeCADScheduler(MultiTurnScheduler):
         observation = result["observation"]
         paths = observation.get("images", [])
         feedback = json.dumps(
-            {k: v for k, v in observation.items() if k != "images"}, ensure_ascii=False
+            {
+                k: v
+                for k, v in observation.items()
+                if k not in ("images", "goal_images")
+            },
+            ensure_ascii=False,
         )
         feedback += "\nCurrent FreeCAD state. Continue with one JSON action; finish only when complete."
         if paths:

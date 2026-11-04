@@ -56,6 +56,7 @@ def score_completion(task, completion, output_dir, backend=None):
         tolerance=task["tolerance"],
         expected_metrics=expected_metrics(task),
         allowed_edits=allowed_edits(task),
+        reward_mode=task.get("reward_mode", "dense_geometry"),
     )
     if result.get("error_origin") == "evaluation" or result.get("validation", {}).get(
         "evaluator_error"
@@ -106,11 +107,9 @@ class CADReward:
         self.workers = workers
 
     def score(self, task_id, completion):
-        if not isinstance(task_id, str) or not re.fullmatch(
-            r"[a-z_]+-[0-9]+-(create|edit|repair)", task_id
-        ):
-            raise ValueError("Invalid task_id")
-        task = json.loads((self.task_dir / task_id / "task.json").read_text())
+        from .task_identity import load_private_task
+
+        task = load_private_task(self.task_dir, task_id)
         out = self.rollout_dir / task_id / uuid.uuid4().hex
         out.mkdir(parents=True)
         score = score_completion(task, completion, out, self.backend)

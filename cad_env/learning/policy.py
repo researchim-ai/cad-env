@@ -40,6 +40,7 @@ class HFPolicy:
         max_context=4096,
         min_pixels=56 * 56,
         max_pixels=256 * 256,
+        chat_template_kwargs=None,
     ):
         import torch
         from transformers import (
@@ -53,6 +54,7 @@ class HFPolicy:
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.max_context = max_context
+        self.chat_template_kwargs = dict(chat_template_kwargs or {})
         self.identity = checkpoint_identity(model, revision)
         if (Path(model) / "adapter_config.json").is_file():
             raise ValueError(
@@ -87,7 +89,10 @@ class HFPolicy:
         from PIL import Image
 
         text = self.processor.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            **self.chat_template_kwargs,
         )
         if self.visual:
             images = [Image.open(path).convert("RGB") for path in image_paths]

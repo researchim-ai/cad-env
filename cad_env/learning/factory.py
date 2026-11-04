@@ -24,6 +24,15 @@ def jsonl(path, rows):
             f.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n")
 
 
+def teacher_transition(action, info, observation):
+    # Deployed policies retain both parsed action and raw assistant response.
+    # Teacher responses use the exact canonical JSON used for their completion.
+    return {
+        **transition(action, info, observation),
+        "response": json.dumps(action)[:2000],
+    }
+
+
 def negative_actions(task):
     actions = copy.deepcopy(task["oracle_actions"])
     if task["mode"] != "create":
@@ -49,6 +58,7 @@ def generate_dataset(
     render=True,
     preferences=False,
     holdout_families=(),
+    task_specs=None,
 ):
     if seeds < 1 or workers < 1 or start_seed < 0:
         raise ValueError(
@@ -61,12 +71,25 @@ def generate_dataset(
         or len(set(modes)) != len(modes)
     ):
         raise ValueError("families and modes must be non-empty and unique")
-    tasks = [
-        make_task(f, seed, mode)
-        for seed in range(start_seed, start_seed + seeds)
-        for f in families
-        for mode in modes
-    ]
+    tasks = (
+        copy.deepcopy(task_specs)
+        if task_specs is not None
+        else [
+            make_task(f, seed, mode)
+            for seed in range(start_seed, start_seed + seeds)
+            for f in families
+            for mode in modes
+        ]
+    )
+    if not tasks:
+        raise ValueError("At least one task is required")
+    has_visual_goals = any(t.get("goal_spec") or t.get("goal_images") for t in tasks)
+    if has_visual_goals and not render:
+        raise ValueError("Visual-goal tasks require rendered feedback exports")
+    if has_visual_goals and preferences:
+        raise ValueError(
+            "Visual-goal curricula require image-aware rollout preference exporters"
+        )
     if set(holdout_families) - set(families):
         raise ValueError("Holdout families must be included in families")
     unique = {}
@@ -79,6 +102,7 @@ def generate_dataset(
                 task["mode"],
                 task["reference_actions"],
                 task["initial_actions"],
+                task.get("input_modality", "default"),
             ],
             sort_keys=True,
         )
@@ -108,6 +132,11 @@ def generate_dataset(
     def generate(task):
         episode = root / "episodes" / task["task_id"]
         episode.mkdir(parents=True)
+        if task.get("goal_spec"):
+            from .visual_tasks import render_goal
+
+            task["goal_images"] = [str((episode / "goal.png").relative_to(root))]
+            render_goal(task, episode / "goal.png")
         (episode / "task.json").write_text(
             json.dumps(task, indent=2, ensure_ascii=False)
         )
@@ -117,10 +146,11 @@ def generate_dataset(
             initial_actions=task["initial_actions"],
             reference_actions=task["reference_actions"],
             record=True,
-            mesh=render,
+            mesh=render and not task.get("goal_only_observation"),
             tolerance=task["tolerance"],
             expected_metrics=expected_metrics(task),
             allowed_edits=allowed_edits(task),
+            reward_mode=task.get("reward_mode", "dense_geometry"),
         )
         accepted = bool(
             result["execution_ok"] and result.get("validation", {}).get("task_success")
@@ -168,6 +198,14 @@ def generate_dataset(
                 "validation": result.get("validation"),
                 "error": result.get("error"),
                 "artifact_sha256": result.get("artifact_sha256"),
+                **(
+                    {
+                        "condition_group": task["condition_group"],
+                        "evaluation_tier": task.get("evaluation_tier", "iid"),
+                    }
+                    if "condition_group" in task
+                    else {}
+                ),
             }
         )
         if not item["accepted"]:
@@ -186,31 +224,38 @@ def generate_dataset(
             "family": task["family"],
             "mode": task["mode"],
         }
-        exports[split, "sft"].append(
-            {**meta, "prompt": prompt, "completion": completion}
-        )
-        exports[split, "grpo"].append({**meta, "prompt": prompt})
-        history = []
-        for event in result["events"]:
-            step_prompt = prompt_messages(task, event["observation_before"])
-            step_prompt[0]["content"] += (
-                "\nFor this next-action task return ONE JSON action object, not an array."
+        # Unconditioned text exports cannot identify a target encoded only in
+        # image pixels. Keep them empty for visual-goal tasks rather than emit
+        # contradictory training examples.
+        if not task.get("goal_images"):
+            exports[split, "sft"].append(
+                {**meta, "prompt": prompt, "completion": completion}
             )
-            step_prompt[1]["content"] += "\nPreviously accepted actions: " + json.dumps(
-                history
-            )
-            exports[split, "steps"].append(
-                {
-                    **meta,
-                    "step_id": event["step_id"],
-                    "prompt": step_prompt,
-                    "completion": [
-                        {"role": "assistant", "content": json.dumps(event["action"])}
-                    ],
-                }
-            )
-            history.append(event["action"])
-        if render:
+            exports[split, "grpo"].append({**meta, "prompt": prompt})
+            history = []
+            for event in result["events"]:
+                step_prompt = prompt_messages(task, event["observation_before"])
+                step_prompt[0]["content"] += (
+                    "\nFor this next-action task return ONE JSON action object, not an array."
+                )
+                step_prompt[1]["content"] += (
+                    "\nPreviously accepted actions: " + json.dumps(history)
+                )
+                exports[split, "steps"].append(
+                    {
+                        **meta,
+                        "step_id": event["step_id"],
+                        "prompt": step_prompt,
+                        "completion": [
+                            {
+                                "role": "assistant",
+                                "content": json.dumps(event["action"]),
+                            }
+                        ],
+                    }
+                )
+                history.append(event["action"])
+        if render and not task.get("goal_only_observation"):
             images = render_mesh(episode / "oracle" / "mesh.json", episode / "images")
             if (episode / "oracle" / "initial_mesh.json").is_file():
                 render_mesh(
@@ -265,29 +310,32 @@ def generate_dataset(
                     )
                 rejected_observation = rejected_result["error"]
                 feedback_history.append(
-                    transition(
+                    teacher_transition(
                         bad_action,
                         {"execution_ok": False},
                         {"error": rejected_observation},
                     )
                 )
             for index, event in enumerate(result["events"]):
-                mesh_relative = (
-                    "initial_mesh.json"
-                    if index == 0
-                    else result["events"][index - 1]["checkpoint_mesh"]
-                )
-                current_images = render_mesh(
-                    episode / "oracle" / mesh_relative,
-                    episode / "feedback_images",
-                    prefix=f"state-{index:03d}",
-                    size=256,
-                    views=("iso",),
-                )
+                current_images = []
+                if not task.get("goal_only_observation"):
+                    mesh_relative = (
+                        "initial_mesh.json"
+                        if index == 0
+                        else result["events"][index - 1]["checkpoint_mesh"]
+                    )
+                    current_images = render_mesh(
+                        episode / "oracle" / mesh_relative,
+                        episode / "feedback_images",
+                        prefix=f"state-{index:03d}",
+                        size=256,
+                        views=("iso",),
+                    )
                 observation = {
                     "state": event["observation_before"],
                     "remaining_steps": task["max_steps"] - index,
                     "images": current_images,
+                    "goal_images": [str(root / p) for p in task.get("goal_images", [])],
                 }
                 if index == 0 and rejected_observation:
                     observation["error"] = rejected_observation
@@ -300,6 +348,7 @@ def generate_dataset(
                         "step_id": index,
                         "observation_kind": "current_state",
                         "recovery": bool(index == 0 and rejected_observation),
+                        "goal_required": bool(task.get("goal_images")),
                         "prompt": feedback_prompt,
                         "completion": [
                             {
@@ -314,7 +363,7 @@ def generate_dataset(
                         ],
                         "images": [
                             str(Path(image).relative_to(root))
-                            for image in current_images
+                            for image in observation["goal_images"] + current_images
                         ],
                     }
                 )
@@ -350,7 +399,7 @@ def generate_dataset(
                                 recovery_observation,
                                 feedback_history
                                 + [
-                                    transition(
+                                    teacher_transition(
                                         repeated_action,
                                         {"execution_ok": False},
                                         recovery_observation,
@@ -361,7 +410,7 @@ def generate_dataset(
                         )
                         exports[split, "feedback"].append(variant)
                 feedback_history.append(
-                    transition(
+                    teacher_transition(
                         event["action"],
                         {"execution_ok": True},
                         event["observation_after"],
@@ -431,5 +480,10 @@ def generate_dataset(
         "holdout_families": list(holdout_families),
         "split_policy": "sha256(family + invariant base dimensions); edit/repair, views, and dimension variations share a split; optional entire-family test holdout",
     }
+    if has_visual_goals:
+        summary["supported_training_exports"] = ["train.feedback.jsonl"]
+        summary["excluded_export_reason"] = (
+            "Visual goals require images and the sequential action contract"
+        )
     (root / "summary.json").write_text(json.dumps(summary, indent=2))
     return summary

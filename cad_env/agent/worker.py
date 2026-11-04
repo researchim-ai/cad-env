@@ -46,6 +46,11 @@ def main(request_path, result_path):
             }
             if obj.isDerivedFrom("Sketcher::SketchObject"):
                 row["fully_constrained"] = bool(obj.FullyConstrained)
+                row["circles"] = [
+                    {"index": i, "x": g.Center.x, "y": g.Center.y, "radius": g.Radius}
+                    for i, g in enumerate(obj.Geometry)
+                    if hasattr(g, "Center") and hasattr(g, "Radius")
+                ]
                 row["constraints"] = {
                     obj.Constraints[i].Name: obj.getDatum(i).Value
                     for i in range(obj.ConstraintCount)
@@ -422,6 +427,14 @@ def main(request_path, result_path):
         result["error_type"] = type(exc).__name__
         result["traceback"] = traceback.format_exc()
     finally:
+        if request.get("reward_mode") == "strict_success" and "validation" in result:
+            validation = result["validation"]
+            validation["dense_geometry_reward"] = validation.get("reward", 0.0)
+            validation["reward"] = float(
+                bool(validation.get("task_success"))
+                and result.get("execution_ok", False)
+            )
+            validation["reward_mode"] = "strict_success"
         for name in list(App.listDocuments()):
             App.closeDocument(name)
         dump(result_path, result)

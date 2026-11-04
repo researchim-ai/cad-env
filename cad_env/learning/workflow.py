@@ -341,6 +341,14 @@ def main():
     )
     evaluate.add_argument("--limit", type=int)
     evaluate.add_argument("--seed", type=int, default=42)
+    evaluate.add_argument("--disable-thinking", action="store_true")
+    evaluate.add_argument(
+        "--image-condition",
+        choices=["full", "no_goal", "wrong_goal", "blank_goal"],
+        default="full",
+    )
+    evaluate.add_argument("--max-pixels", type=int, default=65536)
+    evaluate.add_argument("--max-context", type=int, default=4096)
     collect = sub.add_parser("collect")
     collect.add_argument("--dataset", required=True)
     collect.add_argument("--model", required=True)
@@ -414,6 +422,11 @@ def main():
             visual=not args.text_model,
             max_new_tokens=args.max_new_tokens,
             temperature=args.temperature,
+            max_pixels=args.max_pixels,
+            max_context=args.max_context,
+            chat_template_kwargs={"enable_thinking": False}
+            if args.disable_thinking
+            else None,
         )
 
         def factory(seed):
@@ -432,11 +445,18 @@ def main():
             policy_protocol={
                 "max_new_tokens": args.max_new_tokens,
                 "temperature": args.temperature,
-                "max_context": 4096,
+                "max_context": args.max_context,
+                **({"max_pixels": args.max_pixels} if args.max_pixels != 65536 else {}),
+                **(
+                    {"chat_template_kwargs": {"enable_thinking": False}}
+                    if args.disable_thinking
+                    else {}
+                ),
             },
             model_identity=policy.identity,
             final_test=args.final_test,
             limit=args.limit,
+            image_condition=args.image_condition,
         )
         print(json.dumps(report["metrics"], indent=2))
         return 0

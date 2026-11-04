@@ -50,7 +50,10 @@ class FreeCADBackend:
         tolerance=1e-5,
         expected_metrics=None,
         allowed_edits=None,
+        reward_mode="dense_geometry",
     ):
+        if reward_mode not in ("dense_geometry", "strict_success"):
+            raise ValueError("Unknown native reward mode")
         for name, digest in self._code_fingerprints.items():
             if (
                 hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
@@ -77,6 +80,7 @@ class FreeCADBackend:
             "tolerance": tolerance,
             "expected_metrics": expected_metrics,
             "allowed_edits": allowed_edits,
+            "reward_mode": reward_mode,
         }
         request_path = output / "request.json"
         request_path.write_text(json.dumps(request, allow_nan=False))

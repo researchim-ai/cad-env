@@ -103,9 +103,29 @@ celerybeat.pid
 
 # Environments
 .env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
 .venv
 .venv-*/
 artifacts/
+# Local model weights and training runs
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.gguf
+pytorch_model*.bin
+adapter_model*.bin
+optimizer*.bin
+training_args.bin
+/checkpoints/
+/runs/
+/wandb/
+/logs/
+.ruff_cache/
 *.FCStd1
 *.FCStd.*
 env/

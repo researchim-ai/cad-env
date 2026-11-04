@@ -49,7 +49,14 @@ def collect_agents(
         )
         task["max_steps"] = min(max_steps, task["max_steps"])
         group = out / "groups" / task["task_id"]
-        collect_group(task, policy, group, num_generations=num_generations, visual=True)
+        collect_group(
+            task,
+            policy,
+            group,
+            num_generations=num_generations,
+            visual=True,
+            asset_root=root,
+        )
         scores.extend(
             json.loads(line)
             for line in (group / "rollouts.jsonl").read_text().splitlines()
