@@ -64,6 +64,7 @@ class VisualBanditReward:
         self.output.mkdir(parents=True, exist_ok=True)
         self.workers = workers
         self.group_variance = []
+        self.batch_index = 0
 
     def score(self, task_id, completion):
         task = load_private_task(self.root / "episodes", task_id, require_train=True)
@@ -116,6 +117,28 @@ class VisualBanditReward:
             groups[score["task_id"]].append(score["reward"])
         stats = [group_statistics(v) for v in groups.values() if len(v) >= 2]
         self.group_variance.extend(s["std"] for s in stats)
+        # Persist every actual reward call, including all-zero groups. This is
+        # evidence of sampled training signal, not a held-out learning curve.
+        with (self.output / "reward-batches.jsonl").open("a") as stream:
+            stream.write(
+                json.dumps(
+                    {
+                        "batch_index": self.batch_index,
+                        "samples": [
+                            {
+                                "sample_index": i,
+                                "task_id": s["task_id"],
+                                "completion": s["completion"],
+                                "reward": s["reward"],
+                            }
+                            for i, s in enumerate(scores)
+                        ],
+                        "task_group_statistics": stats,
+                    }
+                )
+                + "\n"
+            )
+        self.batch_index += 1
         if log_metric and stats:
             log_metric(
                 "native/mixed_group_fraction",
@@ -145,6 +168,13 @@ def calibrate(dataset, model, output, prompts=20, generations=4, seed=42):
         max_pixels=327680,
         chat_template_kwargs={"enable_thinking": False},
     )
+    eos = policy.model.generation_config.eos_token_id
+    eos = [eos] if isinstance(eos, int) else list(eos or [])
+    if policy.tokenizer.eos_token_id not in eos:
+        eos = [policy.tokenizer.eos_token_id, *eos]
+    policy.model.generation_config.eos_token_id = eos
+    policy.model.generation_config.top_p = 1.0
+    policy.model.generation_config.top_k = 0
     reward = VisualBanditReward(root, out / "rollouts")
     set_seed(seed)
     scores = []
@@ -180,7 +210,13 @@ def calibrate(dataset, model, output, prompts=20, generations=4, seed=42):
         "generations": generations,
         "seed": seed,
         "contract": "contextual bandit: one sampled action plus fixed public finish",
-        "generation": {"temperature": 0.8, "max_new_tokens": 128},
+        "generation": {
+            "temperature": 0.8,
+            "max_new_tokens": 128,
+            "top_p": 1.0,
+            "top_k": 0,
+            "eos_token_ids": eos,
+        },
         "note": "Actual policy samples on TRAIN only; no RL optimizer update in calibration",
     }
     (out / "calibration.json").write_text(json.dumps(result, indent=2))

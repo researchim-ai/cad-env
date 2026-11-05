@@ -22,6 +22,17 @@ def main():
     p.add_argument("--dataset", required=True)
     p.add_argument("--extra-dataset", action="append", default=[])
     p.add_argument(
+        "--source-row-budgets",
+        type=int,
+        nargs="+",
+        help="Positive row budget in dataset/extra-dataset order",
+    )
+    p.add_argument(
+        "--rows-per-source",
+        type=int,
+        help="Explicit equal row budget per unique dataset, cycling small sources",
+    )
+    p.add_argument(
         "--vision-lora",
         action="store_true",
         help="Adapt the last eight vision attention blocks and visual merger",
@@ -50,6 +61,16 @@ def main():
     if len(set(data_roots)) != len(data_roots):
         p.error(
             "Specify each dataset once; repeated roots do not define a sampling weight"
+        )
+    if args.rows_per_source is not None and args.rows_per_source < 1:
+        p.error("rows-per-source must be positive")
+    if args.source_row_budgets is not None and (
+        args.rows_per_source is not None
+        or len(args.source_row_budgets) != len(data_roots)
+        or min(args.source_row_budgets) < 1
+    ):
+        p.error(
+            "Use one positive source-row-budget per dataset, without rows-per-source"
         )
     if args.max_train_rows is not None and args.max_train_rows < 1:
         p.error("max-train-rows must be positive")
@@ -95,9 +116,8 @@ def main():
     )
     from trl import SFTConfig, SFTTrainer
 
-    from cad_env.agent.observations import normalize_single_action_prompt
-
     from .checkpoints import StrictResumeMixin
+    from .feedback_normalization import normalize_feedback_prompt
     from .guards import make_numerical_guard
 
     class VerifiedModernSFTTrainer(StrictResumeMixin, SFTTrainer):
@@ -138,7 +158,7 @@ def main():
         temporary.replace(out / "cad-training-run.json")
 
     persist()
-    for folder in ("agent", "learning"):
+    for folder in ("agent", "learning", "multicad"):
         for file in (Path(__file__).resolve().parents[1] / folder).glob("*.py"):
             target = out / "source_snapshot" / folder / file.name
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -193,19 +213,27 @@ def main():
                     )
         if any(len(splits) != 1 for splits in group_splits.values()):
             raise ValueError("Cross-dataset lineage split leakage")
-        from datasets import concatenate_datasets
+        from .mixing import mix_sources
 
-        dataset = concatenate_datasets(datasets)
+        manifest["source_mixing"] = {
+            "rows_per_source": args.rows_per_source,
+            "source_row_budgets": args.source_row_budgets,
+            "source_rows": [len(d) for d in datasets],
+            "seed": 42,
+        }
+        dataset = mix_sources(
+            datasets, args.source_row_budgets or args.rows_per_source, seed=42
+        )
         if args.max_train_rows is not None:
             dataset = dataset.shuffle(seed=42).select(
                 range(min(len(dataset), args.max_train_rows))
             )
         manifest["selected_training_rows"] = len(dataset)
         dataset = dataset.map(
-            lambda row: {"prompt": normalize_single_action_prompt(row["prompt"])}
+            lambda row: {"prompt": normalize_feedback_prompt(row["prompt"])}
         )
         manifest["prompt_normalization"] = (
-            "single_action_v2: replace contradictory whole-program guide line"
+            "single_action_v3: single action guide and canonical public teacher responses"
         )
         manifest["supervision"] = check_vision_supervision(
             dataset,

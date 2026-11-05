@@ -25,6 +25,9 @@ def main():
     p.add_argument("--learning-rate", type=float, default=1e-6)
     p.add_argument("--num-generations", type=int, default=4)
     p.add_argument(
+        "--lr-scheduler-type", choices=["linear", "constant"], default="linear"
+    )
+    p.add_argument(
         "--mixed-prompts-only",
         action="store_true",
         help="Calibrated TRAIN curriculum for mechanical smoke runs",
@@ -83,6 +86,17 @@ def main():
         )
     if evidence["model_identity"] != identity:
         raise ValueError("Calibration used different policy weights")
+    profile = evidence.get("generation", {})
+    if (
+        profile.get("top_p") != 1.0
+        or profile.get("top_k") != 0
+        or profile.get("temperature") != 0.8
+        or profile.get("max_new_tokens") != 128
+        or not profile.get("eos_token_ids")
+    ):
+        raise ValueError(
+            "Regenerate calibration with the explicit matched sampling profile"
+        )
     if (
         evidence["dataset_sha256"]
         != hashlib.sha256((root / "summary.json").read_bytes()).hexdigest()
@@ -104,7 +118,7 @@ def main():
         "dataset_sha256": evidence["dataset_sha256"],
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
         "device": torch.cuda.get_device_name(0),
-        "optimizer_run": True,
+        "optimizer_run": False,
         "scope": "Contextual bandit; no multi-turn policy loss or broad CAD mastery claim",
     }
 
@@ -208,6 +222,7 @@ def main():
                 loss_type="grpo",
                 scale_rewards="group",
                 learning_rate=args.learning_rate,
+                lr_scheduler_type=args.lr_scheduler_type,
                 bf16=True,
                 fp16=False,
                 gradient_checkpointing=True,
@@ -225,10 +240,16 @@ def main():
         manifest.update(
             status="running", generation=trainer.generation_config.to_dict()
         )
+        if set(trainer.generation_config.eos_token_id) != set(profile["eos_token_ids"]):
+            raise ValueError("Calibration and trainer EOS profiles differ")
         processor.save_pretrained(out)
         persist()
         torch.cuda.reset_peak_memory_stats()
         result = trainer.train(resume_from_checkpoint=args.resume_from_checkpoint)
+        manifest["optimizer_run"] = trainer.state.global_step > 0
+        manifest["optimizer_steps"] = trainer.state.global_step
+        if not all(torch.isfinite(value).all().item() for value in trainable.values()):
+            raise RuntimeError("GRPO produced non-finite adapter weights")
         changed = initial != adapter_hash()
         if not changed:
             raise RuntimeError("GRPO completed without changing adapter weights")

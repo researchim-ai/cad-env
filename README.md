@@ -77,3 +77,32 @@ Integration-тесты требуют настоящий FreeCAD и явно ski
 Старые `cad_env.core`, `llm_interface`, `code_generator` и `training` остаются legacy API. Их regex-шаблоны и `training_data/training_dataset.json` не используются новой фабрикой. Симуляция и exit code произвольного Python больше не считаются доказательством корректного CAD.
 
 Apache 2.0.
+
+## Optional Blender and CadQuery executors
+
+The `cad_env.multicad` package adds native Blender and CadQuery execution next to
+FreeCAD, with a shared restricted tool language, sequential `reset/step`,
+procedural mechanical tasks, image-conditioned SFT exports, TRAIN-only native
+reward hooks and held-out evaluation. See [multi-engine setup and commands](docs/MULTICAD.md)
+and [external benchmark coverage](docs/BENCHMARK_COVERAGE.md). This does not
+replace the frozen FreeCAD benchmark or claim full CADBench/CADWorld coverage.
+
+Advanced native feature probes (arcs, revolves, fillets, chamfers, shells and
+multiple solids) use a separate [solid-graph contract](docs/SOLIDCAD.md).
+
+Аудит фактического GRPO, ограничений данных и нового эксперимента на 2000 шагов:
+[GRPO and data scaling audit](docs/GRPO_AND_DATA_AUDIT.md).
+Новый `python -m cad_env.learning.visual_scale --output <fresh-directory>`
+генерирует визуальные задачи с 1–4 редактированиями и отдельным holdout на 5–6;
+данные проходят нативную проверку и аудит информационной зависимости от картинок.
+
+## Project website and batched validation
+
+The self-contained website lives in [`web/`](web/README.md), with native TRAIN
+mesh examples, interactive 3D inspection and recorded experiment evidence.
+Run `python -m http.server 8000 --directory web` from the repository root.
+
+Concurrent evaluation uses one greedy VLM and independent native CAD episodes:
+`python -m cad_env.learning.batch_evaluate --help`. See
+[batch validation measurements](docs/BATCHED_VALIDATION.md) for parity checks,
+execution-profile limits and preserved sequential checkpoint-500 results.

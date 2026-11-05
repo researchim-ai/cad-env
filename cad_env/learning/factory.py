@@ -103,6 +103,11 @@ def generate_dataset(
                 task["reference_actions"],
                 task["initial_actions"],
                 task.get("input_modality", "default"),
+                # Different visual conditions can share the same final CAD.
+                # Keep them as observations, while split_group still counts
+                # their common physical lineage only once.
+                task.get("goal_spec"),
+                task["instruction"],
             ],
             sort_keys=True,
         )

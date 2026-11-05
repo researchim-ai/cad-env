@@ -1,0 +1,88 @@
+{
+  "parent": "artifacts/vision-leap-sft-c-merged",
+  "output": "artifacts/curriculum-ablation-v2",
+  "wait_for": "artifacts/multicad-scale-experiment-v2/status.json",
+  "validation": "artifacts/visual-grounding-v6-units",
+  "steps": 400,
+  "learning_rate": 2e-05,
+  "arms": [
+    {
+      "name": "replay",
+      "datasets": [
+        "artifacts/multicad-expanded-freecad",
+        "artifacts/multicad-expanded-cadquery",
+        "artifacts/gpu1-corpus-v2",
+        "artifacts/complex-cad-v3",
+        "artifacts/visual-grounding-v3"
+      ],
+      "budgets": [
+        320,
+        320,
+        640,
+        640,
+        1280
+      ]
+    },
+    {
+      "name": "visual",
+      "datasets": [
+        "artifacts/multicad-expanded-freecad",
+        "artifacts/multicad-expanded-cadquery",
+        "artifacts/gpu1-corpus-v2",
+        "artifacts/complex-cad-v3",
+        "artifacts/visual-grounding-v3",
+        "artifacts/visual-grounding-v6-units"
+      ],
+      "budgets": [
+        320,
+        320,
+        320,
+        640,
+        320,
+        1280
+      ]
+    },
+    {
+      "name": "repair",
+      "datasets": [
+        "artifacts/multicad-expanded-freecad",
+        "artifacts/multicad-expanded-cadquery",
+        "artifacts/gpu1-corpus-v2",
+        "artifacts/complex-cad-v3",
+        "artifacts/visual-grounding-v3",
+        "artifacts/visual-grounding-v6-units",
+        "artifacts/vision-leap-onpolicy-repairs"
+      ],
+      "budgets": [
+        320,
+        320,
+        320,
+        640,
+        320,
+        960,
+        320
+      ]
+    }
+  ],
+  "retention": [
+    [
+      "simple",
+      "artifacts/gpu1-corpus-v2",
+      "artifacts/vision-leap-c-retention/evaluation.json",
+      16
+    ],
+    [
+      "complex",
+      "artifacts/complex-cad-v3",
+      "artifacts/vision-leap-c-complex/evaluation.json",
+      16
+    ],
+    [
+      "entities",
+      "artifacts/visual-grounding-v4-entities",
+      "artifacts/vision-leap-entities-candidate/evaluation.json",
+      8
+    ]
+  ],
+  "interpretation": "Three independent arms from same parent, 400 updates and 3200 prepared rows each. Visual replaces part of old replay; repair replaces part of visual. Not a claim of optimal mixture. TEST stays sealed; full validation, retention and goal controls required."
+}

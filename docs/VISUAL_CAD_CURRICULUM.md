@@ -34,6 +34,66 @@ Retention is 68/69 versus 69/69. Unlabelled marked-hole editing is still weak:
 17/100 versus 1/100 (gain 16 points, CI 9–23). These are Stage B validation
 results, not final test or image-ablation results.
 
+Stage C completed 200 further mixed SFT steps and was selected by the frozen
+validation rule. Complete validation scores are 30/100 marked-hole edits,
+39/46 complex constructions (18/23 image-only and 21/23 text plus image), and
+69/69 retention. Removing the goal image reduces marked-hole success to 8/100;
+the paired image effect is 22 percentage points (95% parent-bootstrap CI
+14–31). Replacing the drawing with a matching-size blank reduces complex
+image-only success from 18/23 to 0/23. These results establish image use within
+this synthetic benchmark, but do not meet the 80% editing or 40-point editing
+image-effect pilot gates. The complex dataset's historical `text` label means
+text **plus a redundant drawing**, not a text-only experiment.
+
+The final complex test completed all 86 cases: **53/86 strict native successes
+(61.6%)**. It contains 39/46 IID successes (84.8%) and 14/40 compositional
+successes (35%). Image-only reconstruction passed 26/43 (60.5%); text plus
+image passed 27/43 (62.8%). Dense mean reward is 0.917, which must not be
+reported as a 91.7% success rate. The 8-action oracle slice passed 22/22,
+whereas the 14-action slice passed 1/6. These small slices are descriptive;
+they do not establish that horizon alone causes the failures.
+
+The original final test was interrupted by SIGKILL after 79 of 86 cases. Its
+partial output is preserved at
+`artifacts/vision-leap-final-complex-interrupted-79`; the completed full rerun
+uses the same selected weights, controller and inference budget. Final results
+and slices live at `artifacts/vision-leap-final-complex/evaluation.json` and
+`artifacts/vision-leap-experiment/final-complex-diagnostics.json`. Consult
+`artifacts/vision-leap-experiment/continuation.json` for subsequent stages.
+The complete validation no-goal control solves 16/23 text-only tasks, versus
+21/23 with text plus drawing. The paired drawing effect on these text tasks
+is 21.7 percentage points (95% parent-bootstrap CI 4.3–39.1). On image-only
+tasks, omitting the goal reduces success from 18/23 to 0/23. This distinguishes
+missing visual information from the earlier potentially conflicting blank
+image control. Queued raw-model or entity-overlay evaluations do not count as
+completed evidence. GRPO calibration passed, but an actual GRPO optimizer run
+has not yet been verified. Final test results must not be used to select or
+tune the current checkpoint.
+
+The separate entity-ID overlay benchmark is now complete. Without training on
+the overlay corpus, the parent tool-SFT checkpoint solves 3/100 validation
+tasks and Stage C solves 86/100: a paired gain of 83 percentage points (95%
+parent-bootstrap CI 75–91). Removing the goal image gives 8/100 for Stage C;
+the paired image effect is 78 points (CI 71–85). These results concern the
+labelled interface and must not replace the 30/100 unlabelled editing result.
+
+The pre-gated overlay final test passes 120/196 (61.2%). Its descriptive slices
+are IID 55/68, changed rendering 25/32, unseen diameter value 28/32, unseen
+unit expression 9/32, and three-hole compositional edits 3/32. Thus readable
+entity IDs help substantially, but do not establish unit or multi-edit
+generalization. These test cases remain evaluation-only; future curriculum
+changes require a separate development set and a fresh final holdout.
+
+The next RL experiment is deliberately bounded to 12 contextual-bandit GRPO
+steps on calibrated mixed-reward TRAIN prompts. It is queued behind the
+original-weight benchmark on physical GPU 1. After successful optimization,
+the adapter is merged and evaluated on the same full-agent validation suites
+(unlabelled editing, entity overlays, complex construction and retention),
+with paired comparisons against Stage C. Training uses TRL's EOS union;
+before/after full-agent evaluation uses the unchanged frozen inference
+contract for both checkpoints. Optimizer updates or increasing sampled TRAIN
+reward alone are not evidence of improved held-out CAD performance.
+
 Current run status lives in `artifacts/vision-leap-experiment/phase-a.json` and
 `phase-b.json`, `phase-c.json`, `phase-d.json` and `phase-e.json`. A completed training log alone is never promoted to evidence
 of CAD improvement. Only complete native evaluations and matched comparisons
@@ -376,3 +436,15 @@ previous edit. No validation/test errors are used to construct this corpus.
 
 Generation of repair examples does not imply a subsequent optimizer update.
 Keep that status separate from completed SFT and future GRPO training.
+
+
+The 12-step contextual-bandit GRPO smoke has now completed on physical GPU 1.
+All 12 steps logged nonzero gradients, adapter weights changed, and 10/12 sampled
+reward groups had variance. Peak allocated memory was 9.916 GiB (reserved 10.420
+GiB); training runtime was about 106 seconds. This verifies real optimization,
+not improved generalization. Complete follow-up validation currently shows
+unlabelled editing 30/100 to 31/100 (paired 95% CI 0–3 percentage points) and
+entity-labelled editing 86/100 to 87/100 (CI -2–4 points). Neither establishes a
+statistically supported gain. Complex construction and retention evaluation
+must finish before judging the checkpoint. Logs and state are in
+`artifacts/vision-leap-experiment/phase-grpo-evaluate.json`.

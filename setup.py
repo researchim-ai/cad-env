@@ -29,9 +29,11 @@ setup(
     install_requires=[],
     entry_points={"console_scripts": [
         "cad-env-data=cad_env.learning.cli:main",
+        "cad-env-multicad=cad_env.multicad.__main__:main",
         "cad-env-train=cad_env.learning.train:main",
     ]},
     extras_require={
+        "multicad": ["manifold3d>=3.0,<4", "cadquery==2.8.0", "numpy>=2.0", "pillow>=10", "scipy>=1.12"],
         "data": ["numpy>=1.23", "matplotlib>=3.6", "pillow>=9"],
         "api": ["fastapi>=0.100", "uvicorn>=0.20", "httpx>=0.24"],
         "learning": ["trl==0.24.0", "transformers>=4.56.1,<5", "peft>=0.17,<0.19", "datasets>=4,<5", "torch>=2.2", "accelerate>=1.4"],

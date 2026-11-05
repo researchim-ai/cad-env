@@ -6,6 +6,7 @@ import json
 import math
 import re
 from collections import Counter, defaultdict
+from decimal import Decimal
 from pathlib import Path
 
 from cad_env.agent.observations import agent_messages
@@ -44,7 +45,12 @@ def audit_visual(root, *, base_report=None):
             task.get("goal_base_actions", task["initial_actions"])
         )
         try:
-            diameter = float(requested[1]) * (25.4 if requested[2] == "inches" else 1)
+            # Decimal specifications convert exactly before float geometry;
+            # binary 0.375 * 25.4 can differ from the equivalent 9.525 literal.
+            diameter = float(
+                Decimal(requested[1])
+                * (Decimal("25.4") if requested[2] == "inches" else Decimal(1))
+            )
             sketch = expected_reference[3]
             current = next(
                 o["circles"] for o in initial["objects"] if o["name"] == sketch["name"]

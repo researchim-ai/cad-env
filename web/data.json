@@ -1,0 +1,422 @@
+{
+  "updated": "2026-11-06T00:28+05:00",
+  "repository": "https://github.com/researchim-ai/cad-env",
+  "examples": [
+    {
+      "family": "bolt_flange",
+      "mesh": "assets/bolt_flange.json",
+      "actions": [
+        {
+          "op": "create_body",
+          "name": "Body"
+        },
+        {
+          "op": "sketch_circles",
+          "name": "BaseSketch",
+          "body": "Body",
+          "circles": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "radius": 36.0
+            }
+          ]
+        },
+        {
+          "op": "pad",
+          "name": "BasePad",
+          "body": "Body",
+          "profile": "BaseSketch",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch0",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "radius": 7.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole0",
+          "body": "Body",
+          "profile": "HoleSketch0",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch1",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 24.48,
+              "y": 0.0,
+              "radius": 3.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole1",
+          "body": "Body",
+          "profile": "HoleSketch1",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch2",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 0.0,
+              "y": 24.48,
+              "radius": 3.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole2",
+          "body": "Body",
+          "profile": "HoleSketch2",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch3",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": -24.48,
+              "y": 0.0,
+              "radius": 3.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole3",
+          "body": "Body",
+          "profile": "HoleSketch3",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch4",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": -0.0,
+              "y": -24.48,
+              "radius": 3.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole4",
+          "body": "Body",
+          "profile": "HoleSketch4",
+          "length": 13.0
+        },
+        {
+          "op": "finish"
+        }
+      ],
+      "provenance": "Native FreeCAD reference \u00b7 TRAIN example"
+    },
+    {
+      "family": "counterbored_plate",
+      "mesh": "assets/counterbored_plate.json",
+      "actions": [
+        {
+          "op": "create_body",
+          "name": "Body"
+        },
+        {
+          "op": "sketch_rectangle",
+          "name": "BaseSketch",
+          "body": "Body",
+          "length": 92.0,
+          "width": 56.0
+        },
+        {
+          "op": "pad",
+          "name": "BasePad",
+          "body": "Body",
+          "profile": "BaseSketch",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch0",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 23.0,
+              "y": 37.333333,
+              "radius": 2.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole0",
+          "body": "Body",
+          "profile": "HoleSketch0",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "RecessSketch0",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 23.0,
+              "y": 37.333333,
+              "radius": 4.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Recess0",
+          "body": "Body",
+          "profile": "RecessSketch0",
+          "length": 4.333333333333333
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch1",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 46.0,
+              "y": 37.333333,
+              "radius": 2.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole1",
+          "body": "Body",
+          "profile": "HoleSketch1",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "RecessSketch1",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 46.0,
+              "y": 37.333333,
+              "radius": 4.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Recess1",
+          "body": "Body",
+          "profile": "RecessSketch1",
+          "length": 4.333333333333333
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch2",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 23.0,
+              "y": 18.666667,
+              "radius": 3.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole2",
+          "body": "Body",
+          "profile": "HoleSketch2",
+          "length": 13.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "RecessSketch2",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 23.0,
+              "y": 18.666667,
+              "radius": 5.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Recess2",
+          "body": "Body",
+          "profile": "RecessSketch2",
+          "length": 4.333333333333333
+        },
+        {
+          "op": "finish"
+        }
+      ],
+      "provenance": "Native FreeCAD reference \u00b7 TRAIN example"
+    },
+    {
+      "family": "stepped_bore",
+      "mesh": "assets/stepped_bore.json",
+      "actions": [
+        {
+          "op": "create_body",
+          "name": "Body"
+        },
+        {
+          "op": "sketch_rectangle",
+          "name": "BaseSketch",
+          "body": "Body",
+          "length": 84.0,
+          "width": 76.0
+        },
+        {
+          "op": "pad",
+          "name": "BasePad",
+          "body": "Body",
+          "profile": "BaseSketch",
+          "length": 14.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch0",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 42.0,
+              "y": 38.0,
+              "radius": 5.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole0",
+          "body": "Body",
+          "profile": "HoleSketch0",
+          "length": 14.0
+        },
+        {
+          "op": "sketch_circles",
+          "name": "HoleSketch1",
+          "body": "Body",
+          "support": "BasePad",
+          "circles": [
+            {
+              "x": 42.0,
+              "y": 38.0,
+              "radius": 9.0
+            }
+          ]
+        },
+        {
+          "op": "pocket",
+          "name": "Hole1",
+          "body": "Body",
+          "profile": "HoleSketch1",
+          "length": 4.666666666666667
+        },
+        {
+          "op": "finish"
+        }
+      ],
+      "provenance": "Native FreeCAD reference \u00b7 TRAIN example"
+    }
+  ],
+  "results": [
+    {
+      "engine": "freecad",
+      "tasks": 66,
+      "before": 41,
+      "after": 65,
+      "groups": 33
+    },
+    {
+      "engine": "cadquery",
+      "tasks": 66,
+      "before": 36,
+      "after": 64,
+      "groups": 33
+    }
+  ],
+  "retention": [
+    {
+      "name": "Simple tasks",
+      "tasks": 69,
+      "before": 69,
+      "after": 69,
+      "execution": "Batch \u22644 \u00b7 8 episode workers"
+    },
+    {
+      "name": "Complex builds",
+      "tasks": 46,
+      "before": 39,
+      "after": 43,
+      "execution": "Batch \u22644 \u00b7 8 episode workers"
+    },
+    {
+      "name": "Visual selection",
+      "tasks": 100,
+      "before": 30,
+      "after": 30,
+      "execution": "Batch \u22644 \u00b7 8 episode workers"
+    },
+    {
+      "name": "Entity-labelled selection",
+      "tasks": 100,
+      "before": 86,
+      "after": 88,
+      "execution": "Batch \u22644 \u00b7 8 episode workers"
+    }
+  ],
+  "evaluation_status": "Validation complete; retention uses the batch execution profile.",
+  "visual_corpora": [
+    {
+      "name": "V5 \u00b7 multi-edit",
+      "episodes": 4352,
+      "physical_groups": 544
+    },
+    {
+      "name": "V6 \u00b7 units",
+      "episodes": 2560,
+      "physical_groups": 160
+    }
+  ],
+  "training": {
+    "checkpoint": 500,
+    "rank": 16,
+    "parameters": 15400960,
+    "vision_parameters": 1024000,
+    "base": "Qwen3.5-4B",
+    "method": "BF16 LoRA"
+  }
+}

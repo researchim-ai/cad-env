@@ -129,8 +129,16 @@ def check_vision_supervision(
 def check_training_source(root, source):
     from .audit import audit_dataset
 
-    audit = audit_dataset(root)
     summary = json.loads((root / "summary.json").read_text())
+    if summary.get("schema_version") == "multicad.v1":
+        from cad_env.multicad.dataset import audit as audit_multicad
+
+        expected = Path(root) / "exports/train.feedback.jsonl"
+        if Path(source).resolve() != expected.resolve():
+            raise ValueError("Multi-engine SFT requires the audited TRAIN feedback export")
+        audit = audit_multicad(root)
+    else:
+        audit = audit_dataset(root)
     supported = summary.get("supported_training_exports")
     if supported and Path(source).name not in supported:
         raise ValueError("This dataset only supports training exports: " + str(supported))
