@@ -139,3 +139,105 @@ completion-only masks and template boundaries valid; longest row 1904 tokens.
 Focused regression checks passed 22 tests, including deliberate prompt/label/
 split corruption, missing auxiliary targets, and causal native-recovery logic.
 Training benefit is pending the completed two-arm evaluation.
+
+## Completed auxiliary ablation — 2026-11-07
+
+`artifacts/grounding-ablation-v1/status.json` is complete; both arms reached
+128 updates / epoch 1.0. Control optimizer runtime 987.41 s; auxiliary 839.66 s.
+Both have 128/128 nonzero language and visual gradient steps. All stages
+completed in approximately 51.1 minutes; TEST remains unopened, no promotion.
+
+Identical native evaluation protocols, all 160 validation tasks / 20 parents:
+control 15/160 (9.375%), auxiliary 17/160 (10.625%). Paired difference +1.25 pp,
+parent-cluster 95% CI [-1.25, +4.375] pp: improvement not supported.
+Invalid action rates are zero for both; truncation 21.875% versus 17.5%.
+
+Component probe labels `raw` and `trained` denote CONTROL and AUXILIARY here,
+not original pretrained Qwen versus a tuned model. Counts: 13/20 versus 17/20.
+Full marked-circle index sets: 0/20 versus 0/20, all responses parseable, none
+at the output cap. Mean per-case selection precision .636 versus .652; recall
+.653 versus .767. Full hole tables and fixed-crop tables: 20/20 for both arms.
+The small component sample suggests better counting/coverage, but spatial
+binding remains inadequate and the native endpoint has no supported gain.
+Training losses .312 versus .356 are across different target mixtures and
+must not be interpreted as a quality ranking. Broader retention/image controls
+were not run in this ablation; no general CAD improvement is claimed.
+
+Next priority is a controlled spatial-binding intervention and audited genuine
+multi-step recovery data. More identical SFT updates or an immediate RL run are
+not justified by this result alone.
+
+## Small-model suitability audit — 2026-11-07
+
+A new paired diagnostic is complete at
+`artifacts/spatial-diagnosis-v1/auxiliary/status.json` (80 questions, 20 fixed
+validation parents, no optimizer update, TEST sealed). The same trained 4B
+checkpoint receives four views per identical task:
+- Original rotation, no IDs: 0/20 complete correct sets; mean precision .652,
+  mean recall .767.
+- Original rotation, IDs on ALL circles: 12/20; precision .953, recall .936.
+- Zero rotation, no IDs: 0/20; precision .652, recall .769.
+- Zero rotation, IDs on ALL circles: 18/20; precision .990, recall .988.
+
+All 80 answers parse; none hits the 256-token cap. Geometry and selected subsets
+are fixed across views. Original baseline pixels are regenerated and checked
+against the frozen PNG. Every raster index is checked against native initial
+circle coordinates/order. Label/camera interventions do not depend on selected
+subsets. Label conditions add a public instruction explaining the labels; the
+intervention is an observation-contract change, not just a pixel-only change.
+These are component results on 20 parents, not native CAD execution scores or
+proof of broad generalization. Tests cover variant identity, no task mutation
+and independence of intervention settings from private selection labels.
+
+This strengthens the hypothesis that entity correspondence, not inability to
+read markers or a proven 4B capacity ceiling, limits the current unlabelled
+contract. Removing rotation alone did not resolve it. Adding public entity IDs
+is a legitimate assisted interface, but must be evaluated and named separately
+from unassisted spatial grounding. Never relabel a native benchmark score as
+improved just because its input contract changed.
+
+### Revised priorities
+
+1. Maintain native exact success, protected-parameter checks and parent splits.
+   Add component correspondence, feature completeness, stop/revise and recovery
+   scores. The hard visual family is one capability, not overall CAD competence.
+2. Qualify a practical assisted harness (stable IDs on all entities, compact
+   current state, consistent camera metadata, optional current renders) through
+   full native rollouts. Retain the old unassisted track as a separate challenge.
+3. Teach image location ↔ entity ID explicitly, including nearby negative
+   entities, complete-set targets, paired counterfactuals, varied numbering and
+   views. Progress from 1–2 to 4–6 edits while retaining easy and text anchors.
+   Changing a set target to per-entity decisions is an ablation, not a proven cure.
+4. Use an explicit TRAIN memorization/learnability gate on a tiny fixed subset.
+   Failure to fit those examples means inspect preprocessing/adapter targets/
+   optimization before generating a huge corpus. Passing is not generalization.
+5. Package native-verified real student recoveries with causal pre-action
+   prompts. Include already-correct states with finish targets and incorrect
+   states with correction targets. Measure rejection/remaining-step bias: the
+   current four-parent collection rejects two difficult repairs for lack of steps.
+6. Pilot 1–2K newly curated rows for one epoch with a 30–45 optimizer-minute
+   ceiling. Log distinct parents/images/tasks, not just row counts. Match budgets
+   against a control, then check text/visual/construction retention and image
+   removal or wrong-image controls before adoption. No new SFT started here.
+7. Only then qualify trajectory RL: actual group reward variance, nonzero-advantage
+   fraction, completion masks, on-policy log-probabilities and useful success/
+   failure mixtures. Do not infer correct RL from nonzero SFT gradients. Reward
+   missing/extra features and protected geometry; whole-part IoU alone is weak
+   for small engineering details. Keep strict terminal validation authoritative.
+
+### Additional primary-source grounding
+
+[CADReview / ReCAD](https://aclanthology.org/2025.acl-long.489.pdf) explicitly
+trains semantic matching, coordinate matching and localization between visual
+components and program blocks before repair. This motivates correspondence
+supervision; its results are not a reproduction on our 4B or our tools.
+
+[cadrille](https://arxiv.org/html/2505.22914) uses Qwen2-VL-2B with procedural
+SFT and online geometric RL. It supports studying small specialized models,
+but its larger corpus, training budget and reconstruction metrics differ.
+
+A different paper also named
+[IterCAD (2608.24020)](https://arxiv.org/html/2608.24020) explicitly includes
+already-correct STOP states alongside repairable REVISE states. It is distinct
+from the Qwen3.5-4B IterCAD paper (2606.13368); their recipes and results must
+not be conflated. Our small-model repair data should teach both decisions.
