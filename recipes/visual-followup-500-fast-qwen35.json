@@ -1,0 +1,63 @@
+{
+  "parent": "artifacts/checkpoint500-evaluation/merged",
+  "output": "artifacts/visual-followup-500-fast-v1",
+  "steps": 500,
+  "sources": [
+    {
+      "dataset": "artifacts/visual-grounding-v6-units",
+      "rows": 2400
+    },
+    {
+      "dataset": "artifacts/visual-grounding-v3",
+      "rows": 600
+    },
+    {
+      "dataset": "artifacts/visual-repair-pilot-v1/fresh-repairs",
+      "rows": 200
+    },
+    {
+      "dataset": "artifacts/complex-cad-v3",
+      "rows": 400
+    },
+    {
+      "dataset": "artifacts/gpu1-corpus-v2",
+      "rows": 200
+    },
+    {
+      "dataset": "artifacts/multicad-expanded-freecad",
+      "rows": 200
+    }
+  ],
+  "retention": [
+    [
+      "simple",
+      "artifacts/gpu1-corpus-v2",
+      "artifacts/checkpoint500-batch-evaluation/retention/evaluation.json",
+      16
+    ],
+    [
+      "complex",
+      "artifacts/complex-cad-v3",
+      "artifacts/checkpoint500-batch-evaluation/complex/evaluation.json",
+      16
+    ],
+    [
+      "grounding",
+      "artifacts/visual-grounding-v1",
+      "artifacts/checkpoint500-batch-evaluation/grounding/evaluation.json",
+      8
+    ],
+    [
+      "entities",
+      "artifacts/visual-grounding-v4-entities",
+      "artifacts/checkpoint500-batch-evaluation/entities/evaluation.json",
+      8
+    ]
+  ],
+  "scope": "Resume durable step100 to global500 on the identical 4000-row mixture and effective batch8. Single-forward numeric loss, no Liger pending measured practical benefit. Remaining optimizer budget85min; separate bounded validation. No TEST or follow-on training.",
+  "training_module": "cad_env.learning.train_optimized",
+  "batch_size": 1,
+  "train_minutes": 85,
+  "liger_layers": false,
+  "resume_from_checkpoint": "artifacts/visual-followup-500-v1/sft/checkpoint-100"
+}

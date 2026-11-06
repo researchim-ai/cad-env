@@ -1,0 +1,642 @@
+{
+  "t001": {
+    "en": "Skip to content",
+    "ru": "К содержимому"
+  },
+  "t002": {
+    "en": "Platform",
+    "ru": "Платформа"
+  },
+  "t003": {
+    "en": "Explore",
+    "ru": "Примеры"
+  },
+  "t004": {
+    "en": "Evidence",
+    "ru": "Результаты"
+  },
+  "t005": {
+    "en": "Training",
+    "ru": "Обучение"
+  },
+  "t006": {
+    "en": "View repository",
+    "ru": "Репозиторий"
+  },
+  "t007": {
+    "en": "AN EXECUTABLE WORLD FOR AI AGENTS",
+    "ru": "ИСПОЛНЯЕМЫЙ МИР ДЛЯ ИИ-АГЕНТОВ"
+  },
+  "t008": {
+    "en": "OPEN RESEARCH / ENVIRONMENT 001",
+    "ru": "ОТКРЫТОЕ ИССЛЕДОВАНИЕ / СРЕДА 001"
+  },
+  "t009": {
+    "en": "GOOD GEOMETRY IS LEARNED BY DOING.",
+    "ru": "ГЕОМЕТРИИ УЧАТСЯ НА ПРАКТИКЕ."
+  },
+  "t010": {
+    "en": "A training",
+    "ru": "Полигон"
+  },
+  "t011": {
+    "en": "ground for",
+    "ru": "для CAD-"
+  },
+  "t012": {
+    "en": "CAD agents.",
+    "ru": "агентов."
+  },
+  "t013": {
+    "en": "A real workspace for language and vision models. Give an agent CAD tools, let it build, and let native geometry check the result.",
+    "ru": "Настоящая рабочая среда для языковых и зрительных моделей. Агент получает CAD-инструменты, строит деталь, а нативная геометрия проверяет результат."
+  },
+  "t014": {
+    "en": "Enter the workspace",
+    "ru": "Открыть среду"
+  },
+  "t015": {
+    "en": "Read the field guide",
+    "ru": "Читать руководство"
+  },
+  "t016": {
+    "en": "FreeCAD",
+    "ru": "FreeCAD"
+  },
+  "t017": {
+    "en": "CadQuery",
+    "ru": "CadQuery"
+  },
+  "t018": {
+    "en": "Blender",
+    "ru": "Blender"
+  },
+  "t019": {
+    "en": "MODEL SPACE",
+    "ru": "ПРОСТРАНСТВО МОДЕЛИ"
+  },
+  "t020": {
+    "en": "FREECAD / TRAIN REFERENCE",
+    "ru": "FREECAD / ЭТАЛОН TRAIN"
+  },
+  "t021": {
+    "en": "PART_001",
+    "ru": "ДЕТАЛЬ_001"
+  },
+  "t022": {
+    "en": "Bolt flange",
+    "ru": "Фланец"
+  },
+  "t023": {
+    "en": "FreeCAD · validated reference mesh",
+    "ru": "FreeCAD · проверенная эталонная сетка"
+  },
+  "t024": {
+    "en": "Wireframe",
+    "ru": "Каркас"
+  },
+  "t025": {
+    "en": "DRAG TO ORBIT · SCROLL TO ZOOM",
+    "ru": "ВРАЩАЙТЕ МЫШЬЮ · МАСШТАБ КОЛЕСОМ"
+  },
+  "t026": {
+    "en": "THE AGENT ACTS. THE KERNEL DECIDES.",
+    "ru": "АГЕНТ ДЕЙСТВУЕТ. ЯДРО ПРОВЕРЯЕТ."
+  },
+  "t027": {
+    "en": "Language + vision",
+    "ru": "Язык и зрение"
+  },
+  "t028": {
+    "en": "Typed actions",
+    "ru": "Типизированные действия"
+  },
+  "t029": {
+    "en": "Native kernel",
+    "ru": "Нативное ядро"
+  },
+  "t030": {
+    "en": "Verified result",
+    "ru": "Проверенный результат"
+  },
+  "t031": {
+    "en": "01 / CONNECT TO REAL GEOMETRY",
+    "ru": "01 / ПОДКЛЮЧЕНИЕ К ГЕОМЕТРИИ"
+  },
+  "t032": {
+    "en": "Three engines.",
+    "ru": "Три движка."
+  },
+  "t033": {
+    "en": "One training ground.",
+    "ru": "Одна среда обучения."
+  },
+  "t034": {
+    "en": "Models work inside native applications. Every accepted teacher trajectory is executed and checked against the intended geometry.",
+    "ru": "Модели работают в настоящих приложениях. Каждая принятая траектория учителя исполняется и проверяется на соответствие целевой геометрии."
+  },
+  "t035": {
+    "en": "Parametric feature history, native solids and dimension-preserving edits.",
+    "ru": "История параметрических операций, нативные тела и правки с сохранением размеров."
+  },
+  "t036": {
+    "en": "PRIMARY ENVIRONMENT",
+    "ru": "ОСНОВНАЯ СРЕДА"
+  },
+  "t037": {
+    "en": "OCCT geometry with native execution, STEP output and shape verification.",
+    "ru": "Геометрия OCCT: нативное исполнение, экспорт STEP и проверка формы."
+  },
+  "t038": {
+    "en": "NATIVE EXECUTOR",
+    "ru": "НАТИВНЫЙ ИСПОЛНИТЕЛЬ"
+  },
+  "t039": {
+    "en": "Mesh-based modeling and native .blend artifacts. Dataset validation remains experimental.",
+    "ru": "Моделирование сетками и нативные файлы .blend. Проверка корпуса данных пока экспериментальная."
+  },
+  "t040": {
+    "en": "EXPERIMENTAL DATA",
+    "ru": "ЭКСПЕРИМЕНТАЛЬНЫЕ ДАННЫЕ"
+  },
+  "t041": {
+    "en": "SCOPE, EXPLICITLY.",
+    "ru": "ЯВНЫЕ ГРАНИЦЫ ВОЗМОЖНОСТЕЙ."
+  },
+  "t042": {
+    "en": "One restricted, portable tool language across three engines. General sketch constraints, assemblies and arbitrary native Python workflows are future capabilities.",
+    "ru": "Один ограниченный язык инструментов для трёх движков. Произвольные ограничения эскизов, сборки и работа через нативный Python API — следующие этапы."
+  },
+  "t043": {
+    "en": "02 / INSIDE THE ENVIRONMENT",
+    "ru": "02 / ВНУТРИ СРЕДЫ"
+  },
+  "t044": {
+    "en": "Every shape has a history.",
+    "ru": "У каждой формы есть история."
+  },
+  "t045": {
+    "en": "Pick a real TRAIN reference. Inspect its native geometry above and the typed tools that created it below. No generated mockups.",
+    "ru": "Выберите настоящий эталон TRAIN. Изучите нативную геометрию наверху и последовательность инструментов внизу. Это реальные данные проекта."
+  },
+  "t046": {
+    "en": "A—01",
+    "ru": "A—01"
+  },
+  "t047": {
+    "en": "Body + bore + bolt circle",
+    "ru": "Тело, отверстие и болтовая окружность"
+  },
+  "t048": {
+    "en": "A—02",
+    "ru": "A—02"
+  },
+  "t049": {
+    "en": "Counterbored plate",
+    "ru": "Плита с цековками"
+  },
+  "t050": {
+    "en": "Layered cuts + precise depths",
+    "ru": "Несколько вырезов и точные глубины"
+  },
+  "t051": {
+    "en": "A—03",
+    "ru": "A—03"
+  },
+  "t052": {
+    "en": "Stepped bore",
+    "ru": "Ступенчатое отверстие"
+  },
+  "t053": {
+    "en": "Coaxial feature dependencies",
+    "ru": "Зависимости соосных элементов"
+  },
+  "t054": {
+    "en": "↑ INSPECT IN 3D VIEWER",
+    "ru": "↑ ПОСМОТРЕТЬ В 3D"
+  },
+  "t055": {
+    "en": "TEACHER TRAJECTORY / JSON TOOLS",
+    "ru": "ТРАЕКТОРИЯ УЧИТЕЛЯ / JSON-ИНСТРУМЕНТЫ"
+  },
+  "t056": {
+    "en": "Copy",
+    "ru": "Копировать"
+  },
+  "t057": {
+    "en": "NATIVE REFERENCE",
+    "ru": "НАТИВНЫЙ ЭТАЛОН"
+  },
+  "t058": {
+    "en": "TRAIN EXAMPLE · NOT A MODEL PREDICTION",
+    "ru": "ПРИМЕР ИЗ TRAIN · ЭТО НЕ ОТВЕТ МОДЕЛИ"
+  },
+  "t059": {
+    "en": "7 PORTABLE ACTIONS",
+    "ru": "7 ПЕРЕНОСИМЫХ ДЕЙСТВИЙ"
+  },
+  "t060": {
+    "en": "03 / MEASURED, NOT ASSUMED",
+    "ru": "03 / ИЗМЕРЕННЫЕ РЕЗУЛЬТАТЫ"
+  },
+  "t061": {
+    "en": "Geometry is",
+    "ru": "Геометрия —"
+  },
+  "t062": {
+    "en": "the ground truth.",
+    "ru": "критерий истины."
+  },
+  "t063": {
+    "en": "Recorded checkpoint-500 results on a generated tool curriculum. These measure native task success on that corpus, not general CAD or image-only mastery.",
+    "ru": "Зафиксированные результаты checkpoint-500 на сгенерированном наборе задач. Это нативное решение задач данного корпуса, а не оценка общего владения CAD или работы только по изображениям."
+  },
+  "t064": {
+    "en": "QWEN3.5–4B",
+    "ru": "QWEN3.5–4B"
+  },
+  "t065": {
+    "en": "BF16 LoRA / CHECKPOINT 500",
+    "ru": "BF16 LoRA / ЧЕКПОИНТ 500"
+  },
+  "t066": {
+    "en": "STRICT NATIVE TASK SUCCESS",
+    "ru": "СТРОГОЕ НАТИВНОЕ РЕШЕНИЕ ЗАДАЧ"
+  },
+  "t067": {
+    "en": "BEFORE → AFTER",
+    "ru": "ДО → ПОСЛЕ"
+  },
+  "t068": {
+    "en": "SFT-C parent",
+    "ru": "Исходная модель SFT-C"
+  },
+  "t069": {
+    "en": "+500 SFT steps",
+    "ru": "+500 шагов SFT"
+  },
+  "t070": {
+    "en": "DOWNLOAD RECORDED EVIDENCE ↘",
+    "ru": "СКАЧАТЬ ЗАФИКСИРОВАННЫЕ РЕЗУЛЬТАТЫ ↘"
+  },
+  "t071": {
+    "en": "Each engine uses 66 validation tasks from 33 physical parent designs. Engines share designs; their results are not independent samples. These scores establish performance on this generated tool curriculum.",
+    "ru": "Для каждого движка — 66 validation-задач на 33 исходных деталях. Движки используют общие детали, поэтому результаты не являются независимыми выборками. Эти оценки относятся к нашему сгенерированному набору задач."
+  },
+  "t072": {
+    "en": "Remaining skill-retention checks are in progress.",
+    "ru": "Проверки сохранения навыков ещё выполняются."
+  },
+  "t073": {
+    "en": "V5 visual episodes",
+    "ru": "Визуальных эпизодов V5"
+  },
+  "t074": {
+    "en": "V6 unit-aware episodes",
+    "ru": "Эпизодов V6 с разными единицами"
+  },
+  "t075": {
+    "en": "Rejected native teachers",
+    "ru": "Отклонённых нативных траекторий"
+  },
+  "t076": {
+    "en": "in these two visual corpora",
+    "ru": "в этих двух визуальных корпусах"
+  },
+  "t077": {
+    "en": "Generated and audited.",
+    "ru": "Сгенерировано и проверено."
+  },
+  "t078": {
+    "en": "These corpora are not all used in checkpoint-500 training.",
+    "ru": "Не все эти корпуса использовались при обучении checkpoint-500."
+  },
+  "t079": {
+    "en": "04 / THE LEARNING SYSTEM",
+    "ru": "04 / СИСТЕМА ОБУЧЕНИЯ"
+  },
+  "t080": {
+    "en": "From demonstrations to decisions.",
+    "ru": "От примеров к решениям."
+  },
+  "t081": {
+    "en": "Training starts with executable demonstrations and grows toward recovery from the model’s own mistakes.",
+    "ru": "Обучение начинается с исполняемых демонстраций и развивается к исправлению собственных ошибок модели."
+  },
+  "t082": {
+    "en": "01 / DEMONSTRATE",
+    "ru": "01 / ДЕМОНСТРАЦИИ"
+  },
+  "t083": {
+    "en": "Verified SFT",
+    "ru": "Проверенный SFT"
+  },
+  "t084": {
+    "en": "Goal images, public CAD state and typed next actions. Completion-only loss with numeric weighting.",
+    "ru": "Целевые изображения, публичное состояние CAD и следующие действия. Loss только по ответу ассистента с повышенным весом чисел."
+  },
+  "t085": {
+    "en": "IMPLEMENTED & TRAINED",
+    "ru": "РЕАЛИЗОВАНО И ОБУЧЕНО"
+  },
+  "t086": {
+    "en": "02 / REFINE",
+    "ru": "02 / ИСПРАВЛЕНИЯ"
+  },
+  "t087": {
+    "en": "Learn from mistakes",
+    "ru": "Учиться на ошибках"
+  },
+  "t088": {
+    "en": "Collect the current model’s multi-step mistakes. Restore unintended edits and verify teacher continuations inside FreeCAD.",
+    "ru": "Собираем многошаговые ошибки текущей модели. Восстанавливаем лишние изменения и проверяем продолжения учителя во FreeCAD."
+  },
+  "t089": {
+    "en": "NATIVE RECOVERY COLLECTOR · PILOT",
+    "ru": "НАТИВНЫЙ СБОР ИСПРАВЛЕНИЙ · ПИЛОТ"
+  },
+  "t090": {
+    "en": "03 / OPTIMIZE",
+    "ru": "03 / ОПТИМИЗАЦИЯ"
+  },
+  "t091": {
+    "en": "Native reward RL",
+    "ru": "RL с нативной наградой"
+  },
+  "t092": {
+    "en": "One-action visual GRPO is implemented. Full multi-turn policy-gradient training is a subsequent stage.",
+    "ru": "Реализован визуальный GRPO с одним действием. Полноценный многошаговый policy-gradient RL — следующий этап."
+  },
+  "t093": {
+    "en": "BANDIT SMOKE TEST · NO PROVEN GAIN",
+    "ru": "ПИЛОТ BANDIT · ПРИРОСТ НЕ ДОКАЗАН"
+  },
+  "t094": {
+    "en": "CURRENT TRAINING PROFILE",
+    "ru": "ТЕКУЩИЙ ПРОФИЛЬ ОБУЧЕНИЯ"
+  },
+  "t095": {
+    "en": "Qwen3.5-4B",
+    "ru": "Qwen3.5-4B"
+  },
+  "t096": {
+    "en": "LoRA r16",
+    "ru": "LoRA r16"
+  },
+  "t097": {
+    "en": "15.4M trainable parameters",
+    "ru": "15,4 млн обучаемых параметров"
+  },
+  "t098": {
+    "en": "1.024M visual parameters",
+    "ru": "1,024 млн визуальных параметров"
+  },
+  "t099": {
+    "en": "RTX 3090",
+    "ru": "RTX 3090"
+  },
+  "t100": {
+    "en": "05 / OPEN THE WORKSPACE",
+    "ru": "05 / ОТКРОЙТЕ РАБОЧУЮ СРЕДУ"
+  },
+  "t101": {
+    "en": "Less guessing.",
+    "ru": "Меньше догадок."
+  },
+  "t102": {
+    "en": "More building.",
+    "ru": "Больше практики."
+  },
+  "t103": {
+    "en": "Inspect the tools, generate native-verified tasks and reproduce the experiments. Source, contracts and limitations are documented together.",
+    "ru": "Изучайте инструменты, генерируйте нативно проверенные задачи и воспроизводите эксперименты. Исходники, контракты и ограничения описаны вместе."
+  },
+  "t104": {
+    "en": "Explore the repository",
+    "ru": "Открыть репозиторий"
+  },
+  "t105": {
+    "en": "START WITH THE SOURCE",
+    "ru": "НАЧНИТЕ С ИСХОДНИКОВ"
+  },
+  "t106": {
+    "en": "Environment setup & reproducibility guide",
+    "ru": "Настройка среды и воспроизводимость"
+  },
+  "t107": {
+    "en": "Native multi-engine documentation",
+    "ru": "Документация по нативным движкам"
+  },
+  "t108": {
+    "en": "Experiment audit & quality roadmap",
+    "ru": "Аудит экспериментов и план развития"
+  },
+  "t109": {
+    "en": "Native geometry. Verifiable learning.",
+    "ru": "Нативная геометрия. Проверяемое обучение."
+  },
+  "t110": {
+    "en": "OPEN RESEARCH · APACHE 2.0",
+    "ru": "ОТКРЫТЫЕ ИССЛЕДОВАНИЯ · APACHE 2.0"
+  },
+  "t111": {
+    "en": "BACK TO TOP ↑",
+    "ru": "НАВЕРХ ↑"
+  },
+  "t112": {
+    "en": "Results are a recorded snapshot, not live telemetry.",
+    "ru": "Результаты зафиксированы в снимке, это не живая телеметрия."
+  },
+  "t113": {
+    "en": "← Back to the environment",
+    "ru": "← Вернуться к среде"
+  },
+  "t114": {
+    "en": "FIELD GUIDE / RESEARCH INFRASTRUCTURE",
+    "ru": "РУКОВОДСТВО / ИССЛЕДОВАТЕЛЬСКАЯ ПЛАТФОРМА"
+  },
+  "t115": {
+    "en": "A workspace for",
+    "ru": "Рабочая среда"
+  },
+  "t116": {
+    "en": "verifiable learning.",
+    "ru": "для проверяемого обучения."
+  },
+  "t117": {
+    "en": "cad-env connects language and vision models to native CAD execution. The environment supplies a public task, a structured state and optional goal/current images. A model returns one typed JSON action; the environment executes it, validates the result and returns feedback.",
+    "ru": "cad-env связывает языковые и визуальные модели с нативным CAD. Среда передаёт публичную задачу, структурированное состояние и, при необходимости, целевые и текущие изображения. Модель возвращает одно типизированное JSON-действие; среда исполняет его, проверяет результат и возвращает обратную связь."
+  },
+  "t118": {
+    "en": "Start with the repository",
+    "ru": "Начните с репозитория"
+  },
+  "t119": {
+    "en": "Install the native applications and use the pinned environment matching your task. Geometry execution and Qwen3.5 training use separate environments. Follow the repository’s",
+    "ru": "Установите нативные приложения и используйте зафиксированное окружение для вашей задачи. Геометрия и обучение Qwen3.5 работают в разных окружениях. Следуйте"
+  },
+  "t120": {
+    "en": "multi-engine setup guide",
+    "ru": "руководству по настройке движков"
+  },
+  "t121": {
+    "en": "and training lockfiles; the website is a static presentation, not a CAD execution service.",
+    "ru": "и lock-файлам зависимостей. Этот сайт представляет проект и не является сервисом исполнения CAD-команд."
+  },
+  "t122": {
+    "en": "The portable action contract",
+    "ru": "Контракт переносимых действий"
+  },
+  "t123": {
+    "en": "Actions construct a feature graph with stable identifiers. Parameter edits target named dimensions. Rejected actions preserve the accepted state. The common tool set is deliberately restricted; supporting multiple executors does not mean unrestricted native-API competence.",
+    "ru": "Действия строят граф операций со стабильными идентификаторами. Правки параметров обращаются к именованным размерам. Отклонённые действия сохраняют принятое состояние. Набор инструментов намеренно ограничен: несколько движков не означают владение их полными нативными API."
+  },
+  "t124": {
+    "en": "Generate native-verified tasks",
+    "ru": "Генерируйте нативно проверенные задачи"
+  },
+  "t125": {
+    "en": "Use the geometry environment for this command. Each dataset needs a fresh output directory. Split lineage, native artifacts, image assets and exports are audited before training. A passing teacher does not establish that a trained model can solve the task.",
+    "ru": "Используйте для этой команды геометрическое окружение. Каждому набору данных нужна новая выходная директория. До обучения проверяются разбиение по исходным деталям, нативные артефакты, изображения и экспорты. Успешная траектория учителя ещё не доказывает, что модель умеет решать задачу."
+  },
+  "t126": {
+    "en": "What training currently does",
+    "ru": "Что именно обучается"
+  },
+  "t127": {
+    "en": "Qwen3.5-4B learns next-action prediction through BF16 LoRA, adapting language layers plus selected vision attention blocks and the visual merger. Images and observations are excluded from completion loss. Numeric tokens receive additional weight. Checkpoint-500 has been evaluated on native mechanical tasks; skill-retention measurements record their batch execution profile separately.",
+    "ru": "Qwen3.5-4B учится предсказывать следующее действие через BF16 LoRA. Адаптируются языковые слои, выбранные блоки визуального attention и visual merger. Изображения и наблюдения не входят в completion loss. Числовые токены имеют повышенный вес. Checkpoint-500 проверен на нативных механических задачах; проверки сохранения навыков отдельно указывают пакетный режим исполнения."
+  },
+  "t128": {
+    "en": "Read evidence with its scope",
+    "ru": "Учитывайте границы доказательств"
+  },
+  "t129": {
+    "en": "Report strict native success across all tasks, including failed executions.",
+    "ru": "Показывайте строгий нативный успех по всем задачам, включая неудачные исполнения."
+  },
+  "t130": {
+    "en": "Count physical designs, not correlated views and engine variants, for confidence intervals.",
+    "ru": "Считайте исходные физические детали, а не связанные виды и варианты движков, при оценке доверительных интервалов."
+  },
+  "t131": {
+    "en": "Separate visual selection, dimension reading, construction and repair.",
+    "ru": "Разделяйте визуальный выбор, чтение размеров, построение и исправление."
+  },
+  "t132": {
+    "en": "Keep test splits sealed during curriculum and checkpoint selection.",
+    "ru": "Не открывайте test-выборки при подборе curriculum и чекпоинтов."
+  },
+  "t133": {
+    "en": "One-action GRPO is implemented; full multi-turn policy-gradient RL is not yet implemented.",
+    "ru": "GRPO с одним действием реализован; полноценный многошаговый policy-gradient RL пока не реализован."
+  },
+  "t134": {
+    "en": "Blender execution is available; its expanded dataset remains experimental.",
+    "ru": "Нативное исполнение Blender доступно; расширенный корпус данных остаётся экспериментальным."
+  },
+  "t135": {
+    "en": "See the",
+    "ru": "Смотрите"
+  },
+  "t136": {
+    "en": "training audit",
+    "ru": "аудит обучения"
+  },
+  "t137": {
+    "en": "benchmark coverage",
+    "ru": "покрытие бенчмарков"
+  },
+  "t138": {
+    "en": "and",
+    "ru": "и"
+  },
+  "t139": {
+    "en": "advanced native feature probes",
+    "ru": "проверки расширенных нативных операций"
+  },
+  "t140": {
+    "en": "for implementation details and current boundaries. Advanced probes use a separate contract and are not claimed as model capabilities.",
+    "ru": "для подробностей реализации и текущих ограничений. Расширенные проверки используют отдельный контракт и пока не заявляются как способности модели."
+  },
+  "t141": {
+    "en": "Explore native references ↗",
+    "ru": "Изучить нативные эталоны ↗"
+  },
+  "t142": {
+    "en": "APACHE 2.0",
+    "ru": "APACHE 2.0"
+  },
+  "w001": {
+    "en": "Native reference",
+    "ru": "Нативный эталон"
+  },
+  "w002": {
+    "en": "Agent workspace",
+    "ru": "Рабочая среда агента"
+  },
+  "w003": {
+    "en": "FEATURE HISTORY",
+    "ru": "ИСТОРИЯ ОПЕРАЦИЙ"
+  },
+  "w004": {
+    "en": "WORLD COORDINATES / mm",
+    "ru": "МИРОВЫЕ КООРДИНАТЫ / мм"
+  },
+  "w005": {
+    "en": "Research in progress",
+    "ru": "Исследование продолжается"
+  },
+  "w006": {
+    "en": "00 / ANATOMY OF AN EPISODE",
+    "ru": "00 / УСТРОЙСТВО ЭПИЗОДА"
+  },
+  "w007": {
+    "en": "Not just a prompt.",
+    "ru": "Больше, чем промпт."
+  },
+  "w008": {
+    "en": "A world to act in.",
+    "ru": "Среда для действий."
+  },
+  "w009": {
+    "en": "An observation becomes an action. The CAD kernel executes it. The environment returns state and feedback. That is the learning loop.",
+    "ru": "Наблюдение превращается в действие. CAD-ядро исполняет его. Среда возвращает состояние и обратную связь. Так устроен цикл обучения."
+  },
+  "w010": {
+    "en": "Explore the architecture",
+    "ru": "Изучить архитектуру"
+  },
+  "w011": {
+    "en": "INTERACTION PROTOCOL",
+    "ru": "ПРОТОКОЛ ВЗАИМОДЕЙСТВИЯ"
+  },
+  "w012": {
+    "en": "ILLUSTRATIVE · NOT A LIVE CAD RUN",
+    "ru": "СХЕМА · БЕЗ ЗАПУСКА CAD"
+  },
+  "w013": {
+    "en": "Observe",
+    "ru": "Наблюдать"
+  },
+  "w014": {
+    "en": "Act",
+    "ru": "Действовать"
+  },
+  "w015": {
+    "en": "Execute",
+    "ru": "Исполнить"
+  },
+  "w016": {
+    "en": "Verify",
+    "ru": "Проверить"
+  },
+  "w017": {
+    "en": "STATE → ACTION → EXECUTION → FEEDBACK",
+    "ru": "СОСТОЯНИЕ → ДЕЙСТВИЕ → ИСПОЛНЕНИЕ → ОТКЛИК"
+  },
+  "w018": {
+    "en": "Next step",
+    "ru": "Следующий шаг"
+  }
+}

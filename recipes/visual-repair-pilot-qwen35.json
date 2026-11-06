@@ -1,0 +1,64 @@
+{
+  "parent": "artifacts/checkpoint500-evaluation/merged",
+  "output": "artifacts/visual-repair-pilot-v1",
+  "visual_dataset": "artifacts/visual-grounding-v6-units",
+  "grounding_dataset": "artifacts/visual-grounding-v1",
+  "repairs": "artifacts/visual-repair-pilot-v1/fresh-repairs",
+  "steps": 160,
+  "train_minutes": 35,
+  "total_minutes": 120,
+  "save_steps": 40,
+  "sources": [
+    {
+      "dataset": "artifacts/visual-grounding-v6-units",
+      "rows": 1280
+    },
+    {
+      "dataset": "artifacts/visual-grounding-v3",
+      "rows": 512
+    },
+    {
+      "dataset": "artifacts/visual-repair-pilot-v1/fresh-repairs",
+      "rows": 256
+    },
+    {
+      "dataset": "artifacts/complex-cad-v3",
+      "rows": 256
+    },
+    {
+      "dataset": "artifacts/gpu1-corpus-v2",
+      "rows": 128
+    },
+    {
+      "dataset": "artifacts/multicad-expanded-freecad",
+      "rows": 128
+    }
+  ],
+  "retention": [
+    [
+      "simple",
+      "artifacts/gpu1-corpus-v2",
+      "artifacts/checkpoint500-batch-evaluation/retention/evaluation.json",
+      16
+    ],
+    [
+      "complex",
+      "artifacts/complex-cad-v3",
+      "artifacts/checkpoint500-batch-evaluation/complex/evaluation.json",
+      16
+    ],
+    [
+      "grounding",
+      "artifacts/visual-grounding-v1",
+      "artifacts/checkpoint500-batch-evaluation/grounding/evaluation.json",
+      8
+    ],
+    [
+      "entities",
+      "artifacts/visual-grounding-v4-entities",
+      "artifacts/checkpoint500-batch-evaluation/entities/evaluation.json",
+      8
+    ]
+  ],
+  "scope": "Single exploratory pilot from checkpoint-500; same batch4/workers8 before/after; fresh TRAIN-only policy errors; 0.5 prepared-mixture epoch maximum. All wall-time limits are ceilings, not throughput promises. No automatic follow-on jobs."
+}

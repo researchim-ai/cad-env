@@ -27,3 +27,30 @@ This requires the local artifacts; serving the checked-in site does not. The
 snapshot is intentionally not live telemetry. Completed sequential native
 measurements are labelled separately from ongoing retention/batch evaluations.
 The website does not run CAD commands in a visitor's browser.
+
+## Languages
+
+The landing page and field guide support English and Russian through the EN/RU
+switch. The preference persists in localStorage across navigation and reloads;
+`?lang=en` and `?lang=ru` provide direct links. Dynamic results, part names,
+control labels, messages and metadata are localized. CAD JSON and commands
+retain their original identifiers. Bundled original technical Markdown documents
+are in English and their links are marked EN.
+
+Translations are maintained in `translations.json` (page copy) and `i18n.js`
+(dynamic UI and accessibility labels). Both pages load the shared locale before
+the application. No translation service or network dependency is required.
+
+## Engineering-sheet design
+
+The landing page uses a paper drawing grid, a navy model-space viewport and
+high-visibility geometry. Feature history is derived from the selected reference
+trajectory; the displayed bounding box comes from the actual mesh coordinates.
+The four-step protocol explorer (Observe / Act / Execute / Verify) is an
+explicitly illustrative interaction diagram, not a running CAD or RL backend.
+Its selection and text update immediately in both languages. Existing recorded
+scores remain labelled as checkpoint-500 corpus results.
+
+`workspace.js` implements the protocol explorer. `style.css` covers desktop and
+mobile layouts as well as the shared field guide. The site remains buildless
+and has no external runtime dependencies.

@@ -116,6 +116,9 @@ def check_vision_supervision(
         "rows": len(lengths),
         "max_tokens": max(lengths),
         "max_target_tokens": max(targets),
+        "largest_row_indices": sorted(
+            range(len(lengths)), key=lengths.__getitem__, reverse=True
+        )[:4],
         "all_completion_masks_checked": True,
         **({"all_image_tokens_masked": True} if image_token_ids else {}),
         **(
@@ -163,6 +166,18 @@ def check_training_source(root, source):
         audit["compositional_control"] = {
             k: v for k, v in complexity.items() if k not in ("errors", "base_audit")
         }
+    elif summary.get("benchmark", "").startswith("auxiliary-grounding-"):
+        from .grounding_data import audit_grounding
+
+        grounding = audit_grounding(root, base_report=audit)
+        if not grounding["ok"]:
+            raise ValueError("Grounding audit failed: " + str(grounding["errors"][:3]))
+    elif summary.get("benchmark", "").startswith("perception-plan-"):
+        from .perception_data import audit_plans
+
+        plans = audit_plans(root, base_report=audit)
+        if not plans["ok"]:
+            raise ValueError("Perception plan audit failed: " + str(plans["errors"][:3]))
     accepted = {
         r["task_id"]
         for line in (root / "manifest.jsonl").read_text().splitlines()

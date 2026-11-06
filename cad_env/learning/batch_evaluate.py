@@ -16,7 +16,16 @@ def main():
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--max-steps", type=int, default=16)
     p.add_argument("--limit", type=int)
+    p.add_argument(
+        "--image-condition",
+        choices=["full", "no_goal", "blank_goal", "wrong_goal"],
+        default="full",
+    )
     args = p.parse_args()
+    if min(args.batch_size, args.workers, args.max_steps) < 1 or (
+        args.limit is not None and args.limit < 1
+    ):
+        p.error("Batch size, workers, step budget and optional limit must be positive")
     policy = BatchedHFPolicy(
         args.model,
         temperature=0,
@@ -34,6 +43,7 @@ def main():
             workers=args.workers,
             max_steps=args.max_steps,
             limit=args.limit,
+            image_condition=args.image_condition,
             model_identity=policy.identity,
             policy_protocol={
                 "max_new_tokens": 256,

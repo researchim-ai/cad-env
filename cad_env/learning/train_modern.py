@@ -19,6 +19,11 @@ def nonthinking_template(template):
 def main():
     p = argparse.ArgumentParser(__doc__)
     p.add_argument("--model", required=True)
+    p.add_argument(
+        "--action-contract",
+        choices=["single_action", "perception_plan", "single_action_auxiliary"],
+        default="single_action",
+    )
     p.add_argument("--dataset", required=True)
     p.add_argument("--extra-dataset", action="append", default=[])
     p.add_argument(
@@ -45,16 +50,34 @@ def main():
         help="Train-only deterministic subset for GPU smoke runs",
     )
     p.add_argument("--max-steps", type=int, default=200)
+    p.add_argument(
+        "--max-train-minutes",
+        type=float,
+        help="Save and stop at a step boundary after this optimizer-loop budget",
+    )
     p.add_argument("--save-steps", type=int, default=50)
     p.add_argument("--gradient-accumulation", type=int, default=8)
     p.add_argument("--batch-size", type=int, default=1)
     p.add_argument("--learning-rate", type=float, default=1e-4)
+    p.add_argument(
+        "--lr-scheduler-type",
+        choices=["linear", "cosine", "constant_with_warmup"],
+        default="linear",
+    )
+    p.add_argument("--warmup-steps", type=int, default=0)
+    p.add_argument("--save-total-limit", type=int, default=3)
     p.add_argument("--max-length", type=int, default=4096)
     p.add_argument("--max-images", type=int, default=1)
     p.add_argument("--max-pixels", type=int, default=65536)
     p.add_argument("--preflight-only", action="store_true")
     p.add_argument("--resume-from-checkpoint")
     args = p.parse_args()
+    if not 0 <= args.warmup_steps < args.max_steps or args.save_total_limit < 1:
+        p.error("Warmup must be below max steps and checkpoint limit positive")
+    if args.max_train_minutes is not None and (
+        not math.isfinite(args.max_train_minutes) or args.max_train_minutes <= 0
+    ):
+        p.error("max-train-minutes must be positive and finite")
     data_roots = [Path(args.dataset).resolve()] + [
         Path(path).resolve() for path in args.extra_dataset
     ]
@@ -62,6 +85,17 @@ def main():
         p.error(
             "Specify each dataset once; repeated roots do not define a sampling weight"
         )
+    for data_root in data_roots:
+        contract = json.loads((data_root / "summary.json").read_text()).get(
+            "action_contract", "single_action"
+        )
+        allowed_contracts = (
+            {"single_action", "auxiliary_grounding"}
+            if args.action_contract == "single_action_auxiliary"
+            else {args.action_contract}
+        )
+        if contract not in allowed_contracts:
+            p.error("Dataset action contract differs from explicit training contract")
     if args.rows_per_source is not None and args.rows_per_source < 1:
         p.error("rows-per-source must be positive")
     if args.source_row_budgets is not None and (
@@ -140,7 +174,7 @@ def main():
         "arguments": vars(args),
         "versions": versions,
         "model": checkpoint_identity(args.model),
-        "action_contract": "single_action",
+        "action_contract": args.action_contract,
         "chat_template_kwargs": {"enable_thinking": False},
         "dataset_digest": hashlib.sha256(
             (root / "summary.json").read_bytes()
@@ -234,6 +268,8 @@ def main():
         )
         manifest["prompt_normalization"] = (
             "single_action_v3: single action guide and canonical public teacher responses"
+            if args.action_contract != "perception_plan"
+            else "perception_plan_v1: complete public-image plan; no action-guide conversion"
         )
         manifest["supervision"] = check_vision_supervision(
             dataset,
@@ -319,11 +355,21 @@ def main():
             numeric_loss = NumericCompletionLoss(
                 processor.tokenizer, args.numeric_loss_weight
             )
+        from .budget import make_walltime_guard
+
+        walltime_guard = (
+            make_walltime_guard(
+                args.max_train_minutes * 60, progress_path=out / "budget-progress.json"
+            )
+            if args.max_train_minutes
+            else None
+        )
         trainer = VerifiedModernSFTTrainer(
             model=model,
             processing_class=processor,
             train_dataset=dataset,
-            callbacks=[guard, vision_guard],
+            callbacks=[guard, vision_guard]
+            + ([walltime_guard] if walltime_guard else []),
             compute_loss_func=numeric_loss,
             args=SFTConfig(
                 output_dir=str(out),
@@ -331,6 +377,8 @@ def main():
                 per_device_train_batch_size=args.batch_size,
                 gradient_accumulation_steps=args.gradient_accumulation,
                 learning_rate=args.learning_rate,
+                lr_scheduler_type=args.lr_scheduler_type,
+                warmup_steps=args.warmup_steps,
                 bf16=True,
                 fp16=False,
                 gradient_checkpointing=True,
@@ -339,7 +387,7 @@ def main():
                 logging_nan_inf_filter=False,
                 report_to="none",
                 save_steps=args.save_steps,
-                save_total_limit=3,
+                save_total_limit=args.save_total_limit,
                 save_strategy="steps",
                 max_length=None,
                 completion_only_loss=True,
@@ -366,6 +414,9 @@ def main():
             peak_reserved_gib=torch.cuda.max_memory_reserved() / 1024**3,
             numeric_loss=numeric_loss.summary() if numeric_loss else None,
             global_completion_verified=True,
+            optimizer_steps=trainer.state.global_step,
+            completed_planned_steps=trainer.state.global_step >= args.max_steps,
+            walltime_budget=walltime_guard.summary() if walltime_guard else None,
             resume_verification=getattr(trainer, "cad_resume_report", None),
         )
         persist()

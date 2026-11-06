@@ -1,0 +1,58 @@
+{
+  "parent": "artifacts/checkpoint500-evaluation/merged",
+  "output": "artifacts/visual-followup-500-v1",
+  "steps": 500,
+  "sources": [
+    {
+      "dataset": "artifacts/visual-grounding-v6-units",
+      "rows": 2400
+    },
+    {
+      "dataset": "artifacts/visual-grounding-v3",
+      "rows": 600
+    },
+    {
+      "dataset": "artifacts/visual-repair-pilot-v1/fresh-repairs",
+      "rows": 200
+    },
+    {
+      "dataset": "artifacts/complex-cad-v3",
+      "rows": 400
+    },
+    {
+      "dataset": "artifacts/gpu1-corpus-v2",
+      "rows": 200
+    },
+    {
+      "dataset": "artifacts/multicad-expanded-freecad",
+      "rows": 200
+    }
+  ],
+  "retention": [
+    [
+      "simple",
+      "artifacts/gpu1-corpus-v2",
+      "artifacts/checkpoint500-batch-evaluation/retention/evaluation.json",
+      16
+    ],
+    [
+      "complex",
+      "artifacts/complex-cad-v3",
+      "artifacts/checkpoint500-batch-evaluation/complex/evaluation.json",
+      16
+    ],
+    [
+      "grounding",
+      "artifacts/visual-grounding-v1",
+      "artifacts/checkpoint500-batch-evaluation/grounding/evaluation.json",
+      8
+    ],
+    [
+      "entities",
+      "artifacts/visual-grounding-v4-entities",
+      "artifacts/checkpoint500-batch-evaluation/entities/evaluation.json",
+      8
+    ]
+  ],
+  "scope": "One prepared-mixture epoch; fresh LoRA from checkpoint500; 105-minute optimizer ceiling, 120-minute training phase, separate 120-minute evaluation phase. No TEST, retries, promotion or queued training."
+}

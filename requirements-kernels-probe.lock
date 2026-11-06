@@ -1,0 +1,3 @@
+# Optional layer kernels, isolated from the pinned training environment.
+# Download with pip download --no-deps --require-hashes -r this-file.
+liger-kernel==0.8.5 --hash=sha256:60789cd576af073ab9b192b570d2597fd0cdad489cd62fb44fb16256d43754c9

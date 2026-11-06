@@ -298,6 +298,10 @@ def make_complex_task(
 
 
 def render_complex_goal(task, path):
+    if task["family"] == "hollow_stacked_shaft":
+        from .hard_tasks import render_hollow_goal
+
+        return render_hollow_goal(task, path)
     from PIL import Image, ImageDraw, ImageFont
 
     p = task["parameters"]
@@ -365,18 +369,28 @@ def render_complex_goal(task, path):
             text(18, 350, "HOLES: X, Y, DIAMETER D, DEPTH Z", 18)
             start = 382
         holes = p["holes"] + ([p["extra_hole"]] if "extra_hole" in p else [])
+        center_labels = {}
         for i, h in enumerate(holes):
             x, y = point(h["x"], h["y"])
             r = h["radius"] * factor * scale
             d.ellipse((x - r, y - r, x + r, y + r), outline="black", width=2 * scale)
-            d.text(
-                (x + 5 * scale, y + 5 * scale), chr(65 + i), font=font(15), fill="black"
+            center_labels.setdefault((h["x"], h["y"]), []).append(
+                (chr(65 + i), h["radius"])
             )
             text(
                 20,
                 start + i * 29,
                 f"{chr(65 + i)}: X={h['x']} Y={h['y']} D={2 * h['radius']} Z={h['depth']}",
                 18,
+            )
+        for (cx, cy), labels in center_labels.items():
+            x, y = point(cx, cy)
+            radius = max(r for _, r in labels) * factor * scale
+            d.text(
+                (x + radius + 4 * scale, y - 8 * scale),
+                "/".join(label for label, _ in labels),
+                font=font(15),
+                fill="black",
             )
         text(18, 604, "Origin: lower-left; X ->, Y up. Depth from top.", 15)
     path = Path(path)
