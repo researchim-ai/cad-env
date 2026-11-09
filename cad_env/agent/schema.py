@@ -5,7 +5,7 @@ import re
 from typing import Any
 
 SCHEMA_VERSION = "cad-env.v1"
-MAX_ACTIONS = 64
+MAX_ACTIONS = 128
 TOOLS = {
     "create_body": {"required": ["name"], "optional": []},
     "sketch_rectangle": {
@@ -97,7 +97,7 @@ def validate_action(action: dict[str, Any]) -> dict[str, Any]:
 
 def validate_program(actions: list[dict[str, Any]]) -> list[dict[str, Any]]:
     if not isinstance(actions, list) or len(actions) > MAX_ACTIONS:
-        raise ValueError("Program must be a list with at most 64 actions")
+        raise ValueError(f"Program must be a list with at most {MAX_ACTIONS} actions")
     result = [validate_action(a) for a in actions]
     if any(a["op"] == "finish" for a in result[:-1]):
         raise ValueError("finish must be the final action")

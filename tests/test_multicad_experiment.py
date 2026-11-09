@@ -31,8 +31,8 @@ def report(engine, success, identity="same"):
 
 
 def test_clustered_comparison_refuses_changed_harness_and_incomplete_cases():
-    before = report("blender", False)
-    after = report("blender", True)
+    before = report("cadquery", False)
+    after = report("cadquery", True)
     r = compare(before, after)
     assert (
         r["independent_lineage_groups"] == 24
@@ -48,13 +48,10 @@ def test_clustered_comparison_refuses_changed_harness_and_incomplete_cases():
     with pytest.raises(ValueError):
         compare(before, bad)
     all_engines = combined(
-        [
-            (report(e, False), report(e, True))
-            for e in ["freecad", "cadquery", "blender"]
-        ]
+        [(report(e, False), report(e, True)) for e in ["freecad", "cadquery"]]
     )
     assert (
-        all_engines["paired_task_count"] == 144
+        all_engines["paired_task_count"] == 96
         and all_engines["independent_lineage_groups"] == 24
     )
     control = copy.deepcopy(before)

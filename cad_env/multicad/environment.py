@@ -13,13 +13,13 @@ from .plan import resolve
 
 
 class MultiCADEnv:
-    def __init__(self, engine, workspace, *, python=None, blender=None):
+    def __init__(self, engine, workspace, *, python=None):
         self.engine = engine
         self.root = Path(workspace).resolve()
         if self.root.exists() and any(self.root.iterdir()):
             raise FileExistsError("Use a fresh session workspace")
         self.root.mkdir(parents=True, exist_ok=True)
-        self.backend = MultiCADBackend(engine, python=python, blender=blender)
+        self.backend = MultiCADBackend(engine, python=python)
         self.task = None
 
     def reset(self, task, *, asset_root=None):

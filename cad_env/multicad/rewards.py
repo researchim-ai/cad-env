@@ -11,7 +11,7 @@ from .dataset import audit
 
 
 class MultiCADReward:
-    def __init__(self, dataset, output, *, python=None, blender=None):
+    def __init__(self, dataset, output, *, python=None):
         self.root = Path(dataset).resolve()
         self.out = Path(output).resolve()
         report = audit(self.root)
@@ -23,7 +23,6 @@ class MultiCADReward:
             if (r := json.loads(line))["accepted"] and r["split"] == "train"
         }
         self.python = python
-        self.blender = blender
 
     def score(self, task_id, completion):
         if task_id not in self.tasks:
@@ -34,9 +33,7 @@ class MultiCADReward:
             actions = validate_program(json.loads(completion))
         except (ValueError, TypeError):
             return 0.0
-        backend = MultiCADBackend(
-            row["engine"], python=self.python, blender=self.blender
-        )
+        backend = MultiCADBackend(row["engine"], python=self.python)
         try:
             result = backend.run(
                 actions,

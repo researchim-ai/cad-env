@@ -3,11 +3,16 @@
 import random
 
 
-def mix_sources(datasets, rows_per_source=None, seed=42):
+def mix_sources(datasets, rows_per_source=None, seed=42, source_seeds=None):
     from datasets import concatenate_datasets
 
     if not datasets or any(len(d) == 0 for d in datasets):
         raise ValueError("Every source must be nonempty")
+    if source_seeds is not None and (
+        len(source_seeds) != len(datasets)
+        or any(type(s) is not int for s in source_seeds)
+    ):
+        raise ValueError("One integer sampling seed per source required")
     if rows_per_source is None:
         return concatenate_datasets(datasets)
     budgets = (
@@ -21,7 +26,9 @@ def mix_sources(datasets, rows_per_source=None, seed=42):
         raise ValueError("Positive source budget required")
     selected = []
     for index, dataset in enumerate(datasets):
-        rng = random.Random(seed + index)
+        rng = random.Random(
+            source_seeds[index] if source_seeds is not None else seed + index
+        )
         indices = []
         budget = budgets[index]
         while len(indices) < budget:

@@ -18,7 +18,6 @@ def evaluate(
     engine=None,
     final_test=False,
     python=None,
-    blender=None,
 ):
     root = Path(dataset).resolve()
     out = Path(output).resolve()
@@ -70,7 +69,6 @@ def evaluate(
                 row["engine"],
                 out / "episodes" / row["task_id"],
                 python=python,
-                blender=blender,
             )
             observation = env.reset(task, asset_root=root)
             done = False

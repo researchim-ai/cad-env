@@ -27,6 +27,12 @@ def main():
     p.add_argument("--dataset", required=True)
     p.add_argument("--extra-dataset", action="append", default=[])
     p.add_argument(
+        "--source-seeds",
+        type=int,
+        nargs="+",
+        help="Explicit per-source sampling seeds; keep anchors fixed across ablations",
+    )
+    p.add_argument(
         "--source-row-budgets",
         type=int,
         nargs="+",
@@ -51,6 +57,11 @@ def main():
     )
     p.add_argument("--max-steps", type=int, default=200)
     p.add_argument(
+        "--epoch-cap",
+        type=float,
+        help="Refuse a step budget exceeding this many passes over the prepared mixture",
+    )
+    p.add_argument(
         "--max-train-minutes",
         type=float,
         help="Save and stop at a step boundary after this optimizer-loop budget",
@@ -74,6 +85,10 @@ def main():
     args = p.parse_args()
     if not 0 <= args.warmup_steps < args.max_steps or args.save_total_limit < 1:
         p.error("Warmup must be below max steps and checkpoint limit positive")
+    if args.epoch_cap is not None and (
+        not math.isfinite(args.epoch_cap) or args.epoch_cap <= 0
+    ):
+        p.error("epoch-cap must be positive and finite")
     if args.max_train_minutes is not None and (
         not math.isfinite(args.max_train_minutes) or args.max_train_minutes <= 0
     ):
@@ -98,6 +113,8 @@ def main():
             p.error("Dataset action contract differs from explicit training contract")
     if args.rows_per_source is not None and args.rows_per_source < 1:
         p.error("rows-per-source must be positive")
+    if args.source_seeds is not None and len(args.source_seeds) != len(data_roots):
+        p.error("One source-seed per dataset required")
     if args.source_row_budgets is not None and (
         args.rows_per_source is not None
         or len(args.source_row_budgets) != len(data_roots)
@@ -254,15 +271,31 @@ def main():
             "source_row_budgets": args.source_row_budgets,
             "source_rows": [len(d) for d in datasets],
             "seed": 42,
+            "source_seeds": args.source_seeds,
         }
         dataset = mix_sources(
-            datasets, args.source_row_budgets or args.rows_per_source, seed=42
+            datasets,
+            args.source_row_budgets or args.rows_per_source,
+            seed=42,
+            source_seeds=args.source_seeds,
         )
         if args.max_train_rows is not None:
             dataset = dataset.shuffle(seed=42).select(
                 range(min(len(dataset), args.max_train_rows))
             )
         manifest["selected_training_rows"] = len(dataset)
+        effective_batch = args.batch_size * args.gradient_accumulation
+        if args.epoch_cap is not None:
+            maximum_steps = math.ceil(len(dataset) * args.epoch_cap / effective_batch)
+            if args.max_steps > maximum_steps:
+                raise ValueError("Step budget exceeds the explicit epoch cap")
+            manifest["epoch_budget"] = {
+                "cap": args.epoch_cap,
+                "prepared_rows": len(dataset),
+                "effective_batch": effective_batch,
+                "maximum_optimizer_steps": maximum_steps,
+                "planned_optimizer_steps": args.max_steps,
+            }
         dataset = dataset.map(
             lambda row: {"prompt": normalize_feedback_prompt(row["prompt"])}
         )
@@ -374,6 +407,7 @@ def main():
             args=SFTConfig(
                 output_dir=str(out),
                 max_steps=args.max_steps,
+                num_train_epochs=args.epoch_cap if args.epoch_cap is not None else 3.0,
                 per_device_train_batch_size=args.batch_size,
                 gradient_accumulation_steps=args.gradient_accumulation,
                 learning_rate=args.learning_rate,
@@ -415,6 +449,7 @@ def main():
             numeric_loss=numeric_loss.summary() if numeric_loss else None,
             global_completion_verified=True,
             optimizer_steps=trainer.state.global_step,
+            epochs_completed=trainer.state.epoch,
             completed_planned_steps=trainer.state.global_step >= args.max_steps,
             walltime_budget=walltime_guard.summary() if walltime_guard else None,
             resume_verification=getattr(trainer, "cad_resume_report", None),

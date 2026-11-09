@@ -241,3 +241,256 @@ A different paper also named
 already-correct STOP states alongside repairable REVISE states. It is distinct
 from the Qwen3.5-4B IterCAD paper (2606.13368); their recipes and results must
 not be conflated. Our small-model repair data should teach both decisions.
+
+## Implemented native follow-up — 2026-11-08
+
+`assisted_data.py` now builds observation-only variants and semantically audits
+them against the frozen source. Actual validation packages contain all 160 tasks
+and the same 20 parents, with original or zero camera rotation and IDs on all
+circles. Reference actions, oracle actions, split identity and native FCStd/result
+bytes remain unchanged. Raster indices are checked against native initial circle
+ordering; audit regenerates the image pixels. Validation exports no training rows.
+The TRAIN-only canonical package contains 2512 feedback rows / 512 task variants /
+64 parents; answers are unchanged and public pre-action prompts are rebuilt from
+the original causal state/history. This is not a diversity expansion.
+
+`train.check_training_source` invokes the assisted semantic audit before SFT.
+Twenty focused tests pass, including private-selection-independent public hints,
+unchanged geometry/targets, no input mutation and TEST refusal. Loader audit
+passes all 2512 actual TRAIN rows / 2050 hashed artifacts.
+
+`assisted_experiment.py` is running on GPU1 under
+`artifacts/assisted-native-v1/evaluation`: full native original-ID and canonical-ID
+tracks, followed by blank-goal and wrong-goal controls on the canonical track.
+All use the same frozen auxiliary checkpoint, 160 tasks, batch limit 4, eight
+workers, eight native steps, no optimizer updates, total subprocess ceiling
+45 minutes. Source hashes and per-stage commands/status are durable. There is no
+automatic promotion or SFT queue. Native results are pending; component 18/20
+must not be presented as end-to-end CAD success.
+
+A provisional one-epoch 2000-row / 250-update / 40-optimizer-minute recipe is
+saved at `recipes/assisted-sft-pilot-qwen35.json`, explicitly NOT LAUNCHED. Native
+failure analysis must select the next intervention first. It preserves raw visual,
+construction and simple anchors instead of replacing the whole curriculum with
+assisted views. Memory/mask preflight and retention/image controls remain required.
+
+Additional recovery limitation: every current 2–6-edit hard task has max_steps=8.
+Six edits plus finish need seven actions; one wrong unmarked edit plus its
+restoration would require nine. Such errors cannot always be repaired within
+this budget. Increasing the CLI cap alone does not extend it (`evaluate_policy`
+takes min(task max_steps, CLI cap)). A recovery-budget experiment therefore needs
+an explicit separately reported task/harness variant. Do not silently enlarge
+old benchmark budgets or train impossible continuations as successful examples.
+
+## Completed native assisted qualification
+
+All four 160-task tracks completed under `artifacts/assisted-native-v1/evaluation`.
+Same auxiliary 4B checkpoint, zero optimizer updates, original eight-action
+budget and native geometric/parameter/history scoring:
+- Prior unassisted reference: 17/160 (10.625%).
+- All-entity IDs, original camera: 57/160 (35.625%).
+- All-entity IDs, canonical camera: 93/160 (58.125%).
+- Canonical IDs with blank goal: 0/160.
+- Canonical IDs with counterfactual wrong goal: 0/160.
+
+This is an observation/harness gain, not weight improvement. Image controls
+support dependence on the goal pixels. Exact success still fails on 67 tasks;
+45 of those hit the eight-step limit. More steps may help some but cannot be
+assumed to fix repeated or wrong actions. Analyze these trajectories before
+launching the provisional SFT recipe. TEST remains sealed; no model promotion.
+
+## Verified stop/repair training trial — 2026-11-08
+
+### Failure evidence motivating the data
+
+Offline inspection of the completed canonical-ID validation found 67 failures:
+45 truncated episodes, all containing repeated identical parameter writes
+(130 repeated writes total), and 22 unsuccessful finishes. Of the truncated
+cases, 27 end with every checked named constraint matching its target; 28 failed
+episodes pass through such a state. Parameter equality is diagnostic, not native
+success: these tasks still require finish and geometric/history validation. No
+oracle finish is inserted into runtime evaluation to inflate the score.
+
+### New data actually generated
+
+`release_data.py` proposes new seeded geometries and retains their natural hash
+splits. TEST proposals are discarded before native execution/export; existing
+sealed TEST task artifacts are not opened. Exclusion uses prior manifest parent
+identities. Within this corpus, physical-geometry and counterfactual audits pass.
+This is not a claim of global external-dataset shape deduplication.
+
+Actual `artifacts/release-curriculum-v2`:
+- 100 new TRAIN parents, 30 new validation parents, balanced across 2–6 marked
+  edits; four counterfactual goals per parent and two state phases.
+- 1040 native-verified tasks, zero rejected teachers. These are task/state
+  variants, not 1040 independent designs or images.
+- 2000 clean TRAIN feedback rows; 1583 revisit TRAIN rows.
+- A shared intermediate state is reused with four different goals. Some states
+  already satisfy one goal and require finish; the other goals require edits.
+  Others include a partial shared edit plus a wrong dimension. All unmarked
+  original diameters are explicitly specified in the public repair instruction.
+- Clean tasks keep 8 steps; revisit tasks use 12 to permit restoration. Every
+  compared model sees the identical budgets; these scores are separate from
+  the old 160-task/8-step benchmark.
+- Native shape validity, target geometry, protected parameters, feature history,
+  marker pixels, public-prompt isolation, natural splits and four-way nonvisual
+  input identity are audited. The resulting no-image greedy ceiling is 25%.
+
+`release_subset.py` creates audited phase packages. `stop_contrast` retains all
+four first decisions for complete-peer states (correct finish versus needed
+correction), plus late finish anchors: 234 rows. `revisit_general` excludes those
+same rows, so selecting both sources does not silently duplicate supervision.
+
+`multistep_recovery --phase revisit` collected actual parent-model prefixes on
+32 fresh TRAIN designs. Twenty-nine continuations reached verified native
+success; three already-correct proposed finishes are retained as evidence but
+not fabricated into repair examples. `recovery_export.py` packages 63 rows from
+those 29 continuations. It reconstructs each prompt from pre-action native state
+and past student/teacher history, checks native terminal success, rejects future
+answer injection, preserves original assistant JSON versus worker float
+normalization, and verifies the exact collected record. A prefix cut at six
+student steps is not by itself proof that the student would subsequently fail;
+these are real on-policy continuations, not 29 independently diagnosed errors.
+
+### Controlled training and acceptance
+
+`release_trial.py` is running at `artifacts/release-trial-v1` on physical GPU1.
+`recipes/release-stop-repair-qwen35.json` records the exact plan. Both arms start
+from the same frozen auxiliary checkpoint. Each has exactly 1600 unique selected
+rows, no source cycling, 200 optimizer updates / one prepared-mixture epoch,
+effective batch 8, checkpoints every 50 updates, LR 5e-6, vision LoRA and numeric
+weight 8. Each optimizer loop is capped at 35 minutes.
+
+Control: 1000 fresh clean rows + 600 old assisted, construction, raw visual and
+simple anchor rows. Candidate: 537 common clean rows, 200 general revisit rows,
+200 stop/correction contrasts, 63 actual policy continuations + the exact same
+600 anchor rows. Explicit per-source seeds make shared anchors byte-identical
+regardless of source ordering. Census checks normalized prompts, completions
+and image hashes: both selections have 1600/1600 unique rows. This matches
+updates/examples, not target-token counts or FLOPs. It tests a bundled data
+recipe; ingredient-specific attribution needs later ablations.
+
+The pipeline first measures the parent on all 240 fresh validation tasks and
+construction/simple retention. It then trains and compares both arms on fresh
+validation, the old assisted 160-task cohort, construction and simple tasks;
+checks candidate blank/wrong goals; and computes paired parent-cluster CIs.
+An independent `scripts/release_raw_retention.py` waits until GPU1 is released,
+then verifies both arms on the original unlabelled 160-task cohort using the
+same total deadline. It does not alter frozen trial sources. Main execution
+and extra retention share a ceiling of 165 minutes after preparation.
+
+Review qualification requires a supported fresh gain over BOTH parent and
+matched-update control, point retention on old assisted/simple/construction/raw
+tracks, and a substantial goal-image control gap. Point-retention checks are
+pragmatic pilot guards, not statistical equivalence. There is no automatic
+promotion, TEST evaluation, external benchmark claim or further training queue.
+The actual training benefit remains pending the complete trial.
+
+Thirty-five focused tests passed before launch. Additional verification before a
+strong release still includes fresh blind/OOD or external tasks, repeated runs
+for stability, portable evidence packaging and one final sealed TEST evaluation
+after checkpoint selection. This trial alone cannot establish general CAD
+competence, Blender transfer or full multi-turn GRPO quality.
+
+### Interrupted pilot recovery — 2026-11-08
+
+A fresh host/GPU check found no training/supervisor process and an idle GPU1,
+while the candidate status still said `running`. Its last progress record was
+67/200; the last durable checkpoint was step 50 (epoch 0.25). The interruption
+cause is unknown. This is not a completed candidate run or a quality result.
+
+Added `release_trial --resume` for this specific interrupted candidate stage.
+It preserves the original status/source-freeze under `interruption-evidence`,
+checks that all frozen sources except the orchestration module are unchanged,
+and resumes optimizer/scheduler/RNG and adapter weights from checkpoint-50 into
+`candidate/sft-resumed`. The completed control and parent evaluations are reused.
+The 17 unsaved updates are replayed from the checkpoint; the target remains 200
+logical updates / one prepared-mixture epoch. The original execution allowance
+is reduced by elapsed work up to the last progress record, including lost work;
+inactive downtime is excluded. The remaining shared execution budget at recovery
+was 5672 seconds (94.5 minutes), including subsequent evaluation and raw retention.
+No TEST tasks are opened or models promoted by this recovery.
+
+The supervisor and retention waiter were relaunched in separate process sessions.
+The retention waiter uses the recovered shared deadline. Three recovery tests
+verify checkpoint selection / completed-control reuse / budget accounting,
+source drift rejection, and completed-run rejection. Together with existing budget
+and source-mixing tests, 9 tests passed. A live GPU/process check must accompany
+future status reports: a stale `running` JSON file alone is insufficient evidence.
+
+### Large composition and industrial-scope correction — 2026-11-08
+
+Expanded the typed program limit to 128 actions. A native boundary test executed
+128 actions successfully and a schema test rejects 129; early finish remains
+invalid. New large-composition generator builds heterogeneous drilling plates,
+multi-support fixtures and terraced flange stacks with 32–108 teacher actions.
+All 48 native teachers passed independent analytic volume/bounds and exact-shape
+checks; semantic audit passed. There are 24 independent geometry parents, not
+48 independent designs. TRAIN and validation each have 12 parents / 24 tasks /
+1624 feedback rows. Extreme teachers require 72, 100 or 108 actions depending on
+family. Figures are paginated parameter schedules with 2–4 goal sheets. The
+public prompt identifies multiple goal sheets explicitly. They are not asserted
+to be industrial-standard engineering drawings; summary metadata records that
+standards conformance and manufacturability are not assessed.
+
+Largest-serialized teacher prompt per validation task was processed by the real
+Qwen processor: maximum 13002 tokens including images. The old 8192 evaluation
+context cannot support this cohort. New calibration uses 32768 context, 327680
+pixels per image, batch 2, 4 native workers, at most 128 actions, greedy generation
+and the current candidate merged checkpoint. This is a new protocol and corpus,
+not a comparable replacement for previous scores. Every student call retains
+strict context checking; infrastructure failures and incomplete runs are never
+reported as zero capability. GPU1 calibration is bounded to 30 minutes and does
+not start training. Its source hashes are frozen in the supervisor record.
+
+47 related generator/action/learning/CLI tests passed, including real native
+execution; an additional focused rerun passed 12 tests. See INDUSTRIAL_DATA.md
+for the distinction between synthetic stress, planned standards-profile drawing
+export, and real industrial-source evaluation.
+
+The preceding release trial exhausted its shared execution deadline during
+candidate_simple. Completed fresh/old/construction measurements remain evidence,
+but the complete retention/image-ablation gate set did not finish. Do not call
+that trial qualified or infer that all release gates passed. It was not restarted
+or silently granted an extra execution allowance.
+
+### Model-derived technical drawing format — 2026-11-09
+
+Implemented `cad_env.drawings`: native TechDraw front/top/right views, a model-tied
+A-A section, exact material-clipped hatch segments, native extent dimensions,
+center marks on real cylindrical features, hidden-line styling, A3 first-angle
+SVG/PDF/PNG pages, complete checked feature schedules, and traceable readable VLM
+crops. The exporter verifies every native pad/pocket, feature dimensions, actual
+support dependencies/elevations and unchanged source geometry. Unsupported
+specification fields are rejected instead of silently disappearing. Source code,
+CAD inputs and output hashes are preserved in each drawing bundle.
+
+`technical-corpus-v2` is the accepted corpus: 48 tasks / 24 physical parents,
+1624 TRAIN and 1624 validation feedback rows. Geometry, target actions, causal
+state/history and split lineage are unchanged from `large-composition-v1`; only
+the observation format is changed. Separate audits protect task and teacher
+semantics and pixel assets. Rehashed completion corruption and future-state
+injection are rejected by semantic checks. The TRAIN source guard passed.
+
+CPU processor preflight measured up to 18480 tokens / 22 crops. One real GPU1
+inference on the longest checked teacher-state input completed in 13.29 seconds,
+returning a valid finish action; peak allocated/reserved memory was 11.70/13.04
+GiB. This is not a complete CAD rollout, image-use proof or training-memory result.
+54 related tests passed. PDFs of all three extreme example families were rendered
+with Poppler for visual QA. No additional training was launched.
+
+Rejected draft drawing exports/corpus v1 were preserved. A numerical comparison
+in the audit originally used exact equality for floating-point native dimensions;
+it now uses explicit tight numerical tolerances consistent with the native
+measurement checks. The complete v2 corpus passed. Drawing standards conformance
+remains unassessed, manufacturing requirements are not inferred, and real
+industrial-source evaluation remains outstanding. See TECHNICAL_DRAWING_FORMAT.md.
+
+Additional crop-reading component diagnostic: six questions on three extreme
+physical designs, full and blank images. Strict JSON exactness: full 0/6, blank
+0/6; the model returned single-quoted Python-style dictionaries. Explicitly
+separate literal-format recovery found all six full-image field sets numerically
+correct, versus zero blank-image sets. Raw responses are preserved. This supports
+readability on this small component sample while exposing response-format weakness;
+it is not native CAD task success. No recovery parser was added to the CAD action
+or reward path. Two additional response-grader tests passed (56 related tests total).

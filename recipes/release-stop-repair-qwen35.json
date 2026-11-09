@@ -1,0 +1,87 @@
+{
+  "schema": "cad-env.release-trial.v1",
+  "parent": "artifacts/grounding-ablation-v1/auxiliary/merged",
+  "limits": {
+    "total_minutes": 165,
+    "optimizer_minutes_per_arm": 35,
+    "steps_per_arm": 200,
+    "rows_per_arm": 1600,
+    "effective_batch": 8,
+    "prepared_mixture_epochs": 1,
+    "checkpoint_interval": 50
+  },
+  "arms": {
+    "control": [
+      {
+        "root": "artifacts/release-clean-v2",
+        "budget": 1000,
+        "seed": 42
+      },
+      {
+        "root": "artifacts/assisted-native-v1/train-canonical-ids",
+        "budget": 200,
+        "seed": 43
+      },
+      {
+        "root": "artifacts/hard-construction-v2",
+        "budget": 200,
+        "seed": 44
+      },
+      {
+        "root": "artifacts/hard-unlabelled-v1",
+        "budget": 100,
+        "seed": 45
+      },
+      {
+        "root": "artifacts/gpu1-corpus-v2",
+        "budget": 100,
+        "seed": 46
+      }
+    ],
+    "candidate": [
+      {
+        "root": "artifacts/release-clean-v2",
+        "budget": 537,
+        "seed": 42
+      },
+      {
+        "root": "artifacts/release-revisit-general-v2",
+        "budget": 200,
+        "seed": 47
+      },
+      {
+        "root": "artifacts/release-stop-contrast-v2",
+        "budget": 200,
+        "seed": 49
+      },
+      {
+        "root": "artifacts/release-policy-repairs-v2",
+        "budget": 63,
+        "seed": 48
+      },
+      {
+        "root": "artifacts/assisted-native-v1/train-canonical-ids",
+        "budget": 200,
+        "seed": 43
+      },
+      {
+        "root": "artifacts/hard-construction-v2",
+        "budget": 200,
+        "seed": 44
+      },
+      {
+        "root": "artifacts/hard-unlabelled-v1",
+        "budget": 100,
+        "seed": 45
+      },
+      {
+        "root": "artifacts/gpu1-corpus-v2",
+        "budget": 100,
+        "seed": 46
+      }
+    ]
+  },
+  "hypothesis": "Explicit correct/incorrect state contrasts plus real student continuations improve native stop/recovery versus equal-update clean-only SFT. This bundled recipe does not isolate each ingredient.",
+  "command": "CUDA_VISIBLE_DEVICES=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=4 .venv-qwen35/bin/python -m cad_env.learning.release_trial --output artifacts/release-trial-v1",
+  "scope": "Matched optimizer updates and examples, not matched target tokens/FLOPs. Exact common anchors; no cycling or duplicate selected rows. Evaluation harness fixed between models. TEST sealed; qualification gates predeclared in release_trial.py."
+}

@@ -4,7 +4,7 @@
 change the frozen seven-action FreeCAD benchmark or the ongoing portable mixed
 SFT experiment. Inputs are bounded JSON, not arbitrary Python.
 
-Implemented native operations in FreeCAD, CadQuery and Blender:
+Implemented native operations in FreeCAD and CadQuery:
 
 - Boxes and cylinders at explicit origins; boolean fuse and cut.
 - Polygon extrusion, including concave profiles.
@@ -14,8 +14,7 @@ Implemented native operations in FreeCAD, CadQuery and Blender:
 - Inward shells with a top opening.
 - Multiple separate final solids selected by an explicit finish action.
 
-FreeCAD uses its native Part kernel; CadQuery uses OCCT; Blender uses polygonal
-profiles, mesh booleans, Bevel and Solidify. Curves are sampled in Blender.
+FreeCAD uses its native Part kernel; CadQuery uses OCCT.
 Each engine saves a native artifact and replayable source. These source-replay
 models do not claim fully constrained sketches, editable native feature trees,
 assembly joints, CAM or FEM. The FreeCAD artifact currently stores the resulting
@@ -23,18 +22,13 @@ shape and source program in one Part feature; separate final solids form a compo
 
 ## Native validation
 
-28 tests passed with real installed engines: nine geometric families in three
-engines, each checked against a correct reference and a deliberately wrong size,
-plus schema bounds. Polygon and arc areas, revolved-bushing volume, hollow-box
-volume, multi-body volume and boolean results have analytic checks. Fillet and
-chamfer probes additionally require a nonempty volume smaller than the base.
-Candidate/reference symmetric difference and body count are checked natively.
-Curve tessellation has a declared Blender analytic tolerance of 0.0002 relative
-volume; native exact-BRep checks use 0.00001. Similarity is not proof of engineering
-fitness, sketch constraints or manufacturing viability.
+The retained engines are checked against correct references and deliberately
+wrong dimensions. Polygon/arc areas, revolved-bushing volume, hollow-box volume,
+multiple solids and booleans have analytic checks. Fillet/chamfer probes require
+nonempty volume smaller than the base. Native exact-BRep tolerance is 0.00001.
+Older three-engine test counts are historical and do not describe this release.
 
 ```bash
-BLENDER_BIN="$PWD/artifacts/runtimes/blender-4.5.9-linux-x64/blender" \
 .venv-multicad/bin/python -m cad_env.solidcad \
   --seeds 3 --output artifacts/my-solid-feature-probes
 ```

@@ -117,6 +117,7 @@ def main():
     p.add_argument("--student-steps", type=int, default=8)
     p.add_argument("--minutes", type=float, default=20)
     p.add_argument("--current-render", action="store_true")
+    p.add_argument("--phase", choices=["clean", "revisit"])
     a = p.parse_args()
     if min(a.parents, a.workers, a.student_steps, a.minutes) <= 0:
         p.error("Positive limits required")
@@ -138,6 +139,8 @@ def main():
         task = json.loads(
             (root / "episodes" / entry["task_id"] / "task.json").read_text()
         )
+        if a.phase and task.get("curriculum_phase") != a.phase:
+            continue
         if (
             task["mode"] != "edit"
             or len(task.get("goal_spec", {}).get("selected", [])) < 4

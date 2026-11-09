@@ -26,13 +26,11 @@ def test_solid_graph_contract_is_bounded():
         arc_points([0, 0], [1, 0], [2, 0])
 
 
-@pytest.mark.parametrize("engine", ["freecad", "cadquery", "blender"])
+@pytest.mark.parametrize("engine", ["freecad", "cadquery"])
 @pytest.mark.parametrize("family", FAMILIES)
 def test_native_advanced_feature_and_wrong_size(tmp_path, engine, family):
     if engine == "cadquery":
         pytest.importorskip("cadquery")
-    if engine == "blender" and not os.environ.get("BLENDER_BIN"):
-        pytest.skip("Native Blender required")
     try:
         backend = SolidBackend(
             engine, python=os.environ.get("MULTICAD_PYTHON", sys.executable)

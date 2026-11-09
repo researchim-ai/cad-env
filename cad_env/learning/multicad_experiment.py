@@ -92,8 +92,6 @@ def main():
             output,
             "--python",
             str((root / config["geometry_python"]).absolute()),
-            "--blender",
-            str((root / config["blender"]).resolve()),
         ]
         if engine:
             argv += ["--engine", engine]
@@ -302,8 +300,6 @@ def main():
                 engine,
                 "--python",
                 (root / config["geometry_python"]).absolute(),
-                "--blender",
-                (root / config["blender"]).resolve(),
             )
             image_effects[engine] = image_effect(
                 candidate[engine], read(target / "evaluation.json")

@@ -1,0 +1,40 @@
+{
+  "version": "cad-env.standard-drawing-batch.v1",
+  "output": "artifacts/iso-gost-500-v1",
+  "independent_geometries": 500,
+  "standard_counts": {
+    "iso": 250,
+    "gost": 250
+  },
+  "split_counts": {
+    "train": 400,
+    "validation": 100
+  },
+  "families": [
+    "heterogeneous_plate",
+    "multi_support_fixture",
+    "terraced_flange_stack"
+  ],
+  "difficulty_counts": {
+    "challenge": 250,
+    "extreme": 250
+  },
+  "input_modality": "image",
+  "numeric_geometry_in_prompt": false,
+  "seed_start": 9000000,
+  "shard_size": 25,
+  "jobs": 4,
+  "native_workers_per_job": 2,
+  "timeout_per_native_operation_seconds": 180,
+  "exclude_datasets": [
+    "artifacts/large-composition-v1"
+  ],
+  "split_policy": "Natural geometry hash; exact quotas obtained by prespecified sampling, no split reassignment or policy-success filtering",
+  "can_claim_full_conformance": false,
+  "format_checks_required": true,
+  "synthetic_example": true,
+  "training_started": false,
+  "test_opened": false,
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python -u -m cad_env.drawings.batch --output artifacts/iso-gost-500-v1 --count 500 --shard-size 25 --seed-start 9000000 --jobs 4 --native-workers 2 --exclude-dataset artifacts/large-composition-v1",
+  "purpose": "Primary geometry batch; complete both profiles with recipes/iso-gost-paired-500.json"
+}

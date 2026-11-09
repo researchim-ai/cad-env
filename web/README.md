@@ -30,7 +30,7 @@ The website does not run CAD commands in a visitor's browser.
 
 ## Languages
 
-The landing page and field guide support English and Russian through the EN/RU
+The landing page, guide, updates and drawing article support English and Russian through the EN/RU
 switch. The preference persists in localStorage across navigation and reloads;
 `?lang=en` and `?lang=ru` provide direct links. Dynamic results, part names,
 control labels, messages and metadata are localized. CAD JSON and commands
@@ -38,7 +38,7 @@ retain their original identifiers. Bundled original technical Markdown documents
 are in English and their links are marked EN.
 
 Translations are maintained in `translations.json` (page copy) and `i18n.js`
-(dynamic UI and accessibility labels). Both pages load the shared locale before
+(dynamic UI and accessibility labels). All pages load the shared locale before
 the application. No translation service or network dependency is required.
 
 ## Engineering-sheet design
@@ -54,3 +54,31 @@ scores remain labelled as checkpoint-500 corpus results.
 `workspace.js` implements the protocol explorer. `style.css` covers desktop and
 mobile layouts as well as the shared field guide. The site remains buildless
 and has no external runtime dependencies.
+
+## Project updates and drawing examples
+
+`blog.html` lists dated updates; `drawing-update.html` is the first long-form post.
+It explains paired ISO/GOST draft profiles, multi-sheet VLM input and SFT exports.
+The page includes three generated TRAIN parts, six full PDF drawing sets and a
+real feature-table crop. The source models are the completed mechanical pilot,
+not model predictions. Full standards conformance is explicitly unconfirmed.
+
+Refresh the static drawing examples from verified local TRAIN artifacts:
+
+```bash
+python web/scripts/export_drawings.py
+```
+
+This copies only PNG/PDF documents and provenance into `assets/drawings`; no
+font binary/source or model weights are copied. The font's upstream attribution
+and document exception are recorded in `provenance.json`. The generated example
+PDFs use vector glyph outlines. The site's typography uses system fonts.
+
+`journal.css` covers the update pages and homepage news section. `site.js` handles
+navigation/copy controls on the guide and journal pages. The language query is
+preserved between pages even when localStorage is unavailable.
+
+The homepage distinguishes the completed 20-part drawing SFT pilot from the
+earlier checkpoint-500 experiment. In both comparisons, the starting checkpoint
+had already received CAD training. Neither is advertised as a raw-model score.
+`assets/drawing-pilot-results.json` records the drawing pilot counts and scope.

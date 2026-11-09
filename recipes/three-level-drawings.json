@@ -1,0 +1,34 @@
+{
+  "version": "three-level-drawings-v1",
+  "levels": {
+    "easy": {"source_tier": "easy", "teacher_actions": [10, 16]},
+    "medium": {"source_tier": "challenge", "teacher_actions": [32, 48]},
+    "hard": {"source_tier": "extreme", "teacher_actions": [72, 108]}
+  },
+  "families_per_level": 3,
+  "per_family_per_level": 10,
+  "profiles": ["iso", "gost"],
+  "benchmark": {
+    "output": "artifacts/curriculum-benchmark-90-v1",
+    "geometries": 90,
+    "episodes": 180,
+    "split": "validation",
+    "seed": 21000000,
+    "model": "artifacts/models/qwen35-4b",
+    "physical_gpu": 1,
+    "wait_experiment": "artifacts/iso-gost-sft-pilot-v1/experiment.json"
+  },
+  "training_starter": {
+    "output": "artifacts/curriculum-train-90-v1",
+    "geometries": 90,
+    "documents": 180,
+    "split": "train",
+    "seed": 22000000,
+    "model_training_requested": false
+  },
+  "excluded_pairs": ["artifacts/iso-gost-paired-500-v1/pairs.jsonl"],
+  "split_policy": "Natural lineage hash; no split reassignment or model-outcome filtering",
+  "can_claim_full_conformance": false,
+  "max_action_budget": 128,
+  "scope": "Three procedural part families with fixed structural levels; not arbitrary industrial CAD coverage"
+}

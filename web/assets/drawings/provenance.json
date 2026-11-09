@@ -1,0 +1,127 @@
+{
+  "source": "artifacts/industrial-analogues-train-18-v1",
+  "examples": [
+    {
+      "family": "bearing_cartridge",
+      "task_id": "i-4a3e7464d9d034a1357bd32a",
+      "split": "train",
+      "profiles": {
+        "iso": {
+          "page_count": 2,
+          "full_conformance": false,
+          "files": {
+            "sheet": {
+              "path": "bearing_cartridge-iso-sheet.png",
+              "sha256": "71c6e172fa2d00c045e0fa2f1b4d7ee55b25a535874b21f3dbf68cef46ca7613"
+            },
+            "pdf": {
+              "path": "bearing_cartridge-iso-pdf.pdf",
+              "sha256": "93755cc10e5169161a6aa836c642f9f3febedc159955a9a9e844fea708efa88d"
+            },
+            "table": {
+              "path": "bearing_cartridge-iso-table.png",
+              "sha256": "1c67d3c04aa2a831fc743e734711d4e30f2aa3a8476dc746e7eb6544757daada"
+            }
+          }
+        },
+        "gost": {
+          "page_count": 2,
+          "full_conformance": false,
+          "files": {
+            "sheet": {
+              "path": "bearing_cartridge-gost-sheet.png",
+              "sha256": "3bb1bc29b0dd70faa342e1cadfacbe0c81c37cb7ba8b306052184b1b01a67821"
+            },
+            "pdf": {
+              "path": "bearing_cartridge-gost-pdf.pdf",
+              "sha256": "a7067f9410843fd1797406457cddd610f236c1219363b483d459a6070205fb4e"
+            },
+            "table": {
+              "path": "bearing_cartridge-gost-table.png",
+              "sha256": "97f97b55c7a4f6b90a4c339b40b881f2219bfe5a0d02ab4e81a62cba05fe2aa3"
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "adapter_flange",
+      "task_id": "i-5b220855be5684b4d85d8946",
+      "split": "train",
+      "profiles": {
+        "iso": {
+          "page_count": 2,
+          "full_conformance": false,
+          "files": {
+            "sheet": {
+              "path": "adapter_flange-iso-sheet.png",
+              "sha256": "2d5851f9a83e7f934f26a3fbe63474ccd13d89ef8871b78e0dbbd48bc623b819"
+            },
+            "pdf": {
+              "path": "adapter_flange-iso-pdf.pdf",
+              "sha256": "b1a7babebbff11d321153d37ace846bc17d6ec49b9e6d39b8a5bacc93b6f4a1d"
+            }
+          }
+        },
+        "gost": {
+          "page_count": 2,
+          "full_conformance": false,
+          "files": {
+            "sheet": {
+              "path": "adapter_flange-gost-sheet.png",
+              "sha256": "6ba85f1a766e18eb38f6f0780ddb84474379ffede565ccf568c05e4ef509fbdb"
+            },
+            "pdf": {
+              "path": "adapter_flange-gost-pdf.pdf",
+              "sha256": "40fde515d39e9e4341918e53d40ea57de912aa0cd061a993530afb943c6cfafc"
+            }
+          }
+        }
+      }
+    },
+    {
+      "family": "alignment_fixture",
+      "task_id": "i-8e45823b3feb9d21f8c4ef80",
+      "split": "train",
+      "profiles": {
+        "iso": {
+          "page_count": 2,
+          "full_conformance": false,
+          "files": {
+            "sheet": {
+              "path": "alignment_fixture-iso-sheet.png",
+              "sha256": "c382f46e04e266b7524e38d6b57221109365023506b463311bba06bd2430c16e"
+            },
+            "pdf": {
+              "path": "alignment_fixture-iso-pdf.pdf",
+              "sha256": "f7f73404e13446209ae32fb0b6bbbad24ea8bb24494da6be325b4a763d442dd0"
+            }
+          }
+        },
+        "gost": {
+          "page_count": 2,
+          "full_conformance": false,
+          "files": {
+            "sheet": {
+              "path": "alignment_fixture-gost-sheet.png",
+              "sha256": "a8b6d43637f16d2d0667f9e3c2717bc9eecf676082326171665462ccf3406c4c"
+            },
+            "pdf": {
+              "path": "alignment_fixture-gost-pdf.pdf",
+              "sha256": "1469c53c836ebbbbfcf5c4fcd6437121f57c7ec333463f56e6dad03bf296389b"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "scope": "Original procedural TRAIN references, not model predictions or certified industrial drawings",
+  "font": {
+    "name": "osifont",
+    "copyright": "Zefram Cochrane / hikikomori82 and contributors",
+    "upstream": "https://github.com/hikikomori82/osifont",
+    "commit": "afbc9134f90733eb5eea0a1c70c56a6d5dd5b758",
+    "license": "LGPLv3 with font exception; document uses vector outlines",
+    "font_files_included": false
+  }
+}

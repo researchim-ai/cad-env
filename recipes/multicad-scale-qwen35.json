@@ -13,7 +13,6 @@
     "artifacts/visual-grounding-v3"
   ],
   "geometry_python": ".venv-multicad/bin/python",
-  "blender": "artifacts/runtimes/blender-4.5.9-linux-x64/blender",
   "training": {
     "steps": 2000,
     "rows_per_source": 4096,
@@ -30,5 +29,5 @@
     "min_gain": 0.1,
     "max_engine_regression": 0.05
   },
-  "interpretation": "Scale existing independently native-verified typed-tool curricula. 20480 prepared rows include repeats; 16000 effective sample exposures, not 20480 unique CAD designs. FreeCAD and CadQuery share physical lineages. Blender excluded pending native validity fixes. Goal-image ablation, retention and physical-group paired confidence intervals gate final test."
+  "interpretation": "Scale existing independently native-verified typed-tool curricula. 20480 prepared rows include repeats; 16000 effective sample exposures, not 20480 unique CAD designs. FreeCAD and CadQuery share physical lineages. Goal-image ablation, retention and physical-group paired confidence intervals gate final test."
 }

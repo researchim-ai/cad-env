@@ -141,7 +141,11 @@ def generate_dataset(
             from .visual_tasks import render_goal
 
             task["goal_images"] = [str((episode / "goal.png").relative_to(root))]
-            render_goal(task, episode / "goal.png")
+            pages = render_goal(task, episode / "goal.png")
+            if pages:
+                task["goal_images"] = [
+                    str(Path(page).relative_to(root)) for page in pages
+                ]
         (episode / "task.json").write_text(
             json.dumps(task, indent=2, ensure_ascii=False)
         )

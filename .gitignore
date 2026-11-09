@@ -109,6 +109,12 @@ celerybeat.pid
 !.env.template
 .venv
 .venv-*/
+# Technical fonts are installed into a user cache, never vendored.
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.sfd
 artifacts/
 # Local model weights and training runs
 *.safetensors

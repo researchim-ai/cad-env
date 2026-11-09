@@ -126,3 +126,20 @@ pip install -r requirements.txt
 4. Проверьте логи в консоли
 
 **Система готова к использованию!** 🎉
+# Technical drawing font (external cache)
+
+After installing Python dependencies, install the pinned drawing font:
+
+```bash
+pip install -r requirements-drawings.txt
+python -m cad_env.drawings.font_cache --install
+```
+
+Alternatively run `make install-drawings`. The font, editable source and licenses
+are downloaded with SHA-256 verification to the user cache outside this checkout.
+`CAD_ENV_CACHE` overrides the cache parent; otherwise `XDG_CACHE_HOME` or
+`~/.cache` is used. Installation needs network access; rendering does not.
+Re-running the installer reuses valid files and repairs corrupted cache entries.
+There is no font substitution or implicit download during an experiment.
+
+The supported CAD runtimes are FreeCAD and optional CadQuery.

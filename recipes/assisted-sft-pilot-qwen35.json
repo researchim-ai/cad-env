@@ -1,0 +1,25 @@
+{
+  "status": "prepared_not_launched",
+  "requires": "Complete assisted-native-v1/evaluation and analyze failures before selecting or launching this pilot",
+  "parent": "artifacts/grounding-ablation-v1/auxiliary/merged",
+  "action_contract": "single_action",
+  "sources": [
+    {"dataset": "artifacts/assisted-native-v1/train-canonical-ids", "rows": 1000},
+    {"dataset": "artifacts/hard-unlabelled-v1", "rows": 500},
+    {"dataset": "artifacts/hard-construction-v2", "rows": 300},
+    {"dataset": "artifacts/gpu1-corpus-v2", "rows": 200}
+  ],
+  "prepared_rows": 2000,
+  "max_steps": 250,
+  "effective_batch": 8,
+  "prepared_mixture_epochs": 1,
+  "optimizer_minutes": 40,
+  "checkpoint_interval": 50,
+  "physical_gpu": 1,
+  "learning_rate": 0.000005,
+  "numeric_loss_weight": 8,
+  "vision_lora": true,
+  "memory_preflight_required": true,
+  "validation": ["assisted canonical native", "unassisted native retention", "construction retention", "simple retention", "blank/wrong image controls"],
+  "scope": "Provisional configuration, not training evidence. Existing 64-parent assisted data is an observation variant, not 1000 new designs. No automatic promotion or follow-on queue. TEST remains sealed."
+}

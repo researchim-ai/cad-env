@@ -81,14 +81,13 @@ def messages(engine, task, state, history, images):
 def generate(
     output,
     *,
-    engines=("freecad", "cadquery", "blender"),
+    engines=("freecad", "cadquery"),
     seeds=3,
     start_seed=0,
     families=FAMILIES,
     modes=("create", "edit", "repair"),
     modalities=("text", "image"),
     python=None,
-    blender=None,
     view_mode="multiview",
     varied_edits=False,
 ):
@@ -109,10 +108,7 @@ def generate(
     if out.exists() and any(out.iterdir()):
         raise FileExistsError("Use a fresh dataset directory")
     out.mkdir(parents=True, exist_ok=True)
-    backends = {
-        engine: MultiCADBackend(engine, python=python, blender=blender)
-        for engine in engines
-    }
+    backends = {engine: MultiCADBackend(engine, python=python) for engine in engines}
     manifest = []
     exports = {s: [] for s in ("train", "validation", "test")}
     rejected = []
@@ -334,7 +330,6 @@ def generate(
         "supported_training_exports": ["train.feedback.jsonl"],
         "limitations": [
             "Restricted shared XY tool subset; no arbitrary Python",
-            "Blender mesh correctness is not BRep or constrained-sketch correctness",
             "Original synthetic families; not the official CADBench or CADWorld",
             "Views and dimensions are synthetic; no PBR/noisy-mesh tasks yet",
         ],
@@ -343,8 +338,7 @@ def generate(
             for p in out.rglob("*")
             if p.is_file()
             and ".runtime" not in p.parts
-            and p.suffix
-            in {".json", ".jsonl", ".png", ".py", ".FCStd", ".step", ".blend"}
+            and p.suffix in {".json", ".jsonl", ".png", ".py", ".FCStd", ".step"}
         },
     }
     (out / "summary.json").write_text(json.dumps(summary, indent=2))

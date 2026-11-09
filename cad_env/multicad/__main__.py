@@ -14,7 +14,12 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     gen = sub.add_parser("generate")
     gen.add_argument("--output", required=True)
-    gen.add_argument("--engines", nargs="+", default=["freecad", "cadquery", "blender"])
+    gen.add_argument(
+        "--engines",
+        nargs="+",
+        choices=["freecad", "cadquery"],
+        default=["freecad", "cadquery"],
+    )
     gen.add_argument("--seeds", type=int, default=3)
     gen.add_argument("--start-seed", type=int, default=0)
     gen.add_argument("--families", nargs="+", choices=FAMILIES, default=list(FAMILIES))
@@ -29,32 +34,30 @@ def main():
     )
     gen.add_argument("--varied-edits", action="store_true")
     gen.add_argument("--python")
-    gen.add_argument("--blender")
+
     gen.add_argument(
         "--view-mode", choices=["singleview", "multiview"], default="multiview"
     )
     check = sub.add_parser("audit")
     check.add_argument("--dataset", required=True)
     run = sub.add_parser("run")
-    run.add_argument(
-        "--engine", required=True, choices=["freecad", "cadquery", "blender"]
-    )
+    run.add_argument("--engine", required=True, choices=["freecad", "cadquery"])
     run.add_argument("--actions", required=True)
     run.add_argument("--reference")
     run.add_argument("--output", required=True)
     run.add_argument("--python")
-    run.add_argument("--blender")
+
     evaluation = sub.add_parser("evaluate")
     evaluation.add_argument("--dataset", required=True)
     evaluation.add_argument("--model", required=True)
     evaluation.add_argument("--output", required=True)
-    evaluation.add_argument("--engine", choices=["freecad", "cadquery", "blender"])
+    evaluation.add_argument("--engine", choices=["freecad", "cadquery"])
     evaluation.add_argument(
         "--split", choices=["validation", "test"], default="validation"
     )
     evaluation.add_argument("--final-test", action="store_true")
     evaluation.add_argument("--python")
-    evaluation.add_argument("--blender")
+
     args = vars(parser.parse_args())
     command = args.pop("command")
     if command == "generate":

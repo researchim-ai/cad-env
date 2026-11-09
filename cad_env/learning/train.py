@@ -138,13 +138,17 @@ def check_training_source(root, source):
 
         expected = Path(root) / "exports/train.feedback.jsonl"
         if Path(source).resolve() != expected.resolve():
-            raise ValueError("Multi-engine SFT requires the audited TRAIN feedback export")
+            raise ValueError(
+                "Multi-engine SFT requires the audited TRAIN feedback export"
+            )
         audit = audit_multicad(root)
     else:
         audit = audit_dataset(root)
     supported = summary.get("supported_training_exports")
     if supported and Path(source).name not in supported:
-        raise ValueError("This dataset only supports training exports: " + str(supported))
+        raise ValueError(
+            "This dataset only supports training exports: " + str(supported)
+        )
     if not audit["ok"]:
         raise ValueError("Dataset audit failed: " + str(audit["errors"][:3]))
     if summary.get("benchmark", "").startswith("visual-grounding-"):
@@ -152,20 +156,62 @@ def check_training_source(root, source):
 
         visual = audit_visual(root, base_report=audit)
         if not visual["ok"]:
-            raise ValueError("Visual information audit failed: " + str(visual["errors"][:3]))
+            raise ValueError(
+                "Visual information audit failed: " + str(visual["errors"][:3])
+            )
         audit["information_control"] = {
             "counterfactual_groups": visual["condition_groups"],
             "greedy_no_image_ceiling": visual["greedy_no_image_success_ceiling"],
         }
+    elif summary.get("benchmark", "").startswith("technical-drawing-"):
+        from cad_env.drawings.dataset import audit_technical_dataset
+
+        audit = audit_technical_dataset(root)
+        if not audit["ok"]:
+            raise ValueError(
+                "Technical drawing audit failed: " + str(audit["errors"][:3])
+            )
+    elif summary.get("benchmark", "").startswith("large-composition-"):
+        from .extreme_tasks import audit_extreme
+
+        audit = audit_extreme(root)
+        if not audit["ok"]:
+            raise ValueError(
+                "Large composition audit failed: " + str(audit["errors"][:3])
+            )
     elif summary.get("benchmark", "").startswith("complex-cad-"):
         from .curriculum_metrics import audit_complex
 
         complexity = audit_complex(root, base_report=audit)
         if not complexity["ok"]:
-            raise ValueError("Compositional audit failed: " + str(complexity["errors"][:3]))
+            raise ValueError(
+                "Compositional audit failed: " + str(complexity["errors"][:3])
+            )
         audit["compositional_control"] = {
             k: v for k, v in complexity.items() if k not in ("errors", "base_audit")
         }
+    elif summary.get("benchmark", "").startswith("release-subset-"):
+        from .release_subset import audit_subset
+
+        subset = audit_subset(root, base_report=audit)
+        if not subset["ok"]:
+            raise ValueError(
+                "Release subset audit failed: " + str(subset["errors"][:3])
+            )
+    elif summary.get("benchmark", "").startswith("policy-recovery-"):
+        from .recovery_export import audit_recoveries
+
+        recoveries = audit_recoveries(root, base_report=audit)
+        if not recoveries["ok"]:
+            raise ValueError("Recovery audit failed: " + str(recoveries["errors"][:3]))
+    elif summary.get("benchmark", "").startswith("assisted-observation-"):
+        from .assisted_data import audit_assisted
+
+        assisted = audit_assisted(root, base_report=audit)
+        if not assisted["ok"]:
+            raise ValueError(
+                "Assisted observation audit failed: " + str(assisted["errors"][:3])
+            )
     elif summary.get("benchmark", "").startswith("auxiliary-grounding-"):
         from .grounding_data import audit_grounding
 
@@ -177,7 +223,9 @@ def check_training_source(root, source):
 
         plans = audit_plans(root, base_report=audit)
         if not plans["ok"]:
-            raise ValueError("Perception plan audit failed: " + str(plans["errors"][:3]))
+            raise ValueError(
+                "Perception plan audit failed: " + str(plans["errors"][:3])
+            )
     accepted = {
         r["task_id"]
         for line in (root / "manifest.jsonl").read_text().splitlines()
@@ -299,9 +347,16 @@ def main():
     from .policy import checkpoint_identity
 
     identity = checkpoint_identity(args.model, args.revision)
-    previous_run=Path(args.model)/'cad-training-run.json'
-    if args.method=='grpo' and previous_run.is_file() and json.loads(previous_run.read_text()).get('action_contract')=='single_action':
-        raise ValueError('Program GRPO cannot consume a single-action policy; use the separately validated multi-turn adapter')
+    previous_run = Path(args.model) / "cad-training-run.json"
+    if (
+        args.method == "grpo"
+        and previous_run.is_file()
+        and json.loads(previous_run.read_text()).get("action_contract")
+        == "single_action"
+    ):
+        raise ValueError(
+            "Program GRPO cannot consume a single-action policy; use the separately validated multi-turn adapter"
+        )
     asset_root = dataset_root
     asset_manifest = None
     if args.asset_root:

@@ -26,8 +26,8 @@ def repair_actions(task, initial_state, current_state):
             raise ValueError("Ambiguous or unknown target dimension")
         selected.add(key)
         desired[key] = action["value"]
-    if not selected:
-        raise ValueError("No editable teacher targets")
+    if not desired:
+        raise ValueError("No editable teacher dimensions")
     actual = {
         (name, f"diameter_{c['index']}"): 2 * c["radius"]
         for name, sketch in current.items()

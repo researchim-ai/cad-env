@@ -77,7 +77,11 @@ def agent_messages(task, observation, history=(), *, visual=False):
                 "text": messages[-1]["content"]
                 + (
                     (
-                        "\nFIRST image is the TASK GOAL drawing/marker. "
+                        (
+                            f"\nThe first {len(goals)} images are sheets of the TASK GOAL drawing. "
+                            if len(goals) > 1
+                            else "\nFIRST image is the TASK GOAL drawing/marker. "
+                        )
                         + (
                             "Following image is the CURRENT candidate. "
                             if observation.get("images")

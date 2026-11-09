@@ -12,17 +12,14 @@ from .schema import TOOLS
 from .tasks import FAMILIES, make_task
 
 
-def generate(output, engines, seeds=2, families=FAMILIES, python=None, blender=None):
+def generate(output, engines, seeds=2, families=FAMILIES, python=None):
     root = Path(output).resolve()
     if root.exists() and any(root.iterdir()):
         raise FileExistsError("Use a fresh advanced corpus directory")
     root.mkdir(parents=True)
     rows = []
     exports = {s: [] for s in ["train", "validation", "test"]}
-    backends = {
-        engine: SolidBackend(engine, python=python, blender=blender)
-        for engine in engines
-    }
+    backends = {engine: SolidBackend(engine, python=python) for engine in engines}
     guide = json.dumps(
         {
             op: {"required": sorted(spec[0]), "optional": sorted(spec[1])}
@@ -142,13 +139,13 @@ def main():
     p.add_argument(
         "--engines",
         nargs="+",
-        choices=["freecad", "cadquery", "blender"],
-        default=["freecad", "cadquery", "blender"],
+        choices=["freecad", "cadquery"],
+        default=["freecad", "cadquery"],
     )
     p.add_argument("--families", nargs="+", choices=FAMILIES, default=list(FAMILIES))
     p.add_argument("--seeds", type=int, default=2)
     p.add_argument("--python")
-    p.add_argument("--blender")
+
     args = vars(p.parse_args())
     if args["seeds"] < 1:
         raise ValueError("Positive seed count required")

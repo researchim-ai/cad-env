@@ -39,3 +39,18 @@ def test_per_source_budgets_keep_exact_weights_and_reject_invalid_lengths():
     for budgets in [[3], [3, 0], [3, True], [3, 1.5]]:
         with pytest.raises(ValueError):
             mix_sources([a, b], budgets)
+
+
+def test_explicit_seeds_keep_common_anchors_identical_when_other_sources_added():
+    clean = Dataset.from_dict({"id": list(range(20))})
+    anchor = Dataset.from_dict({"id": list(range(100, 120))})
+    extra = Dataset.from_dict({"id": list(range(200, 220))})
+    control = mix_sources([clean, anchor], [8, 5], source_seeds=[42, 43])
+    candidate = mix_sources(
+        [clean, extra, anchor], [4, 6, 5], source_seeds=[42, 99, 43]
+    )
+    assert list(control["id"])[:4] == list(candidate["id"])[:4]
+    assert list(control["id"])[-5:] == list(candidate["id"])[-5:]
+    for seeds in [[1], [True, 2], [1, "2"]]:
+        with pytest.raises(ValueError):
+            mix_sources([clean, anchor], [2, 2], source_seeds=seeds)

@@ -31,8 +31,10 @@ setup(
         "cad-env-data=cad_env.learning.cli:main",
         "cad-env-multicad=cad_env.multicad.__main__:main",
         "cad-env-train=cad_env.learning.train:main",
+        "cad-env-font=cad_env.drawings.font_cache:main",
     ]},
     extras_require={
+        "drawings": ["Pillow>=10", "fonttools==4.58.0"],
         "multicad": ["manifold3d>=3.0,<4", "cadquery==2.8.0", "numpy>=2.0", "pillow>=10", "scipy>=1.12"],
         "data": ["numpy>=1.23", "matplotlib>=3.6", "pillow>=9"],
         "api": ["fastapi>=0.100", "uvicorn>=0.20", "httpx>=0.24"],

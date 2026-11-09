@@ -1,0 +1,25 @@
+{
+  "purpose": "Matched representation comparison on exactly the same 500 CAD geometries",
+  "primary_batch": "artifacts/iso-gost-500-v1",
+  "paired_index": "artifacts/iso-gost-paired-500-v1",
+  "independent_geometries": 500,
+  "documents": 1000,
+  "profile_counts": {
+    "iso": 500,
+    "gost": 500
+  },
+  "split_counts_by_geometry": {
+    "train": 400,
+    "validation": 100
+  },
+  "same_source_fcstd_required": true,
+  "same_reference_actions_required": true,
+  "same_split_required": true,
+  "additional_geometry_sampling": false,
+  "full_iso_gost_conformance_confirmed": false,
+  "training_started": false,
+  "test_opened": false,
+  "completion_command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python -u scripts/generate_paired_drawings.py --primary artifacts/iso-gost-500-v1 --output artifacts/iso-gost-paired-500-v1 --jobs 4",
+  "evaluation_only_requested": true,
+  "final_audit_command": "python scripts/audit_paired_drawings.py --primary artifacts/iso-gost-500-v1 --paired artifacts/iso-gost-paired-500-v1"
+}

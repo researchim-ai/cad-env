@@ -4,8 +4,8 @@
     "ru": "К содержимому"
   },
   "t002": {
-    "en": "Platform",
-    "ru": "Платформа"
+    "en": "How it works",
+    "ru": "Как это устроено"
   },
   "t003": {
     "en": "Explore",
@@ -24,40 +24,40 @@
     "ru": "Репозиторий"
   },
   "t007": {
-    "en": "AN EXECUTABLE WORLD FOR AI AGENTS",
-    "ru": "ИСПОЛНЯЕМЫЙ МИР ДЛЯ ИИ-АГЕНТОВ"
+    "en": "CAD TOOLS FOR LANGUAGE AND VISION MODELS",
+    "ru": "CAD-ИНСТРУМЕНТЫ ДЛЯ ЯЗЫКОВЫХ И ВИЗУАЛЬНЫХ МОДЕЛЕЙ"
   },
   "t008": {
-    "en": "OPEN RESEARCH / ENVIRONMENT 001",
-    "ru": "ОТКРЫТОЕ ИССЛЕДОВАНИЕ / СРЕДА 001"
+    "en": "PROJECT IN DEVELOPMENT",
+    "ru": "ПРОЕКТ В РАЗРАБОТКЕ"
   },
   "t009": {
-    "en": "GOOD GEOMETRY IS LEARNED BY DOING.",
-    "ru": "ГЕОМЕТРИИ УЧАТСЯ НА ПРАКТИКЕ."
+    "en": "BUILD A PART. CHECK THE RESULT.",
+    "ru": "ПОСТРОИТЬ ДЕТАЛЬ. ПРОВЕРИТЬ РЕЗУЛЬТАТ."
   },
   "t010": {
-    "en": "A training",
-    "ru": "Полигон"
+    "en": "Teach agents",
+    "ru": "Учим модели"
   },
   "t011": {
-    "en": "ground for",
-    "ru": "для CAD-"
+    "en": "to build",
+    "ru": "строить"
   },
   "t012": {
-    "en": "CAD agents.",
-    "ru": "агентов."
+    "en": "in CAD.",
+    "ru": "в CAD."
   },
   "t013": {
-    "en": "A real workspace for language and vision models. Give an agent CAD tools, let it build, and let native geometry check the result.",
-    "ru": "Настоящая рабочая среда для языковых и зрительных моделей. Агент получает CAD-инструменты, строит деталь, а нативная геометрия проверяет результат."
+    "en": "Give a model a drawing and CAD tools. cad-env runs its actions in FreeCAD, checks the finished part and records the steps for training.",
+    "ru": "Модель получает чертёж и CAD-инструменты. cad-env выполняет её действия во FreeCAD, проверяет готовую деталь и сохраняет шаги для обучения."
   },
   "t014": {
-    "en": "Enter the workspace",
-    "ru": "Открыть среду"
+    "en": "See example parts",
+    "ru": "Посмотреть детали"
   },
   "t015": {
-    "en": "Read the field guide",
-    "ru": "Читать руководство"
+    "en": "How to get started",
+    "ru": "Как начать"
   },
   "t016": {
     "en": "FreeCAD",
@@ -67,17 +67,13 @@
     "en": "CadQuery",
     "ru": "CadQuery"
   },
-  "t018": {
-    "en": "Blender",
-    "ru": "Blender"
-  },
   "t019": {
     "en": "MODEL SPACE",
     "ru": "ПРОСТРАНСТВО МОДЕЛИ"
   },
   "t020": {
-    "en": "FREECAD / TRAIN REFERENCE",
-    "ru": "FREECAD / ЭТАЛОН TRAIN"
+    "en": "FREECAD / TRAINING EXAMPLE",
+    "ru": "FREECAD / УЧЕБНЫЙ ПРИМЕР"
   },
   "t021": {
     "en": "PART_001",
@@ -100,92 +96,84 @@
     "ru": "ВРАЩАЙТЕ МЫШЬЮ · МАСШТАБ КОЛЕСОМ"
   },
   "t026": {
-    "en": "THE AGENT ACTS. THE KERNEL DECIDES.",
-    "ru": "АГЕНТ ДЕЙСТВУЕТ. ЯДРО ПРОВЕРЯЕТ."
+    "en": "THE MODEL BUILDS. FREECAD CHECKS.",
+    "ru": "МОДЕЛЬ СТРОИТ. FREECAD ПРОВЕРЯЕТ."
   },
   "t027": {
     "en": "Language + vision",
     "ru": "Язык и зрение"
   },
   "t028": {
-    "en": "Typed actions",
-    "ru": "Типизированные действия"
+    "en": "JSON actions",
+    "ru": "JSON-действия"
   },
   "t029": {
-    "en": "Native kernel",
-    "ru": "Нативное ядро"
+    "en": "CAD execution",
+    "ru": "Выполнение в CAD"
   },
   "t030": {
-    "en": "Verified result",
-    "ru": "Проверенный результат"
+    "en": "Result check",
+    "ru": "Проверка результата"
   },
   "t031": {
-    "en": "01 / CONNECT TO REAL GEOMETRY",
-    "ru": "01 / ПОДКЛЮЧЕНИЕ К ГЕОМЕТРИИ"
+    "en": "01 / CAD BACKENDS",
+    "ru": "01 / CAD-ДВИЖКИ"
   },
   "t032": {
-    "en": "Three engines.",
-    "ru": "Три движка."
+    "en": "Two engines.",
+    "ru": "Два движка."
   },
   "t033": {
-    "en": "One training ground.",
-    "ru": "Одна среда обучения."
+    "en": "One set of tools.",
+    "ru": "Один набор инструментов."
   },
   "t034": {
-    "en": "Models work inside native applications. Every accepted teacher trajectory is executed and checked against the intended geometry.",
-    "ru": "Модели работают в настоящих приложениях. Каждая принятая траектория учителя исполняется и проверяется на соответствие целевой геометрии."
+    "en": "FreeCAD is our main environment. CadQuery runs the same basic actions through its own geometry backend. We execute every reference solution before adding it to a dataset.",
+    "ru": "Основная среда — FreeCAD. CadQuery выполняет те же базовые действия через своё геометрическое ядро. Каждое эталонное решение проходит проверку до включения в датасет."
   },
   "t035": {
-    "en": "Parametric feature history, native solids and dimension-preserving edits.",
-    "ru": "История параметрических операций, нативные тела и правки с сохранением размеров."
+    "en": "Editable sketches and features, solid geometry checks, and saved FCStd models.",
+    "ru": "Редактируемые эскизы и операции, проверка геометрии и сохранение моделей FCStd."
   },
   "t036": {
     "en": "PRIMARY ENVIRONMENT",
     "ru": "ОСНОВНАЯ СРЕДА"
   },
   "t037": {
-    "en": "OCCT geometry with native execution, STEP output and shape verification.",
-    "ru": "Геометрия OCCT: нативное исполнение, экспорт STEP и проверка формы."
+    "en": "Solid modeling with OCCT, STEP export and replayable action sequences.",
+    "ru": "Построение тел на OCCT, экспорт STEP и сохранение последовательности действий."
   },
   "t038": {
-    "en": "NATIVE EXECUTOR",
-    "ru": "НАТИВНЫЙ ИСПОЛНИТЕЛЬ"
-  },
-  "t039": {
-    "en": "Mesh-based modeling and native .blend artifacts. Dataset validation remains experimental.",
-    "ru": "Моделирование сетками и нативные файлы .blend. Проверка корпуса данных пока экспериментальная."
-  },
-  "t040": {
-    "en": "EXPERIMENTAL DATA",
-    "ru": "ЭКСПЕРИМЕНТАЛЬНЫЕ ДАННЫЕ"
+    "en": "ADDITIONAL BACKEND",
+    "ru": "ДОПОЛНИТЕЛЬНЫЙ ДВИЖОК"
   },
   "t041": {
-    "en": "SCOPE, EXPLICITLY.",
-    "ru": "ЯВНЫЕ ГРАНИЦЫ ВОЗМОЖНОСТЕЙ."
+    "en": "WHAT THE AGENT CAN DO",
+    "ru": "ЧТО ДОСТУПНО АГЕНТУ"
   },
   "t042": {
-    "en": "One restricted, portable tool language across three engines. General sketch constraints, assemblies and arbitrary native Python workflows are future capabilities.",
-    "ru": "Один ограниченный язык инструментов для трёх движков. Произвольные ограничения эскизов, сборки и работа через нативный Python API — следующие этапы."
+    "en": "The shared tool set covers basic construction and parameter edits. The advanced solid-modeling probes use a separate interface. Assembly workflows and unrestricted CAD APIs are outside the current agent benchmark.",
+    "ru": "Общий набор инструментов позволяет строить простые детали и менять параметры. Для проверок расширенных операций есть отдельный интерфейс. Сборки и полный CAD API в текущий бенчмарк агента не входят."
   },
   "t043": {
-    "en": "02 / INSIDE THE ENVIRONMENT",
-    "ru": "02 / ВНУТРИ СРЕДЫ"
+    "en": "02 / EXAMPLE PARTS",
+    "ru": "02 / ПРИМЕРЫ ДЕТАЛЕЙ"
   },
   "t044": {
-    "en": "Every shape has a history.",
-    "ru": "У каждой формы есть история."
+    "en": "From actions to a part.",
+    "ru": "От действий к детали."
   },
   "t045": {
-    "en": "Pick a real TRAIN reference. Inspect its native geometry above and the typed tools that created it below. No generated mockups.",
-    "ru": "Выберите настоящий эталон TRAIN. Изучите нативную геометрию наверху и последовательность инструментов внизу. Это реальные данные проекта."
+    "en": "These three parts come from the training set. Choose one to inspect its geometry and the reference sequence that built it.",
+    "ru": "Эти три детали взяты из учебного набора. Выберите любую, чтобы посмотреть геометрию и шаги эталонного построения."
   },
   "t046": {
     "en": "A—01",
     "ru": "A—01"
   },
   "t047": {
-    "en": "Body + bore + bolt circle",
-    "ru": "Тело, отверстие и болтовая окружность"
+    "en": "Central bore and mounting holes",
+    "ru": "Центральное и крепёжные отверстия"
   },
   "t048": {
     "en": "A—02",
@@ -196,8 +184,8 @@
     "ru": "Плита с цековками"
   },
   "t050": {
-    "en": "Layered cuts + precise depths",
-    "ru": "Несколько вырезов и точные глубины"
+    "en": "Holes with larger, shallow recesses",
+    "ru": "Отверстия с цековками"
   },
   "t051": {
     "en": "A—03",
@@ -208,172 +196,172 @@
     "ru": "Ступенчатое отверстие"
   },
   "t053": {
-    "en": "Coaxial feature dependencies",
-    "ru": "Зависимости соосных элементов"
+    "en": "Several diameters on one axis",
+    "ru": "Несколько диаметров на одной оси"
   },
   "t054": {
     "en": "↑ INSPECT IN 3D VIEWER",
     "ru": "↑ ПОСМОТРЕТЬ В 3D"
   },
   "t055": {
-    "en": "TEACHER TRAJECTORY / JSON TOOLS",
-    "ru": "ТРАЕКТОРИЯ УЧИТЕЛЯ / JSON-ИНСТРУМЕНТЫ"
+    "en": "REFERENCE ACTION SEQUENCE",
+    "ru": "ШАГИ ЭТАЛОННОГО ПОСТРОЕНИЯ"
   },
   "t056": {
     "en": "Copy",
     "ru": "Копировать"
   },
   "t057": {
-    "en": "NATIVE REFERENCE",
-    "ru": "НАТИВНЫЙ ЭТАЛОН"
+    "en": "REFERENCE MODEL",
+    "ru": "ЭТАЛОННАЯ МОДЕЛЬ"
   },
   "t058": {
-    "en": "TRAIN EXAMPLE · NOT A MODEL PREDICTION",
-    "ru": "ПРИМЕР ИЗ TRAIN · ЭТО НЕ ОТВЕТ МОДЕЛИ"
+    "en": "TRAINING EXAMPLE · BUILT BY THE GENERATOR",
+    "ru": "УЧЕБНЫЙ ПРИМЕР · ПОСТРОЕН ГЕНЕРАТОРОМ"
   },
   "t059": {
-    "en": "7 PORTABLE ACTIONS",
-    "ru": "7 ПЕРЕНОСИМЫХ ДЕЙСТВИЙ"
+    "en": "7 BASIC ACTIONS",
+    "ru": "7 БАЗОВЫХ ДЕЙСТВИЙ"
   },
   "t060": {
-    "en": "03 / MEASURED, NOT ASSUMED",
-    "ru": "03 / ИЗМЕРЕННЫЕ РЕЗУЛЬТАТЫ"
+    "en": "03 / EARLIER EXPERIMENT",
+    "ru": "03 / ПРЕДЫДУЩИЙ ЭКСПЕРИМЕНТ"
   },
   "t061": {
-    "en": "Geometry is",
-    "ru": "Геометрия —"
+    "en": "Check the part,",
+    "ru": "Проверяем деталь,"
   },
   "t062": {
-    "en": "the ground truth.",
-    "ru": "критерий истины."
+    "en": "not just the answer.",
+    "ru": "а не только ответ."
   },
   "t063": {
-    "en": "Recorded checkpoint-500 results on a generated tool curriculum. These measure native task success on that corpus, not general CAD or image-only mastery.",
-    "ru": "Зафиксированные результаты checkpoint-500 на сгенерированном наборе задач. Это нативное решение задач данного корпуса, а не оценка общего владения CAD или работы только по изображениям."
+    "en": "An earlier checkpoint-500 experiment on the basic tool curriculum. Both starting and final checkpoints had already received CAD training. These are not results for an untouched model or for the new ISO/GOST drawing benchmark.",
+    "ru": "Ранний эксперимент с checkpoint-500 на базовом наборе задач. И начальный, и итоговый чекпоинты уже обучались CAD. Эти цифры не относятся ни к исходной модели без нашего тюна, ни к новому тесту по ISO/ГОСТ-чертежам."
   },
   "t064": {
     "en": "QWEN3.5–4B",
     "ru": "QWEN3.5–4B"
   },
   "t065": {
-    "en": "BF16 LoRA / CHECKPOINT 500",
-    "ru": "BF16 LoRA / ЧЕКПОИНТ 500"
+    "en": "EARLIER RUN / CHECKPOINT 500",
+    "ru": "РАННИЙ ПРОГОН / ЧЕКПОИНТ 500"
   },
   "t066": {
-    "en": "STRICT NATIVE TASK SUCCESS",
-    "ru": "СТРОГОЕ НАТИВНОЕ РЕШЕНИЕ ЗАДАЧ"
+    "en": "FULLY CORRECT PARTS",
+    "ru": "ПОЛНОСТЬЮ ВЕРНЫЕ ДЕТАЛИ"
   },
   "t067": {
     "en": "BEFORE → AFTER",
     "ru": "ДО → ПОСЛЕ"
   },
   "t068": {
-    "en": "SFT-C parent",
-    "ru": "Исходная модель SFT-C"
+    "en": "Previous CAD-tuned checkpoint",
+    "ru": "Предыдущий CAD-чекпоинт"
   },
   "t069": {
-    "en": "+500 SFT steps",
-    "ru": "+500 шагов SFT"
+    "en": "After 500 more SFT steps",
+    "ru": "После ещё 500 шагов SFT"
   },
   "t070": {
-    "en": "DOWNLOAD RECORDED EVIDENCE ↘",
-    "ru": "СКАЧАТЬ ЗАФИКСИРОВАННЫЕ РЕЗУЛЬТАТЫ ↘"
+    "en": "DOWNLOAD THIS EXPERIMENT’S DATA ↘",
+    "ru": "СКАЧАТЬ ДАННЫЕ ЭТОГО ЭКСПЕРИМЕНТА ↘"
   },
   "t071": {
-    "en": "Each engine uses 66 validation tasks from 33 physical parent designs. Engines share designs; their results are not independent samples. These scores establish performance on this generated tool curriculum.",
-    "ru": "Для каждого движка — 66 validation-задач на 33 исходных деталях. Движки используют общие детали, поэтому результаты не являются независимыми выборками. Эти оценки относятся к нашему сгенерированному набору задач."
+    "en": "Each backend was evaluated on 66 validation tasks from 33 part designs. The two backends share those designs. Their scores should not be counted as independent tests.",
+    "ru": "Для каждого движка проверены 66 задач валидации на 33 вариантах деталей. Движки используют одни и те же детали, поэтому их результаты нельзя считать независимыми испытаниями."
   },
   "t072": {
-    "en": "Remaining skill-retention checks are in progress.",
-    "ru": "Проверки сохранения навыков ещё выполняются."
+    "en": "Retention checks for this earlier run are complete.",
+    "ru": "Проверки сохранения навыков для этого прогона завершены."
   },
   "t073": {
-    "en": "V5 visual episodes",
-    "ru": "Визуальных эпизодов V5"
+    "en": "V5 visual tasks",
+    "ru": "Визуальных задач V5"
   },
   "t074": {
-    "en": "V6 unit-aware episodes",
-    "ru": "Эпизодов V6 с разными единицами"
+    "en": "V6 tasks with unit variations",
+    "ru": "Задач V6 с разными единицами"
   },
   "t075": {
-    "en": "Rejected native teachers",
-    "ru": "Отклонённых нативных траекторий"
+    "en": "Rejected reference solutions",
+    "ru": "Отклонённых эталонных решений"
   },
   "t076": {
     "en": "in these two visual corpora",
     "ru": "в этих двух визуальных корпусах"
   },
   "t077": {
-    "en": "Generated and audited.",
+    "en": "Generated and checked.",
     "ru": "Сгенерировано и проверено."
   },
   "t078": {
-    "en": "These corpora are not all used in checkpoint-500 training.",
-    "ru": "Не все эти корпуса использовались при обучении checkpoint-500."
+    "en": "These are earlier datasets; checkpoint-500 did not train on all of them.",
+    "ru": "Это более ранние наборы данных. Не все они использовались в обучении checkpoint-500."
   },
   "t079": {
-    "en": "04 / THE LEARNING SYSTEM",
-    "ru": "04 / СИСТЕМА ОБУЧЕНИЯ"
+    "en": "04 / TRAINING",
+    "ru": "04 / ОБУЧЕНИЕ"
   },
   "t080": {
-    "en": "From demonstrations to decisions.",
-    "ru": "От примеров к решениям."
+    "en": "Learning to finish the job.",
+    "ru": "Учимся доводить задачу до конца."
   },
   "t081": {
-    "en": "Training starts with executable demonstrations and grows toward recovery from the model’s own mistakes.",
-    "ru": "Обучение начинается с исполняемых демонстраций и развивается к исправлению собственных ошибок модели."
+    "en": "We train on reference actions, then inspect the model’s own runs. Missing features and failed tool calls tell us which examples the next dataset needs.",
+    "ru": "Сначала обучаем модель на эталонных действиях, затем разбираем её собственные попытки. Пропущенные элементы и ошибки инструментов показывают, каких примеров не хватает."
   },
   "t082": {
-    "en": "01 / DEMONSTRATE",
-    "ru": "01 / ДЕМОНСТРАЦИИ"
+    "en": "01 / REFERENCE SOLUTIONS",
+    "ru": "01 / ЭТАЛОННЫЕ РЕШЕНИЯ"
   },
   "t083": {
-    "en": "Verified SFT",
-    "ru": "Проверенный SFT"
+    "en": "Supervised fine-tuning",
+    "ru": "Обучение на примерах"
   },
   "t084": {
-    "en": "Goal images, public CAD state and typed next actions. Completion-only loss with numeric weighting.",
-    "ru": "Целевые изображения, публичное состояние CAD и следующие действия. Loss только по ответу ассистента с повышенным весом чисел."
+    "en": "A drawing, the current CAD state and the next action. LoRA adapts the language model and selected vision layers; the loss is calculated on the answer tokens.",
+    "ru": "Чертёж, текущее состояние CAD и следующее действие. LoRA обучает языковую часть и выбранные зрительные слои. Loss считается по токенам ответа."
   },
   "t085": {
-    "en": "IMPLEMENTED & TRAINED",
-    "ru": "РЕАЛИЗОВАНО И ОБУЧЕНО"
+    "en": "USED IN COMPLETED RUNS",
+    "ru": "ПРИМЕНЯЕТСЯ В ОБУЧЕНИИ"
   },
   "t086": {
-    "en": "02 / REFINE",
-    "ru": "02 / ИСПРАВЛЕНИЯ"
+    "en": "02 / RECOVERY",
+    "ru": "02 / ИСПРАВЛЕНИЕ ОШИБОК"
   },
   "t087": {
-    "en": "Learn from mistakes",
-    "ru": "Учиться на ошибках"
+    "en": "Recover after a mistake",
+    "ru": "Продолжить после ошибки"
   },
   "t088": {
-    "en": "Collect the current model’s multi-step mistakes. Restore unintended edits and verify teacher continuations inside FreeCAD.",
-    "ru": "Собираем многошаговые ошибки текущей модели. Восстанавливаем лишние изменения и проверяем продолжения учителя во FreeCAD."
+    "en": "Collect failed steps from real model runs and verify the corrected continuation in FreeCAD. The collector works, but coverage is still small.",
+    "ru": "Собираем ошибки из реальных попыток модели и проверяем исправленное продолжение во FreeCAD. Сборщик работает, но таких примеров пока мало."
   },
   "t089": {
-    "en": "NATIVE RECOVERY COLLECTOR · PILOT",
-    "ru": "НАТИВНЫЙ СБОР ИСПРАВЛЕНИЙ · ПИЛОТ"
+    "en": "SMALL PILOT DATASET",
+    "ru": "НЕБОЛЬШОЙ ПИЛОТНЫЙ НАБОР"
   },
   "t090": {
-    "en": "03 / OPTIMIZE",
-    "ru": "03 / ОПТИМИЗАЦИЯ"
+    "en": "03 / REINFORCEMENT LEARNING",
+    "ru": "03 / ОБУЧЕНИЕ С ПОДКРЕПЛЕНИЕМ"
   },
   "t091": {
-    "en": "Native reward RL",
-    "ru": "RL с нативной наградой"
+    "en": "Reward from the CAD result",
+    "ru": "Награда за результат в CAD"
   },
   "t092": {
-    "en": "One-action visual GRPO is implemented. Full multi-turn policy-gradient training is a subsequent stage.",
-    "ru": "Реализован визуальный GRPO с одним действием. Полноценный многошаговый policy-gradient RL — следующий этап."
+    "en": "Single-action visual GRPO has been tested. We have not established a quality gain from it, and full multi-step policy-gradient training is not implemented yet.",
+    "ru": "GRPO с одним визуальным действием протестирован. Прирост качества от него пока не подтверждён. Полноценное многошаговое обучение policy gradient ещё не реализовано."
   },
   "t093": {
-    "en": "BANDIT SMOKE TEST · NO PROVEN GAIN",
-    "ru": "ПИЛОТ BANDIT · ПРИРОСТ НЕ ДОКАЗАН"
+    "en": "EXPERIMENTAL",
+    "ru": "ЭКСПЕРИМЕНТАЛЬНО"
   },
   "t094": {
-    "en": "CURRENT TRAINING PROFILE",
-    "ru": "ТЕКУЩИЙ ПРОФИЛЬ ОБУЧЕНИЯ"
+    "en": "CHECKPOINT-500 TRAINING SETUP",
+    "ru": "НАСТРОЙКИ ОБУЧЕНИЯ CHECKPOINT-500"
   },
   "t095": {
     "en": "Qwen3.5-4B",
@@ -396,20 +384,20 @@
     "ru": "RTX 3090"
   },
   "t100": {
-    "en": "05 / OPEN THE WORKSPACE",
-    "ru": "05 / ОТКРОЙТЕ РАБОЧУЮ СРЕДУ"
+    "en": "05 / GET STARTED",
+    "ru": "05 / НАЧАТЬ РАБОТУ"
   },
   "t101": {
-    "en": "Less guessing.",
-    "ru": "Меньше догадок."
+    "en": "Build your",
+    "ru": "Соберите свой"
   },
   "t102": {
-    "en": "More building.",
-    "ru": "Больше практики."
+    "en": "own experiment.",
+    "ru": "эксперимент."
   },
   "t103": {
-    "en": "Inspect the tools, generate native-verified tasks and reproduce the experiments. Source, contracts and limitations are documented together.",
-    "ru": "Изучайте инструменты, генерируйте нативно проверенные задачи и воспроизводите эксперименты. Исходники, контракты и ограничения описаны вместе."
+    "en": "The repository includes the environment, data generators, training scripts and experiment reports. Start with a small native run before generating a larger dataset.",
+    "ru": "В репозитории есть среда, генераторы данных, скрипты обучения и отчёты. Начните с небольшой проверки в CAD, а затем увеличивайте набор данных."
   },
   "t104": {
     "en": "Explore the repository",
@@ -420,128 +408,128 @@
     "ru": "НАЧНИТЕ С ИСХОДНИКОВ"
   },
   "t106": {
-    "en": "Environment setup & reproducibility guide",
-    "ru": "Настройка среды и воспроизводимость"
+    "en": "Setup guide",
+    "ru": "Руководство по установке"
   },
   "t107": {
-    "en": "Native multi-engine documentation",
-    "ru": "Документация по нативным движкам"
+    "en": "FreeCAD and CadQuery setup",
+    "ru": "Настройка FreeCAD и CadQuery"
   },
   "t108": {
-    "en": "Experiment audit & quality roadmap",
-    "ru": "Аудит экспериментов и план развития"
+    "en": "Training notes and known limitations",
+    "ru": "Обучение и известные ограничения"
   },
   "t109": {
-    "en": "Native geometry. Verifiable learning.",
-    "ru": "Нативная геометрия. Проверяемое обучение."
+    "en": "A place to teach models CAD.",
+    "ru": "Среда для обучения моделей работе в CAD."
   },
   "t110": {
-    "en": "OPEN RESEARCH · APACHE 2.0",
-    "ru": "ОТКРЫТЫЕ ИССЛЕДОВАНИЯ · APACHE 2.0"
+    "en": "OPEN SOURCE · APACHE 2.0",
+    "ru": "ОТКРЫТЫЙ КОД · APACHE 2.0"
   },
   "t111": {
     "en": "BACK TO TOP ↑",
     "ru": "НАВЕРХ ↑"
   },
   "t112": {
-    "en": "Results are a recorded snapshot, not live telemetry.",
-    "ru": "Результаты зафиксированы в снимке, это не живая телеметрия."
+    "en": "Recorded results. This page does not show live training progress.",
+    "ru": "Сохранённые результаты. Ход текущего обучения здесь не отображается."
   },
   "t113": {
-    "en": "← Back to the environment",
-    "ru": "← Вернуться к среде"
+    "en": "← Project home",
+    "ru": "← На главную"
   },
   "t114": {
-    "en": "FIELD GUIDE / RESEARCH INFRASTRUCTURE",
-    "ru": "РУКОВОДСТВО / ИССЛЕДОВАТЕЛЬСКАЯ ПЛАТФОРМА"
+    "en": "GETTING STARTED",
+    "ru": "НАЧАЛО РАБОТЫ"
   },
   "t115": {
-    "en": "A workspace for",
-    "ru": "Рабочая среда"
+    "en": "Run your first",
+    "ru": "Запустите первый"
   },
   "t116": {
-    "en": "verifiable learning.",
-    "ru": "для проверяемого обучения."
+    "en": "CAD experiment.",
+    "ru": "CAD-эксперимент."
   },
   "t117": {
-    "en": "cad-env connects language and vision models to native CAD execution. The environment supplies a public task, a structured state and optional goal/current images. A model returns one typed JSON action; the environment executes it, validates the result and returns feedback.",
-    "ru": "cad-env связывает языковые и визуальные модели с нативным CAD. Среда передаёт публичную задачу, структурированное состояние и, при необходимости, целевые и текущие изображения. Модель возвращает одно типизированное JSON-действие; среда исполняет его, проверяет результат и возвращает обратную связь."
+    "en": "cad-env gives a model a task, the current CAD state and, when needed, images. The model returns one JSON action. FreeCAD executes it and sends back the new state or an error. A separate evaluator checks the finished part.",
+    "ru": "cad-env передаёт модели задачу, текущее состояние CAD и, при необходимости, изображения. Модель отвечает одним JSON-действием. FreeCAD выполняет его и возвращает новое состояние или ошибку. Отдельный проверяющий оценивает готовую деталь."
   },
   "t118": {
     "en": "Start with the repository",
     "ru": "Начните с репозитория"
   },
   "t119": {
-    "en": "Install the native applications and use the pinned environment matching your task. Geometry execution and Qwen3.5 training use separate environments. Follow the repository’s",
-    "ru": "Установите нативные приложения и используйте зафиксированное окружение для вашей задачи. Геометрия и обучение Qwen3.5 работают в разных окружениях. Следуйте"
+    "en": "Install FreeCAD separately. Keep geometry tools and Qwen training dependencies in separate environments. Use the repository’s",
+    "ru": "Установите FreeCAD отдельно. Для геометрических инструментов и обучения Qwen нужны разные окружения. Настройка описана в"
   },
   "t120": {
-    "en": "multi-engine setup guide",
-    "ru": "руководству по настройке движков"
+    "en": "CAD setup guide",
+    "ru": "руководстве по CAD-среде"
   },
   "t121": {
-    "en": "and training lockfiles; the website is a static presentation, not a CAD execution service.",
-    "ru": "и lock-файлам зависимостей. Этот сайт представляет проект и не является сервисом исполнения CAD-команд."
+    "en": "and pinned dependency files. This website shows the project and saved examples; it does not run CAD jobs.",
+    "ru": "и файлах закреплённых зависимостей. Сайт показывает проект и сохранённые примеры; CAD-задачи на нём не запускаются."
   },
   "t122": {
-    "en": "The portable action contract",
-    "ru": "Контракт переносимых действий"
+    "en": "The basic tool interface",
+    "ru": "Базовый интерфейс инструментов"
   },
   "t123": {
-    "en": "Actions construct a feature graph with stable identifiers. Parameter edits target named dimensions. Rejected actions preserve the accepted state. The common tool set is deliberately restricted; supporting multiple executors does not mean unrestricted native-API competence.",
-    "ru": "Действия строят граф операций со стабильными идентификаторами. Правки параметров обращаются к именованным размерам. Отклонённые действия сохраняют принятое состояние. Набор инструментов намеренно ограничен: несколько движков не означают владение их полными нативными API."
+    "en": "Each action refers to named objects or dimensions. Invalid actions leave the accepted CAD state unchanged. Seven basic tools are available in the agent interface; advanced solid operations use a separate interface.",
+    "ru": "Действия обращаются к именованным объектам и размерам. Если действие отклонено, принятое состояние CAD сохраняется. В интерфейсе агента семь базовых инструментов; расширенные операции над телами вынесены отдельно."
   },
   "t124": {
-    "en": "Generate native-verified tasks",
-    "ru": "Генерируйте нативно проверенные задачи"
+    "en": "Generate a small dataset",
+    "ru": "Сгенерируйте небольшой набор"
   },
   "t125": {
-    "en": "Use the geometry environment for this command. Each dataset needs a fresh output directory. Split lineage, native artifacts, image assets and exports are audited before training. A passing teacher does not establish that a trained model can solve the task.",
-    "ru": "Используйте для этой команды геометрическое окружение. Каждому набору данных нужна новая выходная директория. До обучения проверяются разбиение по исходным деталям, нативные артефакты, изображения и экспорты. Успешная траектория учителя ещё не доказывает, что модель умеет решать задачу."
+    "en": "Use the geometry environment and a fresh output directory. The generator executes reference solutions and audits the exports. That verifies the data, not the model’s ability to solve it.",
+    "ru": "Запускайте генератор в геометрическом окружении и указывайте новую выходную папку. Он выполняет эталонные решения и проверяет экспорт. Это проверка данных, а не способности модели решить задачу."
   },
   "t126": {
-    "en": "What training currently does",
-    "ru": "Что именно обучается"
+    "en": "How we train the model",
+    "ru": "Как обучается модель"
   },
   "t127": {
-    "en": "Qwen3.5-4B learns next-action prediction through BF16 LoRA, adapting language layers plus selected vision attention blocks and the visual merger. Images and observations are excluded from completion loss. Numeric tokens receive additional weight. Checkpoint-500 has been evaluated on native mechanical tasks; skill-retention measurements record their batch execution profile separately.",
-    "ru": "Qwen3.5-4B учится предсказывать следующее действие через BF16 LoRA. Адаптируются языковые слои, выбранные блоки визуального attention и visual merger. Изображения и наблюдения не входят в completion loss. Числовые токены имеют повышенный вес. Checkpoint-500 проверен на нативных механических задачах; проверки сохранения навыков отдельно указывают пакетный режим исполнения."
+    "en": "Our recent runs use Qwen3.5-4B with BF16 LoRA. Language layers and selected vision layers are adapted; prompt and image tokens are excluded from the supervised loss. The latest drawing pilot used 1000 next-action examples and one epoch. Earlier checkpoint-500 results come from a different curriculum.",
+    "ru": "В последних прогонах используется Qwen3.5-4B с BF16 LoRA. Обучаются языковые и выбранные зрительные слои; токены промпта и изображений исключены из supervised loss. В последнем пилоте по чертежам было 1000 примеров следующего действия и одна эпоха. Результаты checkpoint-500 относятся к другому набору задач."
   },
   "t128": {
-    "en": "Read evidence with its scope",
-    "ru": "Учитывайте границы доказательств"
+    "en": "How to read the results",
+    "ru": "Как читать результаты"
   },
   "t129": {
-    "en": "Report strict native success across all tasks, including failed executions.",
-    "ru": "Показывайте строгий нативный успех по всем задачам, включая неудачные исполнения."
+    "en": "Count a task as solved only when the saved part passes the full native check.",
+    "ru": "Задача решена, только если сохранённая деталь прошла полную проверку в CAD."
   },
   "t130": {
-    "en": "Count physical designs, not correlated views and engine variants, for confidence intervals.",
-    "ru": "Считайте исходные физические детали, а не связанные виды и варианты движков, при оценке доверительных интервалов."
+    "en": "Two views or two standards profiles of one part are still one design.",
+    "ru": "Два вида или два оформления одной детали — это всё ещё одна геометрия."
   },
   "t131": {
-    "en": "Separate visual selection, dimension reading, construction and repair.",
-    "ru": "Разделяйте визуальный выбор, чтение размеров, построение и исправление."
+    "en": "Report construction, editing and drawing-reading tasks separately.",
+    "ru": "Показывайте результаты построения, редактирования и чтения чертежей отдельно."
   },
   "t132": {
-    "en": "Keep test splits sealed during curriculum and checkpoint selection.",
-    "ru": "Не открывайте test-выборки при подборе curriculum и чекпоинтов."
+    "en": "Use validation for development and keep a separate final test set.",
+    "ru": "Используйте валидацию при разработке и отдельный набор для итогового теста."
   },
   "t133": {
-    "en": "One-action GRPO is implemented; full multi-turn policy-gradient RL is not yet implemented.",
-    "ru": "GRPO с одним действием реализован; полноценный многошаговый policy-gradient RL пока не реализован."
+    "en": "Single-action GRPO is experimental; full multi-step RL is not available yet.",
+    "ru": "GRPO с одним действием пока экспериментален; полноценного многошагового RL ещё нет."
   },
   "t134": {
-    "en": "Blender execution is available; its expanded dataset remains experimental.",
-    "ru": "Нативное исполнение Blender доступно; расширенный корпус данных остаётся экспериментальным."
+    "en": "The supported CAD backends are FreeCAD and CadQuery.",
+    "ru": "Поддерживаются FreeCAD и CadQuery."
   },
   "t135": {
     "en": "See the",
     "ru": "Смотрите"
   },
   "t136": {
-    "en": "training audit",
-    "ru": "аудит обучения"
+    "en": "training notes",
+    "ru": "разбор обучения"
   },
   "t137": {
     "en": "benchmark coverage",
@@ -556,24 +544,24 @@
     "ru": "проверки расширенных нативных операций"
   },
   "t140": {
-    "en": "for implementation details and current boundaries. Advanced probes use a separate contract and are not claimed as model capabilities.",
-    "ru": "для подробностей реализации и текущих ограничений. Расширенные проверки используют отдельный контракт и пока не заявляются как способности модели."
+    "en": "for details. The advanced operation probes check the executors, not the model’s learned skills.",
+    "ru": "с подробностями. Расширенные проверки операций оценивают исполнители, а не приобретённые навыки модели."
   },
   "t141": {
-    "en": "Explore native references ↗",
-    "ru": "Изучить нативные эталоны ↗"
+    "en": "See example parts ↗",
+    "ru": "Посмотреть детали ↗"
   },
   "t142": {
     "en": "APACHE 2.0",
     "ru": "APACHE 2.0"
   },
   "w001": {
-    "en": "Native reference",
-    "ru": "Нативный эталон"
+    "en": "Reference part",
+    "ru": "Эталонная деталь"
   },
   "w002": {
-    "en": "Agent workspace",
-    "ru": "Рабочая среда агента"
+    "en": "How an episode works",
+    "ru": "Как устроен эпизод"
   },
   "w003": {
     "en": "FEATURE HISTORY",
@@ -584,59 +572,339 @@
     "ru": "МИРОВЫЕ КООРДИНАТЫ / мм"
   },
   "w005": {
-    "en": "Research in progress",
-    "ru": "Исследование продолжается"
+    "en": "In development",
+    "ru": "В разработке"
   },
   "w006": {
-    "en": "00 / ANATOMY OF AN EPISODE",
-    "ru": "00 / УСТРОЙСТВО ЭПИЗОДА"
+    "en": "00 / ONE EPISODE",
+    "ru": "00 / ОДИН ЭПИЗОД"
   },
   "w007": {
-    "en": "Not just a prompt.",
-    "ru": "Больше, чем промпт."
+    "en": "Give it a task.",
+    "ru": "Поставить задачу."
   },
   "w008": {
-    "en": "A world to act in.",
-    "ru": "Среда для действий."
+    "en": "Let it build.",
+    "ru": "Дать инструменты."
   },
   "w009": {
-    "en": "An observation becomes an action. The CAD kernel executes it. The environment returns state and feedback. That is the learning loop.",
-    "ru": "Наблюдение превращается в действие. CAD-ядро исполняет его. Среда возвращает состояние и обратную связь. Так устроен цикл обучения."
+    "en": "The model chooses an action. FreeCAD applies it and returns the updated state. Repeat until the model finishes or runs out of steps.",
+    "ru": "Модель выбирает действие. FreeCAD выполняет его и возвращает новое состояние. Так продолжается до завершения задачи или исчерпания шагов."
   },
   "w010": {
-    "en": "Explore the architecture",
-    "ru": "Изучить архитектуру"
+    "en": "Read about the interface",
+    "ru": "Подробнее об интерфейсе"
   },
   "w011": {
-    "en": "INTERACTION PROTOCOL",
-    "ru": "ПРОТОКОЛ ВЗАИМОДЕЙСТВИЯ"
+    "en": "STEP THROUGH THE INTERFACE",
+    "ru": "ШАГИ ВЗАИМОДЕЙСТВИЯ"
   },
   "w012": {
-    "en": "ILLUSTRATIVE · NOT A LIVE CAD RUN",
-    "ru": "СХЕМА · БЕЗ ЗАПУСКА CAD"
+    "en": "EXPLANATORY EXAMPLE",
+    "ru": "СХЕМА ДЛЯ ПОЯСНЕНИЯ"
   },
   "w013": {
     "en": "Observe",
-    "ru": "Наблюдать"
+    "ru": "Получить состояние"
   },
   "w014": {
-    "en": "Act",
-    "ru": "Действовать"
+    "en": "Choose an action",
+    "ru": "Выбрать действие"
   },
   "w015": {
     "en": "Execute",
-    "ru": "Исполнить"
+    "ru": "Выполнить"
   },
   "w016": {
-    "en": "Verify",
+    "en": "Check",
     "ru": "Проверить"
   },
   "w017": {
-    "en": "STATE → ACTION → EXECUTION → FEEDBACK",
-    "ru": "СОСТОЯНИЕ → ДЕЙСТВИЕ → ИСПОЛНЕНИЕ → ОТКЛИК"
+    "en": "OBSERVATION → ACTION → NEW STATE",
+    "ru": "НАБЛЮДЕНИЕ → ДЕЙСТВИЕ → НОВОЕ СОСТОЯНИЕ"
   },
   "w018": {
     "en": "Next step",
     "ru": "Следующий шаг"
+  },
+  "nav_blog": {
+    "en": "Updates",
+    "ru": "Обновления"
+  },
+  "nav_guide": {
+    "en": "Guide",
+    "ru": "Руководство"
+  },
+  "news_kicker": {
+    "en": "LATEST / 09 NOV 2026",
+    "ru": "НОВОЕ / 9 НОЯБРЯ 2026"
+  },
+  "news_title": {
+    "en": "Drawings the model can work from.",
+    "ru": "Чертежи, по которым модель строит деталь."
+  },
+  "news_body": {
+    "en": "One CAD part, paired ISO and GOST drawing profiles. We now generate views, sections and feature schedules, then turn them into image inputs and reference action sequences.",
+    "ru": "Одна CAD-деталь, два оформления — ISO и ГОСТ. Генератор создаёт виды, разрезы и таблицы элементов, а затем готовит изображения для модели и эталонные шаги построения."
+  },
+  "news_link": {
+    "en": "Read the update and open the drawings ↗",
+    "ru": "Читать статью и открыть чертежи ↗"
+  },
+  "news_status": {
+    "en": "DRAWING PROFILES · FULL CONFORMANCE NOT CONFIRMED",
+    "ru": "ПРОФИЛИ ОФОРМЛЕНИЯ · ПОЛНОЕ СООТВЕТСТВИЕ НЕ ПОДТВЕРЖДЕНО"
+  },
+  "pilot_title": {
+    "en": "Drawing pilot: results after SFT",
+    "ru": "Пилот по чертежам: результат SFT"
+  },
+  "pilot_scope": {
+    "en": "Same 20 held-out parts in both profiles. Before: our previous CAD-tuned checkpoint. After: one epoch on 1000 next-action examples. A task passes only when the complete part is correct.",
+    "ru": "Одни и те же 20 отложенных деталей в двух оформлениях. До — наш предыдущий CAD-чекпоинт. После — одна эпоха на 1000 примерах следующего действия. Успех засчитывается только за полностью верную деталь."
+  },
+  "pilot_iso": {
+    "en": "ISO: 0 → 3 of 20",
+    "ru": "ISO: 0 → 3 из 20"
+  },
+  "pilot_gost": {
+    "en": "GOST: 0 → 6 of 20",
+    "ru": "ГОСТ: 0 → 6 из 20"
+  },
+  "pilot_note": {
+    "en": "The main remaining failures are missing counterbores and object-name collisions. These results are separate from the earlier checkpoint-500 experiment below.",
+    "ru": "Основные оставшиеся ошибки — пропуски цековок и конфликты имён объектов. Эти результаты относятся к отдельному эксперименту, а не к checkpoint-500 ниже."
+  },
+  "blog_kicker": {
+    "en": "PROJECT NOTES",
+    "ru": "ЗАПИСКИ О ПРОЕКТЕ"
+  },
+  "blog_title": {
+    "en": "What we’re building.",
+    "ru": "Над чем работаем."
+  },
+  "blog_intro": {
+    "en": "Changes to the environment, examples from the datasets and what we learn from testing the models.",
+    "ru": "Изменения в среде, примеры из датасетов и выводы из проверки моделей."
+  },
+  "blog_feature_tag": {
+    "en": "DATA GENERATION / 7 MIN READ",
+    "ru": "ГЕНЕРАЦИЯ ДАННЫХ / 7 МИНУТ"
+  },
+  "article_title": {
+    "en": "One part, two drawing sets.",
+    "ru": "Одна деталь — два комплекта чертежей."
+  },
+  "article_deck": {
+    "en": "How we generate paired ISO and GOST drawing profiles, feed several sheets to a vision model and check the reference part in FreeCAD.",
+    "ru": "Как мы генерируем парные ISO/ГОСТ-чертежи, подаём несколько листов визуальной модели и проверяем эталонную деталь во FreeCAD."
+  },
+  "blog_read": {
+    "en": "Read the article ↗",
+    "ru": "Читать статью ↗"
+  },
+  "blog_short_title": {
+    "en": "Also changed",
+    "ru": "Ещё из изменений"
+  },
+  "blog_families_title": {
+    "en": "Six more part families",
+    "ru": "Ещё шесть семейств деталей"
+  },
+  "blog_families_body": {
+    "en": "Added adapter flanges, bearing cartridges, motor mounts, spacer bushings, blind covers and alignment fixtures. The pilot contains 18 training parts and 18 separate validation parts, each in both drawing profiles.",
+    "ru": "Добавили переходные фланцы, корпуса подшипников, моторные плиты, втулки, глухие крышки и установочные приспособления. В пилоте 18 учебных и 18 отдельных валидационных деталей, каждая в двух оформлениях."
+  },
+  "blog_runtime_title": {
+    "en": "Two CAD backends, an external font cache",
+    "ru": "Два CAD-движка и внешний кэш шрифтов"
+  },
+  "blog_runtime_body": {
+    "en": "FreeCAD and CadQuery remain supported. The optional third backend has been removed. Technical fonts now download during installation with fixed hashes; the repository and new drawing bundles do not include font binaries.",
+    "ru": "Поддерживаются FreeCAD и CadQuery. Дополнительный третий движок удалён. Технический шрифт скачивается при установке с проверкой хеша; в репозитории и новых комплектах чертежей его бинарных файлов нет."
+  },
+  "blog_sft_title": {
+    "en": "First SFT run on the drawing profiles",
+    "ru": "Первый тюн на новых чертежах"
+  },
+  "blog_sft_body": {
+    "en": "On 20 held-out parts, strict success rose from 0 to 3 with ISO inputs and from 0 to 6 with GOST inputs. Both profiles use the same geometry. The starting checkpoint already had CAD training; this is not a raw-model comparison.",
+    "ru": "На 20 отложенных деталях полный успех вырос с 0 до 3 для ISO и с 0 до 6 для ГОСТ. Оформления используют одну геометрию. Начальный чекпоинт уже обучался CAD — это не сравнение с исходной моделью."
+  },
+  "blog_scope": {
+    "en": "Dated notes, not a live training dashboard. Results are reported with their dataset and checkpoint.",
+    "ru": "Это датированные записи, а не монитор текущего обучения. Для результатов указываем набор данных и чекпоинт."
+  },
+  "back_blog": {
+    "en": "← All updates",
+    "ru": "← Все обновления"
+  },
+  "article_date": {
+    "en": "9 November 2026 · cad-env project notes",
+    "ru": "9 ноября 2026 · записки cad-env"
+  },
+  "article_lead": {
+    "en": "Take the bearing cartridge below. It needs an 11 mm shaft clearance and a 30 mm recess, 9 mm deep, for a 6200 bearing. An agent has to build both cuts. Getting the outer shape right while missing the recess still leaves an incorrect part.",
+    "ru": "Возьмём корпус подшипника ниже. В нём нужны проходное отверстие 11 мм и углубление диаметром 30 мм на глубину 9 мм под подшипник 6200. Агент должен построить оба выреза. Даже при верной внешней форме деталь без углубления останется неправильной."
+  },
+  "article_intro": {
+    "en": "That is the kind of detail we want our training data to teach. We have added a drawing pipeline that starts with an editable FreeCAD model and produces two document sets for the same part: our ISO profile in English and our GOST profile in Russian.",
+    "ru": "Именно таким деталям мы хотим научить модель. Новый конвейер берёт редактируемую модель FreeCAD и создаёт два комплекта документов для одной геометрии: наш профиль ISO на английском и профиль ГОСТ на русском."
+  },
+  "article_draft": {
+    "en": "These are draft drawing profiles. We check specific layout, lettering and geometry rules. We have not confirmed full ISO/GOST compliance or approved the parts for manufacture.",
+    "ru": "Это проектные профили оформления. Мы проверяем конкретные правила компоновки, надписей и геометрии. Полное соответствие ISO/ГОСТ и пригодность деталей к изготовлению пока не подтверждены."
+  },
+  "caption_pair": {
+    "en": "The same bearing-cartridge reference, exported in both profiles. The previews show sheet 1; each PDF contains the complete set.",
+    "ru": "Один эталон корпуса подшипника в двух оформлениях. На превью — первый лист; в каждом PDF доступен полный комплект."
+  },
+  "pdf_iso": {
+    "en": "Open ISO PDF ↗",
+    "ru": "Открыть PDF ISO ↗"
+  },
+  "pdf_gost": {
+    "en": "Open GOST PDF ↗",
+    "ru": "Открыть PDF ГОСТ ↗"
+  },
+  "original_image": {
+    "en": "Open full-size image ↗",
+    "ru": "Открыть изображение целиком ↗"
+  },
+  "article_first_title": {
+    "en": "Start with a part we can verify",
+    "ru": "Сначала — деталь, которую можно проверить"
+  },
+  "article_first_body": {
+    "en": "Each family has a parameterized construction program: sketches, pads, holes and, where needed, counterbores. We execute it in FreeCAD and compare the resulting volume, bounds and feature dimensions with the specification. The exporter also checks that every hole and boss is attached to its intended support. Failed references do not enter the accepted dataset.",
+    "ru": "У каждого семейства есть параметрическая программа построения: эскизы, выдавливания, отверстия и, где нужно, цековки. Мы выполняем её во FreeCAD и сверяем объём, габариты и размеры элементов с заданием. Экспорт дополнительно проверяет, что отверстия и выступы привязаны к нужным опорам. Неудачные эталоны не попадают в принятый набор."
+  },
+  "article_bearing_body": {
+    "en": "For the bearing example, the 6200 boundary dimensions—10 mm bore, 30 mm outside diameter and 9 mm width—come from NSK’s published data. The housing around it is our own generated nominal design. Fits, retention, seals and load capacity have not been validated.",
+    "ru": "Для примера с подшипником габариты 6200 — внутренний диаметр 10 мм, наружный 30 мм и ширина 9 мм — взяты из опубликованных данных NSK. Сам корпус — наша сгенерированная номинальная конструкция. Посадки, фиксация, уплотнения и допустимые нагрузки не проверялись."
+  },
+  "article_source_link": {
+    "en": "NSK 6200 dimensions ↗",
+    "ru": "Габариты NSK 6200 ↗"
+  },
+  "article_profiles_title": {
+    "en": "Two layouts, one geometry",
+    "ru": "Два оформления, одна геометрия"
+  },
+  "article_profiles_body": {
+    "en": "The ISO and GOST exports share the native model, dimensions, reference actions and dataset split. They change the document presentation. This gives us a paired test: can the model reconstruct the same part from either drawing set?",
+    "ru": "Экспорты ISO и ГОСТ используют одну модель, размеры, эталонные действия и разбиение данных. Меняется оформление документов. Так можно провести парную проверку: восстановит ли модель одну и ту же деталь по каждому из комплектов?"
+  },
+  "article_iso_title": {
+    "en": "Our ISO profile",
+    "ru": "Наш профиль ISO"
+  },
+  "article_iso_body": {
+    "en": "A3 sheets, English labels, a 20 mm left margin and 10 mm on the other sides. The title block is 180 mm wide. Views and sections are derived from the native solid.",
+    "ru": "Листы А3, надписи на английском, поле 20 мм слева и 10 мм с остальных сторон. Ширина основной надписи — 180 мм. Виды и разрезы получаются из нативного тела."
+  },
+  "article_gost_title": {
+    "en": "Our GOST profile",
+    "ru": "Наш профиль ГОСТ"
+  },
+  "article_gost_body": {
+    "en": "A3 sheets, Russian labels, a 20 mm left margin and 5 mm on the other sides. We check the 185 × 55 mm first-sheet title-block envelope and the 185 × 15 mm continuation envelope. Detailed form and notation review is still pending.",
+    "ru": "Листы А3, надписи на русском, поле 20 мм слева и 5 мм с остальных сторон. Проверяются габариты основной надписи: 185 × 55 мм для первого листа и 185 × 15 мм для следующих. Подробная проверка форм и обозначений ещё впереди."
+  },
+  "article_layout_note": {
+    "en": "These describe what this version implements, not an exhaustive list of the standards’ requirements. Missing approvals, materials and product-specific tolerances are not filled in automatically.",
+    "ru": "Здесь описано то, что реализовано в этой версии, а не полный перечень требований стандартов. Отсутствующие подписи, материалы и допуски конкретного изделия автоматически не придумываются."
+  },
+  "article_input_title": {
+    "en": "What the vision model receives",
+    "ru": "Что получает визуальная модель"
+  },
+  "article_input_body": {
+    "en": "A document set can span several sheets. We keep the original PDF and also export image crops: the views and section from the overview, then the feature table in groups of up to six rows. Position and size/depth crops repeat the feature ID, so the model can join them. Each crop retains its source page and rectangle.",
+    "ru": "Комплект может занимать несколько листов. Мы сохраняем исходный PDF и отдельно готовим изображения: виды и разрез обзорного листа, затем таблицу элементов порциями до шести строк. На фрагментах с координатами и размерами повторяется имя элемента — по нему модель связывает данные. Для каждого фрагмента записываются исходная страница и область."
+  },
+  "article_input_budget": {
+    "en": "The agent receives these images together with the current CAD state. In the drawing benchmark, the state is JSON; there is no live screenshot of the candidate. Each image is processed within a budget of 327,680 pixels per crop, with a context limit of 32,768 tokens. The estimated lettering size is checked, but actual reading accuracy still has to be measured.",
+    "ru": "Агент получает эти изображения вместе с текущим состоянием CAD. В бенчмарке по чертежам состояние передаётся в JSON, без текущего скриншота детали. Бюджет — до 327 680 пикселей на фрагмент и контекст до 32 768 токенов. Мы проверяем расчётный размер надписей, но точность их чтения всё равно нужно измерять."
+  },
+  "article_crop_caption": {
+    "en": "An actual ISO size/depth crop supplied to the model. CB is the additional larger-diameter recess, not a replacement for the main hole.",
+    "ru": "Настоящий ISO-фрагмент размеров и глубин, который получает модель. CB — дополнительное углубление большего диаметра, а не замена основного отверстия."
+  },
+  "article_families_title": {
+    "en": "More than one kind of part",
+    "ru": "Не один шаблон детали"
+  },
+  "article_families_body": {
+    "en": "The generator now covers nine families: the original plates, multi-support fixtures and terraced flanges, plus six mechanical families. Below are two more examples from the new TRAIN pilot. Each is generated at three structural levels. The levels increase complexity within a family; action counts can overlap between different families.",
+    "ru": "Теперь генератор поддерживает девять семейств: исходные пластины, детали с несколькими опорами и ступенчатые фланцы, а также шесть новых механических семейств. Ниже ещё два примера из нового учебного пилота. Для каждого есть три структурных уровня. Сложность растёт внутри семейства; число действий у разных семейств может пересекаться."
+  },
+  "part_flange": {
+    "en": "Adapter flange",
+    "ru": "Переходный фланец"
+  },
+  "part_flange_body": {
+    "en": "A central bore, stepped hub and bolt-circle pattern. Some mounting holes have counterbores.",
+    "ru": "Центральное отверстие, ступенчатая ступица и крепёж по окружности. У части отверстий есть цековки."
+  },
+  "part_fixture": {
+    "en": "Alignment fixture",
+    "ru": "Установочное приспособление"
+  },
+  "part_fixture_body": {
+    "en": "Raised locating bosses, holes on different supports, mounting holes and locating holes.",
+    "ru": "Установочные выступы, отверстия на разных опорах, крепёжные и установочные отверстия."
+  },
+  "part_bearing": {
+    "en": "Bearing cartridge",
+    "ru": "Корпус подшипника"
+  },
+  "article_train_title": {
+    "en": "Turn the drawings into training examples",
+    "ru": "Как чертежи становятся учебными примерами"
+  },
+  "article_train_body": {
+    "en": "For SFT we record the drawing images, the state before an action and the correct next action. One part produces several examples. ISO and GOST variants of that part stay in the same split; they are two observations of one design, not two independent parts. We retain the native reference and checks for later rollouts and reward evaluation.",
+    "ru": "Для SFT сохраняем изображения чертежа, состояние перед действием и верное следующее действие. Одна деталь даёт несколько примеров. Варианты ISO и ГОСТ всегда остаются в одном разбиении: это два наблюдения одной геометрии, а не две независимые детали. Нативный эталон и проверки сохраняются для последующих попыток агента и расчёта награды."
+  },
+  "article_scale_body": {
+    "en": "The first paired corpus contains 500 distinct geometries and 1000 document sets. The newer mechanical pilot adds 18 TRAIN parts and 18 separate validation parts, each in both profiles. A valid reference only establishes that the task is executable. We still evaluate the model separately on held-out parts.",
+    "ru": "Первый парный корпус содержит 500 разных геометрий и 1000 комплектов документов. Новый механический пилот добавляет 18 учебных и 18 отдельных валидационных деталей, каждую в двух оформлениях. Верный эталон доказывает лишь выполнимость задачи. Модель всё равно проверяется отдельно на отложенных деталях."
+  },
+  "article_generate_title": {
+    "en": "Try a small generation run",
+    "ru": "Попробуйте небольшую генерацию"
+  },
+  "article_generate_body": {
+    "en": "With FreeCAD installed, this creates one TRAIN part per family and level: 27 geometries and 54 ISO/GOST document sets. The font installer downloads the pinned font and its licenses to a user cache; no font files are bundled in the repository.",
+    "ru": "При установленном FreeCAD эта команда создаст по одной учебной детали на семейство и уровень: 27 геометрий и 54 комплекта ISO/ГОСТ. Установщик шрифта скачивает закреплённую версию и лицензии в пользовательский кэш; в репозитории файлов шрифта нет."
+  },
+  "article_next_title": {
+    "en": "What still needs work",
+    "ru": "Что ещё нужно улучшить"
+  },
+  "article_next_body": {
+    "en": "Our first drawing SFT run improved full-part success, but it still misses required recesses and sometimes reuses an existing object name. The next data work targets those failures: reading all table fields, recovering from rejected actions and checking the part before finish. More examples need to cover those decisions, not just repeat already easy steps.",
+    "ru": "Первый тюн по чертежам увеличил число полностью решённых задач, но модель всё ещё пропускает углубления и иногда повторно использует имя существующего объекта. Следующие данные нужны именно для этих случаев: читать все поля таблицы, исправлять отклонённые действия и проверять деталь перед finish. Важно покрыть эти решения, а не просто повторять уже лёгкие шаги."
+  },
+  "article_close": {
+    "en": "All examples in this article are TRAIN references from the generator. Their metadata and file hashes are linked below.",
+    "ru": "Все примеры в статье — учебные эталоны генератора. Метаданные и хеши файлов доступны ниже."
+  },
+  "article_methods": {
+    "en": "Implementation notes",
+    "ru": "Подробности реализации"
+  },
+  "article_standard_doc": {
+    "en": "Drawing profiles and checks",
+    "ru": "Профили оформления и проверки"
+  },
+  "article_generator_doc": {
+    "en": "Part generator and commands",
+    "ru": "Генератор деталей и команды"
+  },
+  "latest_data_link": {
+    "en": "Download the recorded pilot results ↘",
+    "ru": "Скачать результаты пилота ↘"
   }
 }

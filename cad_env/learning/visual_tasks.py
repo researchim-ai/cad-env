@@ -190,6 +190,10 @@ def make_visual_group(
 
 
 def render_goal(task, path):
+    if task["goal_spec"].get("kind") == "large_composition":
+        from .extreme_tasks import render_extreme_goal
+
+        return render_extreme_goal(task, path)
     if task["goal_spec"].get("kind", "marker") != "marker":
         from .complex_tasks import render_complex_goal
 

@@ -1,3 +1,5 @@
+> Historical experiment report. Runtime descriptions and measured scores below refer to those runs. Current supported backends are FreeCAD and CadQuery; see the project guide and dated updates for the current implementation.
+
 # GRPO and data scaling audit — 2026-11-05
 
 ## What the existing RL experiment actually established

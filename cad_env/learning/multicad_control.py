@@ -38,8 +38,8 @@ class NoGoalPolicy:
 
 def main():
     p = argparse.ArgumentParser(__doc__)
-    for arg in ["dataset", "model", "output", "engine", "python", "blender"]:
-        p.add_argument("--" + arg, required=arg not in ["python", "blender"])
+    for arg in ["dataset", "model", "output", "engine", "python"]:
+        p.add_argument("--" + arg, required=arg not in ["python"])
     args = vars(p.parse_args())
     from cad_env.multicad.evaluate import evaluate
 

@@ -1,0 +1,4 @@
+# Host export environment. FreeCADCmd and system PySide2 QtSvg are also required.
+# After pip install: python -m cad_env.drawings.font_cache --install
+Pillow>=10
+fonttools==4.58.0

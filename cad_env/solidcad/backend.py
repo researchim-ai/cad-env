@@ -4,7 +4,6 @@ import hashlib
 import json
 import math
 import os
-import shutil
 import signal
 import subprocess
 import sys
@@ -16,18 +15,15 @@ from .schema import validate
 
 
 class SolidBackend:
-    def __init__(self, engine, *, python=None, blender=None, timeout=90):
+    def __init__(self, engine, *, python=None, timeout=90):
         if (
-            engine not in {"freecad", "cadquery", "blender"}
+            engine not in {"freecad", "cadquery"}
             or not math.isfinite(timeout)
             or timeout <= 0
         ):
             raise ValueError("Invalid native engine/timeout")
         self.engine = engine
         self.python = python or sys.executable
-        self.blender = (
-            blender or os.environ.get("BLENDER_BIN") or shutil.which("blender")
-        )
         self.timeout = timeout
         self.freecad = FreeCADBackend().executable if engine == "freecad" else None
         self.sources = {
@@ -40,11 +36,13 @@ class SolidBackend:
         }
 
     def run(
-        self, program, output, *, reference=None, expected_volume=None, tolerance=1e-5
+        self, program, output, *, reference=None, expected_volume=None, tolerance=1e-05
     ):
         if any(
-            hashlib.sha256(p.read_bytes()).hexdigest() != h
-            for p, h in self.sources.items()
+            (
+                hashlib.sha256(p.read_bytes()).hexdigest() != h
+                for p, h in self.sources.items()
+            )
         ):
             raise RuntimeError("Solid engine source changed")
         program = validate(program)
@@ -83,18 +81,6 @@ class SolidBackend:
         )
         if self.engine == "freecad":
             cmd = [self.freecad, str(bootstrap)]
-        elif self.engine == "blender" and self.blender:
-            cmd = [
-                self.blender,
-                "--background",
-                "--factory-startup",
-                "--threads",
-                "2",
-                "--python-exit-code",
-                "1",
-                "--python",
-                str(bootstrap),
-            ]
         else:
             cmd = [self.python, str(bootstrap)]
         env = os.environ.copy()
@@ -119,7 +105,7 @@ class SolidBackend:
         (out / "stdout.log").write_bytes(stdout)
         (out / "stderr.log").write_bytes(stderr)
         path = out / "result.json"
-        if timed or process.returncode or not path.exists():
+        if timed or process.returncode or (not path.exists()):
             result = {
                 "execution_ok": False,
                 "reward": 0.0,

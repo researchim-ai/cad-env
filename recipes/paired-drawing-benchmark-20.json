@@ -1,0 +1,30 @@
+{
+  "dataset": "artifacts/iso-gost-paired-500-v1",
+  "output": "artifacts/paired-20-model-benchmark-v2",
+  "independent_validation_geometries": 20,
+  "representations_per_geometry": ["iso", "gost"],
+  "models": {
+    "qwen35-base": "artifacts/models/qwen35-4b",
+    "release-candidate": "artifacts/release-trial-v1/candidate/merged"
+  },
+  "planned_agent_episodes": 80,
+  "selection": "Deterministic hash ordering with approximately equal quotas across family x difficulty; no policy-performance filtering",
+  "selection_seed": 20261109,
+  "physical_gpu": 1,
+  "batch_size": 2,
+  "episode_workers": 4,
+  "max_context": 32768,
+  "max_pixels_per_image": 327680,
+  "max_new_tokens_per_action": 1024,
+  "maximum_action_budget": 128,
+  "consecutive_unchanged_public_states_stop": 6,
+  "temperature": 0,
+  "strict_json": true,
+  "success_requires_agent_finish_and_native_exact_success": true,
+  "forced_final_probe_is_evaluator_only": true,
+  "infrastructure_errors_are_not_model_zeroes": true,
+  "training_started": false,
+  "test_opened": false,
+  "scope": "Bounded development pilot on synthetic nominal-geometry drawings, not a full-corpus or industrial benchmark",
+  "command": "CUDA_VISIBLE_DEVICES=1 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv-qwen35/bin/python -u scripts/benchmark_paired_drawings.py --paired artifacts/iso-gost-paired-500-v1 --output artifacts/paired-20-model-benchmark-v2 --model qwen35-base=artifacts/models/qwen35-4b --model release-candidate=artifacts/release-trial-v1/candidate/merged --count 20 --batch-size 2 --workers 4 --stagnant-limit 6 --max-new-tokens 1024"
+}

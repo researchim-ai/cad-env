@@ -19,13 +19,13 @@ CadQuery Python, not our restricted action JSON.
 
 Implemented development coverage:
 
-- Exact native mechanical construction in FreeCAD/CadQuery and polygonal
-  mechanical construction in Blender, with independent reference/analytic checks.
+- Exact native mechanical construction in FreeCAD/CadQuery, with independent
+  reference/analytic checks.
 - Single-view or multi-view goal images, plus explicit visual dimensions.
 - Parameter/feature and oracle-horizon variation; new flanges, bores, counterbores
   and blind-hole patterns, in addition to our existing shaft/boss/plate curricula.
 - Native execution validity, strict geometric correctness, native projects and
-  current-state feedback. CadQuery/Blender workers also report solid-volume IoU;
+  current-state feedback. CadQuery workers also report solid-volume IoU;
   sampled Chamfer/coverage diagnostics use fixed coordinates and a declared seed.
 
 Not implemented: official CADBench import/adapter, its principal-axis alignment
@@ -37,7 +37,7 @@ these are different observation contracts and their scores cannot be pooled.
 
 An experimental separate `solidcad.v1` contract now executes polygon and arc
 extrusions, revolves, fillets, chamfers, top-open shells, boolean operations and
-multiple final solids in all three engines. It passed native positive/negative
+multiple final solids in both retained engines. It passed native positive/negative
 feature tests; see [advanced solid-graph scope](SOLIDCAD.md). These operations
 are not part of the frozen portable benchmark or its queued mixed-SFT model.
 Sweep/loft, general sketch constraints, assemblies and richer manufacturing
@@ -56,8 +56,9 @@ screenshots and actions with task-specific checks on saved engineering state.
 Our current overlap is part construction, numeric edits, preservation of existing
 features and native artifact inspection. Synthetic repairs provide recovery
 practice. We do not implement the GUI action benchmark, tangent/arc constraints,
-assemblies, CAM, FEM, point clouds or drawing-document generation. New Blender
-support does not establish those FreeCAD workflows. These need separate action
+assemblies, CAM, FEM or point clouds. Model-derived drawing generation is now
+available through the separate drawing exporter; this does not implement the
+CADWorld GUI tasks. These need separate action
 sets and independent result checkers, not only a new render.
 
 ## Native FreeCAD validation
@@ -79,5 +80,5 @@ combinations need independent development and fresh final holdouts.
 
 The first question for mixed training is whether it helps transfer without
 forgetting FreeCAD. Merely executing the same common JSON tool program in three
-engines does not prove the model knows three native APIs. Native Python API
+engines does not prove the model knows multiple native APIs. Native Python API
 code-generation would be a separate action contract and benchmark.

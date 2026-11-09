@@ -78,9 +78,9 @@ Integration-тесты требуют настоящий FreeCAD и явно ski
 
 Apache 2.0.
 
-## Optional Blender and CadQuery executors
+## Optional CadQuery executor
 
-The `cad_env.multicad` package adds native Blender and CadQuery execution next to
+The `cad_env.multicad` package adds native CadQuery execution next to
 FreeCAD, with a shared restricted tool language, sequential `reset/step`,
 procedural mechanical tasks, image-conditioned SFT exports, TRAIN-only native
 reward hooks and held-out evaluation. See [multi-engine setup and commands](docs/MULTICAD.md)
@@ -95,6 +95,14 @@ multiple solids) use a separate [solid-graph contract](docs/SOLIDCAD.md).
 Новый `python -m cad_env.learning.visual_scale --output <fresh-directory>`
 генерирует визуальные задачи с 1–4 редактированиями и отдельным holdout на 5–6;
 данные проходят нативную проверку и аудит информационной зависимости от картинок.
+
+## License scope
+
+The project license is [Apache 2.0](LICENSE). Independent third-party assets and
+runtime dependencies retain their own licenses; see
+[third-party notices](THIRD_PARTY_NOTICES.md). Technical fonts are downloaded to a user cache at installation, not bundled. See
+the [license-scope audit](docs/LICENSE_AUDIT.md) before publishing standalone
+model/data/binary bundles.
 
 ## Project website and batched validation
 

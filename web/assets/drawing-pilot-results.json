@@ -1,0 +1,21 @@
+{
+  "recorded": "2026-11-09",
+  "scope": "Same 20 development-validation parts in ISO/GOST; not 40 independent designs. Before is a previously CAD-tuned checkpoint, not untouched Qwen.",
+  "model": "Qwen3.5-4B",
+  "optimizer_steps": 250,
+  "epochs": 1,
+  "training_rows": 1000,
+  "profiles": {
+    "iso": {
+      "tasks": 20,
+      "before_successes": 0,
+      "after_successes": 3
+    },
+    "gost": {
+      "tasks": 20,
+      "before_successes": 0,
+      "after_successes": 6
+    }
+  },
+  "source": "artifacts/iso-gost-sft-pilot-v1/comparison.json"
+}

@@ -113,8 +113,7 @@ def merge(shards, output):
             for p in root.rglob("*")
             if p.is_file()
             and ".runtime" not in p.parts
-            and p.suffix
-            in {".json", ".jsonl", ".png", ".py", ".FCStd", ".step", ".blend"}
+            and p.suffix in {".json", ".jsonl", ".png", ".py", ".FCStd", ".step"}
         },
     }
     (root / "summary.json").write_text(json.dumps(result, indent=2))
@@ -126,13 +125,11 @@ def merge(shards, output):
 
 def main():
     p = argparse.ArgumentParser(__doc__)
-    p.add_argument(
-        "--engine", required=True, choices=["freecad", "cadquery", "blender"]
-    )
+    p.add_argument("--engine", required=True, choices=["freecad", "cadquery"])
     p.add_argument("--output", required=True)
     p.add_argument("--shards-dir", required=True)
     p.add_argument("--python", required=True)
-    p.add_argument("--blender", required=True)
+
     p.add_argument("--seeds", type=int, default=40)
     p.add_argument("--seeds-per-shard", type=int, default=5)
     p.add_argument("--workers", type=int, default=4)
@@ -174,8 +171,6 @@ def main():
                     "--modalities",
                     "image",
                     "--varied-edits",
-                    "--blender",
-                    args.blender,
                     "--output",
                     str(target),
                 ],

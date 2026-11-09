@@ -93,8 +93,17 @@ for src, dst in [
     ("GRPO_AND_DATA_AUDIT.md", "training-audit.md"),
     ("BENCHMARK_COVERAGE.md", "benchmark-coverage.md"),
     ("SOLIDCAD.md", "solidcad.md"),
+    ("DRAWING_STANDARDS.md", "drawing-standards.md"),
+    ("INDUSTRIAL_GENERATOR.md", "industrial-generator.md"),
 ]:
     shutil.copyfile(ROOT / "docs" / src, WEB / "docs" / dst)
+    if dst == "training-audit.md":
+        path = WEB / "docs" / dst
+        path.write_text(
+            "> Historical experiment report. Runtime descriptions and measured scores below refer to those runs. "
+            "Current supported backends are FreeCAD and CadQuery; see the project guide and dated updates for the current implementation.\n\n"
+            + path.read_text()
+        )
 data = {
     "updated": datetime.now(timezone(timedelta(hours=5))).isoformat(timespec="minutes"),
     "repository": "https://github.com/researchim-ai/cad-env",

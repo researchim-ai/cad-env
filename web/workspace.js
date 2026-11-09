@@ -7,14 +7,14 @@
     {
       direction: 'ENV → AGENT',
       code: '{\n  "goal": "Set the marked hole to Ø 8 mm",\n  "observation": ["goal image", "public CAD state"]\n}',
-      en: 'The model receives a goal and public observations. Hidden reference geometry belongs to the evaluator, never the policy input.',
-      ru: 'Модель получает задачу и публичные наблюдения. Скрытая эталонная геометрия доступна оценщику, но не передаётся агенту.'
+      en: 'The model sees the task and current CAD state. The reference model is kept by the evaluator.',
+      ru: 'Модель видит задачу и текущее состояние CAD. Эталонная модель хранится у проверяющего.'
     },
     {
       direction: 'AGENT → TOOL',
       code: '{\n  "op": "set_parameter",\n  "target": "Holes",\n  "parameter": "diameter_0", "value": 8\n}',
-      en: 'One typed action changes a model parameter. Tool names and JSON stay the same across languages; the surrounding task can be multimodal.',
-      ru: 'Одно типизированное действие меняет параметр модели. Названия инструментов и JSON одинаковы в обоих языках; сама задача может быть мультимодальной.'
+      en: 'The model returns one JSON action. Here it changes a named diameter to 8 mm.',
+      ru: 'Модель возвращает одно JSON-действие. В этом примере оно меняет именованный диаметр на 8 мм.'
     },
     {
       direction: 'TOOL → CAD KERNEL',
@@ -25,8 +25,8 @@
     {
       direction: 'ENV → LEARNING SYSTEM',
       code: '{\n  "checks": ["geometry", "protected parameters",\n             "feature history", "task success"],\n  "reward": "computed by the native evaluator"\n}',
-      en: 'A finish action triggers native task validation. This diagram illustrates the protocol; it is not an episode result or a claim of RL improvement.',
-      ru: 'Действие finish запускает нативную проверку задачи. Это схема протокола, а не результат эпизода или заявление об улучшении от RL.'
+      en: 'After finish, the evaluator checks the saved part. This is an example of the interface, not a recorded model run.',
+      ru: 'После finish проверяющий оценивает сохранённую деталь. Здесь показан пример взаимодействия, а не записанная попытка модели.'
     }
   ];
   let phase = 0;

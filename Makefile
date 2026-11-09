@@ -8,6 +8,11 @@ help: ## Показать справку
 
 install: ## Установить зависимости
 	pip install -r requirements.txt
+	python -m cad_env.drawings.font_cache --install
+
+install-drawings: ## Установить зависимости чертежей и шрифт в пользовательский кэш
+	pip install -r requirements-drawings.txt
+	python -m cad_env.drawings.font_cache --install
 
 install-dev: ## Установить в режиме разработки
 	pip install -e ".[dev]"

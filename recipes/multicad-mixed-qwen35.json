@@ -5,8 +5,7 @@
   "wait_for": "artifacts/vision-leap-experiment/phase-grpo-evaluate.json",
   "datasets": {
     "freecad": "artifacts/multicad-expanded-freecad",
-    "cadquery": "artifacts/multicad-expanded-cadquery",
-    "blender": "artifacts/multicad-expanded-blender-fixed"
+    "cadquery": "artifacts/multicad-expanded-cadquery"
   },
   "replay": [
     "artifacts/gpu1-corpus-v2",
@@ -14,7 +13,6 @@
     "artifacts/visual-grounding-v3"
   ],
   "geometry_python": ".venv-multicad/bin/python",
-  "blender": "artifacts/runtimes/blender-4.5.9-linux-x64/blender",
   "training": {
     "steps": 400,
     "rows_per_source": 1024,
