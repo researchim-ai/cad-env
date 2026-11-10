@@ -160,8 +160,8 @@
     "ru": "02 / ПРИМЕРЫ ДЕТАЛЕЙ"
   },
   "t044": {
-    "en": "From actions to a part.",
-    "ru": "От действий к детали."
+    "en": "How the environment works.",
+    "ru": "Как работает среда."
   },
   "t045": {
     "en": "These three parts come from the training set. Choose one to inspect its geometry and the reference sequence that built it.",
@@ -228,12 +228,12 @@
     "ru": "03 / ПРЕДЫДУЩИЙ ЭКСПЕРИМЕНТ"
   },
   "t061": {
-    "en": "Check the part,",
-    "ru": "Проверяем деталь,"
+    "en": "The environment validates the part,",
+    "ru": "Среда проверяет деталь,"
   },
   "t062": {
-    "en": "not just the answer.",
-    "ru": "а не только ответ."
+    "en": "as well as the model’s response.",
+    "ru": "а не только ответ модели."
   },
   "t063": {
     "en": "An earlier checkpoint-500 experiment on the basic tool curriculum. Both starting and final checkpoints had already received CAD training. These are not results for an untouched model or for the new ISO/GOST drawing benchmark.",
@@ -548,8 +548,8 @@
     "ru": "с подробностями. Расширенные проверки операций оценивают исполнители, а не приобретённые навыки модели."
   },
   "t141": {
-    "en": "See example parts ↗",
-    "ru": "Посмотреть детали ↗"
+    "en": "See example parts",
+    "ru": "Посмотреть детали"
   },
   "t142": {
     "en": "APACHE 2.0",
@@ -648,8 +648,8 @@
     "ru": "Одна CAD-деталь, два оформления — ISO и ГОСТ. Генератор создаёт виды, разрезы и таблицы элементов, а затем готовит изображения для модели и эталонные шаги построения."
   },
   "news_link": {
-    "en": "Read the update and open the drawings ↗",
-    "ru": "Читать статью и открыть чертежи ↗"
+    "en": "Read the update and open the drawings",
+    "ru": "Читать статью и открыть чертежи"
   },
   "news_status": {
     "en": "DRAWING PROFILES · FULL CONFORMANCE NOT CONFIRMED",
@@ -700,8 +700,8 @@
     "ru": "Как мы генерируем парные ISO/ГОСТ-чертежи, подаём несколько листов визуальной модели и проверяем эталонную деталь во FreeCAD."
   },
   "blog_read": {
-    "en": "Read the article ↗",
-    "ru": "Читать статью ↗"
+    "en": "Read the article",
+    "ru": "Читать статью"
   },
   "blog_short_title": {
     "en": "Also changed",
@@ -714,14 +714,6 @@
   "blog_families_body": {
     "en": "Added adapter flanges, bearing cartridges, motor mounts, spacer bushings, blind covers and alignment fixtures. The pilot contains 18 training parts and 18 separate validation parts, each in both drawing profiles.",
     "ru": "Добавили переходные фланцы, корпуса подшипников, моторные плиты, втулки, глухие крышки и установочные приспособления. В пилоте 18 учебных и 18 отдельных валидационных деталей, каждая в двух оформлениях."
-  },
-  "blog_runtime_title": {
-    "en": "Two CAD backends, an external font cache",
-    "ru": "Два CAD-движка и внешний кэш шрифтов"
-  },
-  "blog_runtime_body": {
-    "en": "FreeCAD and CadQuery remain supported. The optional third backend has been removed. Technical fonts now download during installation with fixed hashes; the repository and new drawing bundles do not include font binaries.",
-    "ru": "Поддерживаются FreeCAD и CadQuery. Дополнительный третий движок удалён. Технический шрифт скачивается при установке с проверкой хеша; в репозитории и новых комплектах чертежей его бинарных файлов нет."
   },
   "blog_sft_title": {
     "en": "First SFT run on the drawing profiles",
@@ -760,16 +752,16 @@
     "ru": "Один эталон корпуса подшипника в двух оформлениях. На превью — первый лист; в каждом PDF доступен полный комплект."
   },
   "pdf_iso": {
-    "en": "Open ISO PDF ↗",
-    "ru": "Открыть PDF ISO ↗"
+    "en": "Open ISO PDF",
+    "ru": "Открыть PDF ISO"
   },
   "pdf_gost": {
-    "en": "Open GOST PDF ↗",
-    "ru": "Открыть PDF ГОСТ ↗"
+    "en": "Open GOST PDF",
+    "ru": "Открыть PDF ГОСТ"
   },
   "original_image": {
-    "en": "Open full-size image ↗",
-    "ru": "Открыть изображение целиком ↗"
+    "en": "Open full-size image",
+    "ru": "Открыть изображение целиком"
   },
   "article_first_title": {
     "en": "Start with a part we can verify",
@@ -784,8 +776,8 @@
     "ru": "Для примера с подшипником габариты 6200 — внутренний диаметр 10 мм, наружный 30 мм и ширина 9 мм — взяты из опубликованных данных NSK. Сам корпус — наша сгенерированная номинальная конструкция. Посадки, фиксация, уплотнения и допустимые нагрузки не проверялись."
   },
   "article_source_link": {
-    "en": "NSK 6200 dimensions ↗",
-    "ru": "Габариты NSK 6200 ↗"
+    "en": "NSK 6200 dimensions",
+    "ru": "Габариты NSK 6200"
   },
   "article_profiles_title": {
     "en": "Two layouts, one geometry",
@@ -906,5 +898,33 @@
   "latest_data_link": {
     "en": "Download the recorded pilot results ↘",
     "ru": "Скачать результаты пилота ↘"
+  },
+  "drawing_choose": {
+    "en": "Example part",
+    "ru": "Пример детали"
+  },
+  "drawing_bearing": {
+    "en": "Bearing cartridge",
+    "ru": "Корпус подшипника"
+  },
+  "drawing_flange": {
+    "en": "Adapter flange",
+    "ru": "Переходный фланец"
+  },
+  "drawing_fixture": {
+    "en": "Alignment fixture",
+    "ru": "Установочное приспособление"
+  },
+  "drawing_gost": {
+    "en": "GOST",
+    "ru": "ГОСТ"
+  },
+  "drawing_pdf": {
+    "en": "Open PDF · all sheets",
+    "ru": "Открыть PDF · все листы"
+  },
+  "drawing_full": {
+    "en": "Full-size image",
+    "ru": "Изображение целиком"
   }
 }

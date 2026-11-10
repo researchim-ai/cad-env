@@ -94,5 +94,5 @@
   }};
   document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => window.CAD_I18N.set(button.dataset.language)));
   apply();
-  fetch('translations.json').then(response => { if (!response.ok) throw new Error('Translation catalog unavailable'); return response.json(); }).then(catalog => { strings = catalog; apply(); }).catch(error => console.error(error));
+  fetch('translations.json', { cache: 'no-store' }).then(response => { if (!response.ok) throw new Error('Translation catalog unavailable'); return response.json(); }).then(catalog => { strings = catalog; apply(); }).catch(error => console.error(error));
 })();
