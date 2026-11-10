@@ -1,0 +1,20 @@
+[
+  {
+    "op": "create_body",
+    "name": "Body"
+  },
+  {
+    "op": "sketch_rectangle",
+    "name": "BaseSketch",
+    "body": "Body",
+    "length": 240.0,
+    "width": 13.0
+  },
+  {
+    "op": "pad",
+    "name": "Level1",
+    "body": "Body",
+    "profile": "BaseSketch",
+    "length": 13.0
+  }
+]

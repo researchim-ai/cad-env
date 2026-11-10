@@ -1,0 +1,1708 @@
+{
+  "scope": "Two illustrative successful designs per difficulty; easy and medium include plate/fixture families, hard shows two flange variants. Selection is not the aggregate success rate.",
+  "preview_framing_margin": 1.2,
+  "examples": [
+    {
+      "id": "easy-01",
+      "task_id": "x-0d99715c5bb4e7039e745ee8",
+      "family": "heterogeneous_plate",
+      "split": "validation",
+      "pads": 0,
+      "holes": 2,
+      "steps": 10,
+      "difficulty": "easy",
+      "bounds_mm": [
+        0,
+        0,
+        0,
+        216,
+        174,
+        16
+      ],
+      "solutions": {
+        "gost": {
+          "file": "easy-01-gost.FCStd",
+          "sha256": "80687e758d7693454034e20bba45203739361e25539ed305b8e05c4d87d92616",
+          "actions": "easy-01-gost-actions.json",
+          "actions_sha256": "1cff3ce38da740f52a8c52c429070e103733d6b0e4115e26ea54181b67cb6d86",
+          "steps": 10,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/gost/x-0d99715c5bb4e7039e745ee8/native/x-0d99715c5bb4e7039e745ee8-c6147a0eb9/step-010/output.FCStd",
+          "geometry_error": 0.0
+        },
+        "iso": {
+          "file": "easy-01-iso.FCStd",
+          "sha256": "6b83e1f1599c2ccd4c640723588daea06e756f51e99349cc84102de9d5800122",
+          "actions": "easy-01-iso-actions.json",
+          "actions_sha256": "d3f00910e83e8b58cbc86bd3c7e4a40f6c943c2cf0ee3e465080deaaea94a60c",
+          "steps": 10,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/iso/x-0d99715c5bb4e7039e745ee8/native/x-0d99715c5bb4e7039e745ee8-56e77d9f2b/step-010/output.FCStd",
+          "geometry_error": 0.0
+        }
+      },
+      "baseline": {
+        "iso": {
+          "file": "easy-01-base-iso.FCStd",
+          "sha256": "3b35cbed975bbf67585ce009a763fb20cb5024d9b13eaf406e8e073825d7ef69",
+          "actions": "easy-01-base-iso-actions.json",
+          "actions_sha256": "bdb3304a327a8415366d7d7b01eca0a31479826be9b4d13b7a3d4aabdcddd1ef",
+          "steps": 9,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/iso/x-0d99715c5bb4e7039e745ee8/final-score/output.FCStd"
+        },
+        "gost": {
+          "file": "easy-01-base-gost.FCStd",
+          "sha256": "21ff9a67b498e78924a761fbd3cb42bfb166df40c94f3f60a15ea5d39862266e",
+          "actions": "easy-01-base-gost-actions.json",
+          "actions_sha256": "bdb3304a327a8415366d7d7b01eca0a31479826be9b4d13b7a3d4aabdcddd1ef",
+          "steps": 9,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/gost/x-0d99715c5bb4e7039e745ee8/final-score/output.FCStd"
+        }
+      },
+      "inputs": {
+        "iso": {
+          "images": [
+            {
+              "file": "easy-01-input-iso-01.png",
+              "sha256": "297a56ee35d62ca0fb9a0220dd098a966186d27a745502a6072ae8902a3cf3bd",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-01.png"
+            },
+            {
+              "file": "easy-01-input-iso-02.png",
+              "sha256": "d9a56bcb91c0ec729093ef644e8c0f0c6aabf02f27bd8459613ecf3b1b2cb274",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-02.png"
+            },
+            {
+              "file": "easy-01-input-iso-03.png",
+              "sha256": "2ecd02eb68e986b257f04de5d6432c57907f9b33518f2356cb97ef24b23184ac",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-03.png"
+            },
+            {
+              "file": "easy-01-input-iso-04.png",
+              "sha256": "7e2a5e5c499055b7684355f50d5c0edcf4e4c59a2a79ffff739ea5ebf55b86b8",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-04.png"
+            },
+            {
+              "file": "easy-01-input-iso-05.png",
+              "sha256": "b9de18fbfba67a8989c7154efa329a5c4692249ed3366a49a0e991ec21c1e03d",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-3 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-05.png"
+            },
+            {
+              "file": "easy-01-input-iso-06.png",
+              "sha256": "ef1d920c820076091fc7f48ff0aff69b7a9eafffed46751b9d2a49486dfe8561",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-3 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-06.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        },
+        "gost": {
+          "images": [
+            {
+              "file": "easy-01-input-gost-01.png",
+              "sha256": "e5f92b245075078b0d17a076f5a84a2e5466e7eb1dd21ae6f85a4ff00a1bff7d",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-01.png"
+            },
+            {
+              "file": "easy-01-input-gost-02.png",
+              "sha256": "1e8f2867a6fc15f2cdccf16ea82ecfae10c2d1bd54263ec08774fc898cbed9a9",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-02.png"
+            },
+            {
+              "file": "easy-01-input-gost-03.png",
+              "sha256": "1e32f615912538658562d659ee0576b6657464b48d5908a289f01853d6714178",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-03.png"
+            },
+            {
+              "file": "easy-01-input-gost-04.png",
+              "sha256": "62e4b4909402ffe5fb1178196b31e686ac8f3820c0791f40ed48f31f5ef4cdd5",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-04.png"
+            },
+            {
+              "file": "easy-01-input-gost-05.png",
+              "sha256": "cda0651fe658269a5efd1deafd67a6f79e4575bf2c3d9f307a97153fe63a095a",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-3 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-05.png"
+            },
+            {
+              "file": "easy-01-input-gost-06.png",
+              "sha256": "0034f5e63493f49fed4e1e750302bc882c97c874eefb214ab8249754dd93f094",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-3 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0001/dataset/drawings/0163cb1da7516d1a54640006/vlm/tile-06.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        }
+      },
+      "rendered_from": "easy-01-iso.FCStd",
+      "previews": {
+        "iso": {
+          "file": "easy-01-iso.png",
+          "sha256": "27984c185ba678a626ebcafb20d7bae3e6c08748e7ccfaadefa884df449543a0"
+        },
+        "top": {
+          "file": "easy-01-top.png",
+          "sha256": "080a6e77593259d022e00dbf0831531ee93294051cb9750f2f69be6533976099"
+        }
+      }
+    },
+    {
+      "id": "easy-02",
+      "task_id": "x-16e3fd3d720d4ffb16ff3728",
+      "family": "multi_support_fixture",
+      "split": "validation",
+      "pads": 1,
+      "holes": 5,
+      "steps": 16,
+      "difficulty": "easy",
+      "bounds_mm": [
+        0,
+        0,
+        0,
+        220,
+        158,
+        37
+      ],
+      "solutions": {
+        "iso": {
+          "file": "easy-02-iso.FCStd",
+          "sha256": "f4b143c41ed08fb1ef74d28a3329b7c4856a8e126f42b70141b865b200cdb804",
+          "actions": "easy-02-iso-actions.json",
+          "actions_sha256": "1534a538fa74de8179e0fb5f8612466df424fb6398cc891363f9c04969b9035b",
+          "steps": 16,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/iso/x-16e3fd3d720d4ffb16ff3728/native/x-16e3fd3d720d4ffb16ff3728-75deee78e6/step-016/output.FCStd",
+          "geometry_error": 0.0
+        }
+      },
+      "baseline": {
+        "iso": {
+          "file": "easy-02-base-iso.FCStd",
+          "sha256": "f437a41bfcb95bd29a9a14d99dd22355b28e859cce1233e83604049f4b6eb1f3",
+          "actions": "easy-02-base-iso-actions.json",
+          "actions_sha256": "ad383a7fc60cc0804068013b8fc80d4947a271b085bf1a22c25dcd0e5c8887be",
+          "steps": 10,
+          "committed_actions": 3,
+          "task_success": false,
+          "shape_valid": true,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/iso/x-16e3fd3d720d4ffb16ff3728/final-score/output.FCStd"
+        },
+        "gost": {
+          "file": "easy-02-base-gost.FCStd",
+          "sha256": "6921621826fc769e557a0f040ffe9d8b1bb8d1270926924f06f5e043731703a7",
+          "actions": "easy-02-base-gost-actions.json",
+          "actions_sha256": "6a95f642d770da9adf2086a6c585e309187207b0088b5a4033dbfae5228e8148",
+          "steps": 9,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/gost/x-16e3fd3d720d4ffb16ff3728/final-score/output.FCStd"
+        }
+      },
+      "inputs": {
+        "iso": {
+          "images": [
+            {
+              "file": "easy-02-input-iso-01.png",
+              "sha256": "5e18d889695500d3610e33a82e96c1d39a631e695daecf09c9ae6ac7847214ce",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-01.png"
+            },
+            {
+              "file": "easy-02-input-iso-02.png",
+              "sha256": "d4bf850cecdff4514bb7624c1a87546a46ce3a7ab46ab555f6ff0e0ff4aee6b4",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-02.png"
+            },
+            {
+              "file": "easy-02-input-iso-03.png",
+              "sha256": "d6e7e223f269a189b1a58f0e7bd6b8914592391fc6dada86f53b01c1866892cf",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-03.png"
+            },
+            {
+              "file": "easy-02-input-iso-04.png",
+              "sha256": "630d6a26cd8e5b693c8107abce281991b20d74380f9bd233a7609629ad7f3424",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-04.png"
+            },
+            {
+              "file": "easy-02-input-iso-05.png",
+              "sha256": "d088bc7cdf2c9926effba1489f1a28a9b5787b96c46973dbc424883976e31cb7",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-05.png"
+            },
+            {
+              "file": "easy-02-input-iso-06.png",
+              "sha256": "46dcf1de57074f686a779c9d7933b3746fa6ae142f9f0059143d1c983336124a",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-06.png"
+            },
+            {
+              "file": "easy-02-input-iso-07.png",
+              "sha256": "3b4abac04c51241cc88d0e5134358731b914805dc466147e430c787185b4dd9e",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-7 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-07.png"
+            },
+            {
+              "file": "easy-02-input-iso-08.png",
+              "sha256": "271e234912f2fed65b684bf035d026c2656811a668398d1d98b7cfdc559203ea",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-7 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-08.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        },
+        "gost": {
+          "images": [
+            {
+              "file": "easy-02-input-gost-01.png",
+              "sha256": "63a0a7a08beb923b7402c5e7808c38e0e7ff4335384865e17c8570f4d768b3ac",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-01.png"
+            },
+            {
+              "file": "easy-02-input-gost-02.png",
+              "sha256": "1165b7b5f64e3db4d0d09f235bf99f53c48b6e0cc56246c1283360f323ce3da6",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-02.png"
+            },
+            {
+              "file": "easy-02-input-gost-03.png",
+              "sha256": "77e4246f6eb8e6baf23b788c3b32022523b88a8c265a3b47da8b9dbd36ead59b",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-03.png"
+            },
+            {
+              "file": "easy-02-input-gost-04.png",
+              "sha256": "19f1fc9b2bfdbcffcf9a77c094b4746f607292a7b8ae6e39d196a6c3b2fb2f5f",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-04.png"
+            },
+            {
+              "file": "easy-02-input-gost-05.png",
+              "sha256": "026342967ef09b46a215ec9e0a3fd7339e2bd7f39bba339e1c2a7d9c89010c3e",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-05.png"
+            },
+            {
+              "file": "easy-02-input-gost-06.png",
+              "sha256": "1afa5247963e4dadae7ba3421854d9fec01e467635c50feb51d0e81b2630ab8c",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-06.png"
+            },
+            {
+              "file": "easy-02-input-gost-07.png",
+              "sha256": "7a1e6f82e8a69b82a0c8b94019d3429ee6d0eefac01f66df333e8fca998e47a1",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-7 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-07.png"
+            },
+            {
+              "file": "easy-02-input-gost-08.png",
+              "sha256": "93e6c3f5b1001a54fc48049a495c36c4ac786983eaf4a4d2703a19b590504f2a",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-7 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/easy-0000/dataset/drawings/984d288987d012008a5f54dd/vlm/tile-08.png"
+            }
+          ],
+          "task_success": false,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        }
+      },
+      "rendered_from": "easy-02-iso.FCStd",
+      "previews": {
+        "iso": {
+          "file": "easy-02-iso.png",
+          "sha256": "172fe55b061ff4711070046a8d4f1fcb0792a8a4ec8979ff2f122a7787c7e096"
+        },
+        "top": {
+          "file": "easy-02-top.png",
+          "sha256": "a1b0a98b0ea6f7836bc82190e67e2b795d26459ff736261f5161aa8465dd2a39"
+        }
+      }
+    },
+    {
+      "id": "medium-01",
+      "task_id": "x-ee0fbe0be984d94b21b619c9",
+      "family": "heterogeneous_plate",
+      "split": "validation",
+      "pads": 0,
+      "holes": 12,
+      "steps": 40,
+      "difficulty": "medium",
+      "bounds_mm": [
+        0,
+        0,
+        0,
+        228,
+        150,
+        20
+      ],
+      "solutions": {
+        "gost": {
+          "file": "medium-01-gost.FCStd",
+          "sha256": "2828ddbd15503472812fe9d359cf9f724ada0e19922452fc5a54373d0db629a5",
+          "actions": "medium-01-gost-actions.json",
+          "actions_sha256": "3b8c1e59bf36ff92c01ddeb5c6ecc5e732556b81355c6f704ce267a764ed8981",
+          "steps": 40,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/gost/x-ee0fbe0be984d94b21b619c9/native/x-ee0fbe0be984d94b21b619c9-2b80f391aa/step-040/output.FCStd",
+          "geometry_error": 0.0
+        }
+      },
+      "baseline": {
+        "iso": {
+          "file": "medium-01-base-iso.FCStd",
+          "sha256": "366aad84bd9a22002b83b10ff3350ac33df38b22ccb54b282a2e9c70f74facf1",
+          "actions": "medium-01-base-iso-actions.json",
+          "actions_sha256": "0ad0ed70e6d39eb81a23b986eae520d9e3403e7c57b0b9a00df85f895b384e99",
+          "steps": 9,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/iso/x-ee0fbe0be984d94b21b619c9/final-score/output.FCStd"
+        },
+        "gost": {
+          "file": "medium-01-base-gost.FCStd",
+          "sha256": "5622428d85ed492df5b152e38afda89334a9b1f0a4c9138b08ecf23c6d38e7e7",
+          "actions": "medium-01-base-gost-actions.json",
+          "actions_sha256": "f4b6ec3c06604c1ed739ac846317e64f37f743922d8c689e0ea7110aed5570fb",
+          "steps": 8,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/gost/x-ee0fbe0be984d94b21b619c9/final-score/output.FCStd"
+        }
+      },
+      "inputs": {
+        "iso": {
+          "images": [
+            {
+              "file": "medium-01-input-iso-01.png",
+              "sha256": "6d9106c75151c5c42c8328d3aa33f6d6b586139ebf04a9dedaf2f20e82c6fb77",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-01.png"
+            },
+            {
+              "file": "medium-01-input-iso-02.png",
+              "sha256": "7f481aeeeaf51c334049b1221fd83838fa25603296a090fa25c07f34d98cd596",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-02.png"
+            },
+            {
+              "file": "medium-01-input-iso-03.png",
+              "sha256": "34b9e626d4f83843db4db2918a46bd2b49905f48efa4e9b722f385faa9037141",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-03.png"
+            },
+            {
+              "file": "medium-01-input-iso-04.png",
+              "sha256": "1c7db1df2b018b66cfcad0e7d8bbca6b636120cc2606ac143371d27259c9d966",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-04.png"
+            },
+            {
+              "file": "medium-01-input-iso-05.png",
+              "sha256": "fdf26e9d08e307f7915ec55af51ff0adab6ed5f8d024d860410bcf7213b8fe46",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-05.png"
+            },
+            {
+              "file": "medium-01-input-iso-06.png",
+              "sha256": "2af0fc6bfe96d7305ab38e3b0fdae01f461ab96b46a0c140bdb345ab44fd8f29",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-06.png"
+            },
+            {
+              "file": "medium-01-input-iso-07.png",
+              "sha256": "96498e8be07fb6bac75d39f216c922bf78a2966473eb640a08f00958e1b1faf0",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-07.png"
+            },
+            {
+              "file": "medium-01-input-iso-08.png",
+              "sha256": "e3e2e1191f5baff114d06e6fd484353af41d68fe25305437bdadead1540661c7",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-08.png"
+            },
+            {
+              "file": "medium-01-input-iso-09.png",
+              "sha256": "452c41f0e94c0efc3b6d60a84e956ef40cf49ce7e1fca7c83b23b698382567e3",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-13 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-09.png"
+            },
+            {
+              "file": "medium-01-input-iso-10.png",
+              "sha256": "f2a1363ea04ce982ba0e5b3b542c50ef3d9c11093e78cc42b425cf79dc51e15e",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-13 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-10.png"
+            }
+          ],
+          "task_success": false,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        },
+        "gost": {
+          "images": [
+            {
+              "file": "medium-01-input-gost-01.png",
+              "sha256": "9cd2e1a60cacd6bead37aa7d6c5392bdd16412385d19a03021621894d6cbee07",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-01.png"
+            },
+            {
+              "file": "medium-01-input-gost-02.png",
+              "sha256": "d971527172a11dfb987b48fbc487c4e4b5fe064e5e72c3a37ec6109f6dea62d1",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-02.png"
+            },
+            {
+              "file": "medium-01-input-gost-03.png",
+              "sha256": "80d4794960cc57765f873fc6657bf7b4d3c4650a4dbdb724d4c159bf79f9c87a",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-03.png"
+            },
+            {
+              "file": "medium-01-input-gost-04.png",
+              "sha256": "ebdd8b833d522fe54f41e39c1280917fbe082c370ebbb2bdcd350a728c0024e2",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-04.png"
+            },
+            {
+              "file": "medium-01-input-gost-05.png",
+              "sha256": "0aa89e4b516a8328d91c9e092a5c06c211c4e1f3a1d751deae8e787c4b06c245",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-05.png"
+            },
+            {
+              "file": "medium-01-input-gost-06.png",
+              "sha256": "826e45969934d47cef65619285de41647fbabefbce4f338722920a975f51a71c",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-06.png"
+            },
+            {
+              "file": "medium-01-input-gost-07.png",
+              "sha256": "3c51b46145c6c74f28cedf10bab2c3e066d22e506d0abf56286edfdeaf48ca7a",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-07.png"
+            },
+            {
+              "file": "medium-01-input-gost-08.png",
+              "sha256": "c6e326f9a88eb2f2739b8af19402c4388b28386b3dae7fcf275cf246992a95f8",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-08.png"
+            },
+            {
+              "file": "medium-01-input-gost-09.png",
+              "sha256": "5818faf0cb6e93e213af24814796ef43859949c689268a2e259e1d937ce0b7a0",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-13 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-09.png"
+            },
+            {
+              "file": "medium-01-input-gost-10.png",
+              "sha256": "df5a13e63d4122c122e4620d6cb25be3485f848ce84403bbce23c0cbb717e365",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-13 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0000/dataset/drawings/edfde21f12e5b45ab894bec2/vlm/tile-10.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        }
+      },
+      "rendered_from": "medium-01-gost.FCStd",
+      "previews": {
+        "iso": {
+          "file": "medium-01-iso.png",
+          "sha256": "dea105151dc3db4891182dbf0974377301849e6057e090a4de68eeed56fd4401"
+        },
+        "top": {
+          "file": "medium-01-top.png",
+          "sha256": "5429e48af3542c7c77441d40b15cda7023a4a7fdc218bad513b77d48c42566b6"
+        }
+      }
+    },
+    {
+      "id": "medium-02",
+      "task_id": "x-250053dc6005026d46d7c6e5",
+      "family": "multi_support_fixture",
+      "split": "validation",
+      "pads": 4,
+      "holes": 8,
+      "steps": 35,
+      "difficulty": "medium",
+      "bounds_mm": [
+        0,
+        0,
+        0,
+        236,
+        150,
+        36
+      ],
+      "solutions": {
+        "gost": {
+          "file": "medium-02-gost.FCStd",
+          "sha256": "04bfaddcd80cdb4c841c78797d08a7e087fe041184464d99a5f9dfb8c98ee373",
+          "actions": "medium-02-gost-actions.json",
+          "actions_sha256": "f03c570b21ee7e19466228bd74068bc9a78f6aadaaf9f2cb7f7f790082ebd9ef",
+          "steps": 35,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/gost/x-250053dc6005026d46d7c6e5/native/x-250053dc6005026d46d7c6e5-d22cb4c698/step-035/output.FCStd",
+          "geometry_error": 0.0
+        }
+      },
+      "baseline": {
+        "iso": {
+          "file": "medium-02-base-iso.FCStd",
+          "sha256": "e92716fba59cd713ec41cad7f2873da07569cd3ef0e682e21fbfdc5245a5a704",
+          "actions": "medium-02-base-iso-actions.json",
+          "actions_sha256": "179d890cadae8b96ea5694ea3c818cfd6a291560e581b29782597074feb7145b",
+          "steps": 9,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/iso/x-250053dc6005026d46d7c6e5/final-score/output.FCStd"
+        },
+        "gost": {
+          "file": "medium-02-base-gost.FCStd",
+          "sha256": "70a9ca79b3090a852e2584b6ac9b158b7e2ad8ba519b86bf69ae52237f40506c",
+          "actions": "medium-02-base-gost-actions.json",
+          "actions_sha256": "179d890cadae8b96ea5694ea3c818cfd6a291560e581b29782597074feb7145b",
+          "steps": 9,
+          "committed_actions": 2,
+          "task_success": false,
+          "shape_valid": false,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/gost/x-250053dc6005026d46d7c6e5/final-score/output.FCStd"
+        }
+      },
+      "inputs": {
+        "iso": {
+          "images": [
+            {
+              "file": "medium-02-input-iso-01.png",
+              "sha256": "7a26f42e9140420b501aeb64b4998f0f40f89acc7e5a0299ddb4b78977860cad",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-01.png"
+            },
+            {
+              "file": "medium-02-input-iso-02.png",
+              "sha256": "72129e0811bd39707508e02df782c57b69ac65fe684312b189d0d2e4bf1337af",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-02.png"
+            },
+            {
+              "file": "medium-02-input-iso-03.png",
+              "sha256": "f3fe6b931e23f5099b7ee51894bd758a8048435ae0f166fb414f2d314ddf68fe",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-03.png"
+            },
+            {
+              "file": "medium-02-input-iso-04.png",
+              "sha256": "5da7ec0836a795af79cf57219c64f2403bb08d48dc7435b95d2ff07d84d2115c",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-04.png"
+            },
+            {
+              "file": "medium-02-input-iso-05.png",
+              "sha256": "f9b5399c574cc15c002274e0c67e043887d549cdef7130ccce9b09efe4933320",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-05.png"
+            },
+            {
+              "file": "medium-02-input-iso-06.png",
+              "sha256": "6bf996abdcab0dad45847f5e53a492b6b545574d924dac28b0dd69e8c64932b4",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-06.png"
+            },
+            {
+              "file": "medium-02-input-iso-07.png",
+              "sha256": "1a67599733fd9cc992b56b09558fe137c4bd121ef8ee418ea4854c6a21f8ef0e",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-07.png"
+            },
+            {
+              "file": "medium-02-input-iso-08.png",
+              "sha256": "417cdce368af576f106680ce46dd516a62d8f7919ee335d42f0e66b2d936e9cc",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-08.png"
+            },
+            {
+              "file": "medium-02-input-iso-09.png",
+              "sha256": "114c91a0cdb029769de891f110fb80ce80cbdde6a90143a5d2ad477c6d873a0e",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-13 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-09.png"
+            },
+            {
+              "file": "medium-02-input-iso-10.png",
+              "sha256": "74bfbb56faa6b406a13866390491a33033fc08bfd67ac6b1dfd6addb236a9a3c",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-13 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-10.png"
+            }
+          ],
+          "task_success": false,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        },
+        "gost": {
+          "images": [
+            {
+              "file": "medium-02-input-gost-01.png",
+              "sha256": "6d377c2eda0050c6e65265dae7780c6c4f17407e1f9b7972ccc0d52ef2d8ad5e",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-01.png"
+            },
+            {
+              "file": "medium-02-input-gost-02.png",
+              "sha256": "de5eafe766971b3cbc29194872be33e7acbf1804b7449d6b9235252314d7de38",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-02.png"
+            },
+            {
+              "file": "medium-02-input-gost-03.png",
+              "sha256": "c7f819c8d61bda4dcfaa0cc0876db02b53fc8edb6d3e6e8de7c7cef460769642",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-03.png"
+            },
+            {
+              "file": "medium-02-input-gost-04.png",
+              "sha256": "67c8ee863e274923e72d2706cc27410d647804f742282f9fd7c6dadfdca68b7e",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-04.png"
+            },
+            {
+              "file": "medium-02-input-gost-05.png",
+              "sha256": "0306872b3926a1f667efae60700ea51d0c6da8809de9e4cdb735a048b173e6ed",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-05.png"
+            },
+            {
+              "file": "medium-02-input-gost-06.png",
+              "sha256": "e0c6117bf3e9e98eaba13ab371b6891861d6707cfadab3ff999dccabef347d1d",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-06.png"
+            },
+            {
+              "file": "medium-02-input-gost-07.png",
+              "sha256": "8f6761db76eaf6e5700c7ea94d156a6488af0de4cd3544779ba6e6701e686d7a",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-07.png"
+            },
+            {
+              "file": "medium-02-input-gost-08.png",
+              "sha256": "1211b44a2852bdd7328d8db78269f50d2e4670f756545738b69f5c30cdb3dcd7",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-08.png"
+            },
+            {
+              "file": "medium-02-input-gost-09.png",
+              "sha256": "9789f1b38ca0c55f70812d858622b31c91c68045dc7bcb9b3c515f6fcc3cb5c1",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-13 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-09.png"
+            },
+            {
+              "file": "medium-02-input-gost-10.png",
+              "sha256": "57e0667a60a4e0167070c2fed14810b8100200facc12e973a387fec47f31774b",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-13 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/medium-0001/dataset/drawings/5502e9c4bc6f358cb5cbfb2e/vlm/tile-10.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        }
+      },
+      "rendered_from": "medium-02-gost.FCStd",
+      "previews": {
+        "iso": {
+          "file": "medium-02-iso.png",
+          "sha256": "66dba40617a6ddf9e4969267ef15b6bc83d7d34367f5ddd3c7064b37f9382486"
+        },
+        "top": {
+          "file": "medium-02-top.png",
+          "sha256": "0b28517fee4cdff6ff85486dd8cb7117a4e980b7e1166f416037f80e41f660bd"
+        }
+      }
+    },
+    {
+      "id": "flange-01",
+      "task_id": "x-04bb1dc9870669c49ff75a0a",
+      "family": "terraced_flange_stack",
+      "split": "validation",
+      "pads": 18,
+      "holes": 35,
+      "steps": 108,
+      "difficulty": "hard",
+      "bounds_mm": [
+        -116,
+        -116,
+        0,
+        116,
+        116,
+        150
+      ],
+      "solutions": {
+        "gost": {
+          "file": "flange-01-gost.FCStd",
+          "sha256": "facdb0b43fda965db4caeb0c3f689a2854760d4871a34772cae7251c434f1579",
+          "actions": "flange-01-gost-actions.json",
+          "actions_sha256": "41e35b912b834b00df6ac987e0f8df7a47a8a6577f28187f0866b2dd58acf5e5",
+          "steps": 108,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/gost/x-04bb1dc9870669c49ff75a0a/native/x-04bb1dc9870669c49ff75a0a-606a49ae41/step-108/output.FCStd",
+          "geometry_error": 0.0
+        },
+        "iso": {
+          "file": "flange-01-iso.FCStd",
+          "sha256": "ff387841446c78b1b9182bdddec77c032415f3c6ee2b8addf0d9b9b565b0929f",
+          "actions": "flange-01-iso-actions.json",
+          "actions_sha256": "41e35b912b834b00df6ac987e0f8df7a47a8a6577f28187f0866b2dd58acf5e5",
+          "steps": 108,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/iso/x-04bb1dc9870669c49ff75a0a/native/x-04bb1dc9870669c49ff75a0a-ce26ba9d15/step-108/output.FCStd",
+          "geometry_error": 0.0
+        }
+      },
+      "baseline": {
+        "iso": {
+          "file": "flange-01-base-iso.FCStd",
+          "sha256": "21f87cbef7d47a2e1983682e66dfe5feda52a76543c694625a364c6c6126e055",
+          "actions": "flange-01-base-iso-actions.json",
+          "actions_sha256": "853323435579435259bc8dbf225fb6507a4ddd429b725bbcc29b1ced9d4647b5",
+          "steps": 10,
+          "committed_actions": 3,
+          "task_success": false,
+          "shape_valid": true,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/iso/x-04bb1dc9870669c49ff75a0a/final-score/output.FCStd"
+        },
+        "gost": {
+          "file": "flange-01-base-gost.FCStd",
+          "sha256": "6f62caf0bf3196784206293608a8dfb0ef115d14df37599a62a58e76266415d5",
+          "actions": "flange-01-base-gost-actions.json",
+          "actions_sha256": "e54ca39eab8cbc27c6e493ef237cb14a1b6921e3ade3f230987d4dacca683302",
+          "steps": 11,
+          "committed_actions": 4,
+          "task_success": false,
+          "shape_valid": true,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/gost/x-04bb1dc9870669c49ff75a0a/final-score/output.FCStd"
+        }
+      },
+      "inputs": {
+        "iso": {
+          "images": [
+            {
+              "file": "flange-01-input-iso-01.png",
+              "sha256": "ff95271714f703bd068e447e60a309fb0649950d6faae94cc32160b69f128997",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-01.png"
+            },
+            {
+              "file": "flange-01-input-iso-02.png",
+              "sha256": "7bfaa6dc543d55ba5a119473e81819df32d7d92fd76ac30a0c914c120de230fe",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-02.png"
+            },
+            {
+              "file": "flange-01-input-iso-03.png",
+              "sha256": "cd0faaad88b902345716a9bc78e1fd5ff277b8eb451e9d8e5b762694e9630041",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-03.png"
+            },
+            {
+              "file": "flange-01-input-iso-04.png",
+              "sha256": "6ada6ace0f79b75fc858885d6e5a8ee5a8ff37120e7c37982b7e053e2ac5b5cc",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-04.png"
+            },
+            {
+              "file": "flange-01-input-iso-05.png",
+              "sha256": "8bbe8eefac791bee22caf8f554150f9b16aca25506a6f627dbe6e6df212df068",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-05.png"
+            },
+            {
+              "file": "flange-01-input-iso-06.png",
+              "sha256": "0065ad31bfe93bbba8931a8ee00e6f5d1193fb7a72c5dabd166b6873d9b9a8a8",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-06.png"
+            },
+            {
+              "file": "flange-01-input-iso-07.png",
+              "sha256": "419ca467415f74778d9b7d602bfb52e16c4270fd15c5ff82821c46154e81b898",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-07.png"
+            },
+            {
+              "file": "flange-01-input-iso-08.png",
+              "sha256": "93ec956c1b60a2ee4268f371539c6308cead12504879d4691f3e5080fc210e76",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-08.png"
+            },
+            {
+              "file": "flange-01-input-iso-09.png",
+              "sha256": "0485a9a9135cc5c2f57d4c8b0c862d64499b72ff79aa228c59f9a82d8c17b161",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-09.png"
+            },
+            {
+              "file": "flange-01-input-iso-10.png",
+              "sha256": "f0601dc21c1b178068eed03fcb5e66a6f707b323c3c6c9382ed1c4c94875f363",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-10.png"
+            },
+            {
+              "file": "flange-01-input-iso-11.png",
+              "sha256": "3f92d7d7ff91326c90ea56649f5f30768a80ec6d7e87d8d2f6aa1586bd0f251f",
+              "ordinal": 11,
+              "caption": "sheet-03.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-11.png"
+            },
+            {
+              "file": "flange-01-input-iso-12.png",
+              "sha256": "49902d91f2d5a620f8e27614dc8ddd88ecc7c0068ee9fbf2841df1efa6180c3f",
+              "ordinal": 12,
+              "caption": "sheet-03.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-12.png"
+            },
+            {
+              "file": "flange-01-input-iso-13.png",
+              "sha256": "537020ae495a5a65b14f28ddf10a423ae3a8fd3cea2e505cde19c09a5ecb8d9e",
+              "ordinal": 13,
+              "caption": "sheet-03.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-13.png"
+            },
+            {
+              "file": "flange-01-input-iso-14.png",
+              "sha256": "9a0a5d47b0e10378f6bc63edafb0018ba93007b7c4b1fdc80097f1edfcf0db05",
+              "ordinal": 14,
+              "caption": "sheet-03.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-14.png"
+            },
+            {
+              "file": "flange-01-input-iso-15.png",
+              "sha256": "c93d2a66ce58d05c87863a2bf8ad522d666143d3d5c1ee399e8e23e9f41bdc6e",
+              "ordinal": 15,
+              "caption": "sheet-03.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-15.png"
+            },
+            {
+              "file": "flange-01-input-iso-16.png",
+              "sha256": "51f556e53019d12f5b09ddf2d8f586f395c762d70a6b6caf18fd34595fa0b7e4",
+              "ordinal": 16,
+              "caption": "sheet-03.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-16.png"
+            },
+            {
+              "file": "flange-01-input-iso-17.png",
+              "sha256": "ed9cf9e77dd112550ff6f4f4fc2837d916c6c30b85fe61b7251d34e9a7aaf0e6",
+              "ordinal": 17,
+              "caption": "sheet-04.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-17.png"
+            },
+            {
+              "file": "flange-01-input-iso-18.png",
+              "sha256": "2c2a0f3ca7573e8b22415736fdcf10ea8a926290ad9b99d30a610e770ff98329",
+              "ordinal": 18,
+              "caption": "sheet-04.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-18.png"
+            },
+            {
+              "file": "flange-01-input-iso-19.png",
+              "sha256": "bfc47a9358a75d2a4a345527d0de3a98d1c900c309845bc4df4376a22cd875a2",
+              "ordinal": 19,
+              "caption": "sheet-04.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-19.png"
+            },
+            {
+              "file": "flange-01-input-iso-20.png",
+              "sha256": "b3153b2c85786935ed63dac19fe3831187b805784903957bed706614623cac11",
+              "ordinal": 20,
+              "caption": "sheet-04.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-20.png"
+            },
+            {
+              "file": "flange-01-input-iso-21.png",
+              "sha256": "c09cf7393b715314ddbb5bbe494e43989089d72aa27a6b9bdd523d791feb2bb4",
+              "ordinal": 21,
+              "caption": "sheet-04.png / rows 13-17 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-21.png"
+            },
+            {
+              "file": "flange-01-input-iso-22.png",
+              "sha256": "a4ae181f93e3475f3c57083f70af131378f3abbfe54fc204d44d3db3873b9540",
+              "ordinal": 22,
+              "caption": "sheet-04.png / rows 13-17 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-22.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        },
+        "gost": {
+          "images": [
+            {
+              "file": "flange-01-input-gost-01.png",
+              "sha256": "c7038a081b7ee3a307e38b90cb97638254ebb387aa1e9a69077c6ca3badba5c8",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-01.png"
+            },
+            {
+              "file": "flange-01-input-gost-02.png",
+              "sha256": "865de2fa3b99a4540b7b55c0c75a4f10b37d97525166cfb87bfe36da78660032",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-02.png"
+            },
+            {
+              "file": "flange-01-input-gost-03.png",
+              "sha256": "6a069207c388ce0ece3af716cee68c8509f95c2478ae10ad74f8b073c382dad4",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-03.png"
+            },
+            {
+              "file": "flange-01-input-gost-04.png",
+              "sha256": "930e17015c72fb31ea90076a346a51303a262c9bffbfbc7cc73ed74166d38df1",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-04.png"
+            },
+            {
+              "file": "flange-01-input-gost-05.png",
+              "sha256": "5344d247e41836db5c934cb1b37b59b03de7b37c9f191999fa90dfc3a1c2a4a5",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-05.png"
+            },
+            {
+              "file": "flange-01-input-gost-06.png",
+              "sha256": "ee2755bf9e6f858d7714f01e6be7727451aa088f21fb1f5372eec4615116c7f0",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-06.png"
+            },
+            {
+              "file": "flange-01-input-gost-07.png",
+              "sha256": "6d85cde75872b8f89ad1fa759d7c960bc58f1d2d79c08f06879844b57c2aa51a",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-07.png"
+            },
+            {
+              "file": "flange-01-input-gost-08.png",
+              "sha256": "1069c3320c1a85269c3192b9898ecee0c272f455993388306d85ad481f1b0773",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-08.png"
+            },
+            {
+              "file": "flange-01-input-gost-09.png",
+              "sha256": "47f994fb24ca796cc2892ef2aa1bc946c48881fa57eb46bf33511a577f75dfe1",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-09.png"
+            },
+            {
+              "file": "flange-01-input-gost-10.png",
+              "sha256": "4d319736b149a68cc88001c5bceeabc0449a0efd558a021f72896789eff05cab",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-10.png"
+            },
+            {
+              "file": "flange-01-input-gost-11.png",
+              "sha256": "7a203e548a6c1107d3eff8abc0a4e64b3de7a99bc84328acfe1cbdaea7a6c295",
+              "ordinal": 11,
+              "caption": "sheet-03.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-11.png"
+            },
+            {
+              "file": "flange-01-input-gost-12.png",
+              "sha256": "f78def334b90e8a1deb40d50a0575fb13c390069c465feb204b97c9998cd4b80",
+              "ordinal": 12,
+              "caption": "sheet-03.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-12.png"
+            },
+            {
+              "file": "flange-01-input-gost-13.png",
+              "sha256": "b210724d7e2ef662522c6101cddc42418d0c525fc064ed6752f369534abe0e9f",
+              "ordinal": 13,
+              "caption": "sheet-03.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-13.png"
+            },
+            {
+              "file": "flange-01-input-gost-14.png",
+              "sha256": "2630e80d9d4d64dfd849db4f71fd318924a18fa536904642f144b96baa4ade51",
+              "ordinal": 14,
+              "caption": "sheet-03.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-14.png"
+            },
+            {
+              "file": "flange-01-input-gost-15.png",
+              "sha256": "bda45ed9416358f753b4c2912144ab95280369cd359649664b7ec837bbe84418",
+              "ordinal": 15,
+              "caption": "sheet-03.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-15.png"
+            },
+            {
+              "file": "flange-01-input-gost-16.png",
+              "sha256": "f7f017936b2cbe969cf5070c83a675e0ddda5dafba18e9af138b1987628f1869",
+              "ordinal": 16,
+              "caption": "sheet-03.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-16.png"
+            },
+            {
+              "file": "flange-01-input-gost-17.png",
+              "sha256": "c617e2d928732ebd397b742050196d2ec72ec3cd239b0add768c444a22494551",
+              "ordinal": 17,
+              "caption": "sheet-04.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-17.png"
+            },
+            {
+              "file": "flange-01-input-gost-18.png",
+              "sha256": "1b26bf49a7b7fec21e10b42b7a665b8fe78b41a73c18a424a86fca339cf11ffe",
+              "ordinal": 18,
+              "caption": "sheet-04.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-18.png"
+            },
+            {
+              "file": "flange-01-input-gost-19.png",
+              "sha256": "e2fa7b1c9eeff01c6a56dc9a71953a50c8e1e98021a00083429e8c2e781bde73",
+              "ordinal": 19,
+              "caption": "sheet-04.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-19.png"
+            },
+            {
+              "file": "flange-01-input-gost-20.png",
+              "sha256": "80ec0a04e7d5b6e6262b1cf414978b4893c0559568b4ed1a19144dde62ff6687",
+              "ordinal": 20,
+              "caption": "sheet-04.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-20.png"
+            },
+            {
+              "file": "flange-01-input-gost-21.png",
+              "sha256": "993a7e58ed7d3576fe36d114346dfd97400cfc5d47b75f0914c59f8de96e1097",
+              "ordinal": 21,
+              "caption": "sheet-04.png / rows 13-17 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-21.png"
+            },
+            {
+              "file": "flange-01-input-gost-22.png",
+              "sha256": "8fd4a7524accf6b3aac21320bf2a61bb62252e82f4ea1dfeae6fd4a2eaa41f48",
+              "ordinal": 22,
+              "caption": "sheet-04.png / rows 13-17 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0000/dataset/drawings/f3a1a216381433a50f603e53/vlm/tile-22.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        }
+      },
+      "rendered_from": "flange-01-iso.FCStd",
+      "previews": {
+        "iso": {
+          "file": "flange-01-iso.png",
+          "sha256": "cbd0a1f16404c1472fe332de499e93bec0929b556f3aa362f32804e840c2a445"
+        },
+        "top": {
+          "file": "flange-01-top.png",
+          "sha256": "a91d74815ba2b29dc39bac2e775a1da1e6260111c52883bd80059790ef8b418e"
+        }
+      }
+    },
+    {
+      "id": "flange-02",
+      "task_id": "x-2052e2d56293bd1826fddc03",
+      "family": "terraced_flange_stack",
+      "split": "validation",
+      "pads": 18,
+      "holes": 35,
+      "steps": 108,
+      "difficulty": "hard",
+      "bounds_mm": [
+        -120,
+        -120,
+        0,
+        120,
+        120,
+        149
+      ],
+      "solutions": {
+        "gost": {
+          "file": "flange-02-gost.FCStd",
+          "sha256": "2fa0b4b5661f183ed02cea4d1b15203542257c482b1f662c19f18098dfca1189",
+          "actions": "flange-02-gost-actions.json",
+          "actions_sha256": "c652746a2cad0334ada3299a42b75923f89b69b672d4828ca2d516159d851d87",
+          "steps": 108,
+          "source": "artifacts/curriculum-benchmark-90-v1/checkpoint250/tuned-iso-gost/gost/x-2052e2d56293bd1826fddc03/native/x-2052e2d56293bd1826fddc03-f2f3a6c30b/step-108/output.FCStd",
+          "geometry_error": 0.0
+        }
+      },
+      "baseline": {
+        "iso": {
+          "file": "flange-02-base-iso.FCStd",
+          "sha256": "04447f79a55f16b62fd43a32d4fd939c74bc2db892fc7ffa096a139dea286bb7",
+          "actions": "flange-02-base-iso-actions.json",
+          "actions_sha256": "60b42a5e2a5a9fc64b70ccfe147d2e0b24752b4fa6b3c6b03268069f99852580",
+          "steps": 10,
+          "committed_actions": 3,
+          "task_success": false,
+          "shape_valid": true,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/iso/x-2052e2d56293bd1826fddc03/final-score/output.FCStd"
+        },
+        "gost": {
+          "file": "flange-02-base-gost.FCStd",
+          "sha256": "555d58b4ffdd57cada3ddc3ae5cfbf6862b56662a4cdd0cbe09598e78e14544d",
+          "actions": "flange-02-base-gost-actions.json",
+          "actions_sha256": "eb76d61352e3eab8d1f4480503058334e87c10722b4eef282e76d62ecea4c6e2",
+          "steps": 11,
+          "committed_actions": 5,
+          "task_success": false,
+          "shape_valid": true,
+          "source": "artifacts/curriculum-benchmark-90-v1/baseline/qwen35-base/gost/x-2052e2d56293bd1826fddc03/final-score/output.FCStd"
+        }
+      },
+      "inputs": {
+        "iso": {
+          "images": [
+            {
+              "file": "flange-02-input-iso-01.png",
+              "sha256": "3147990fca19134f36c4c92178b22268905c9581a9bf8c5b2914329ccbd2898f",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-01.png"
+            },
+            {
+              "file": "flange-02-input-iso-02.png",
+              "sha256": "3d40e0256c5b54eb6be39cad89dd922d69a037509779df516977efe7ba5350d6",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-02.png"
+            },
+            {
+              "file": "flange-02-input-iso-03.png",
+              "sha256": "c195fd5e686ce22ad0dd6e43d49bd98e990f0705aa45b1778869c3a3c6d0daed",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-03.png"
+            },
+            {
+              "file": "flange-02-input-iso-04.png",
+              "sha256": "d03cdf791ec117345e278878b2bbc03df66bedef2704f91126c48bd73ddc7260",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-04.png"
+            },
+            {
+              "file": "flange-02-input-iso-05.png",
+              "sha256": "8bbe8eefac791bee22caf8f554150f9b16aca25506a6f627dbe6e6df212df068",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-05.png"
+            },
+            {
+              "file": "flange-02-input-iso-06.png",
+              "sha256": "13156e351a7e695595546479f7c2866a938d2a6c953b4b35e33fe66f99e34f37",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-06.png"
+            },
+            {
+              "file": "flange-02-input-iso-07.png",
+              "sha256": "419ca467415f74778d9b7d602bfb52e16c4270fd15c5ff82821c46154e81b898",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-07.png"
+            },
+            {
+              "file": "flange-02-input-iso-08.png",
+              "sha256": "7a0e0bdaf19d132b12c4cd9280c757b22ecb6fb37180e0485bb43285b800c725",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-08.png"
+            },
+            {
+              "file": "flange-02-input-iso-09.png",
+              "sha256": "0485a9a9135cc5c2f57d4c8b0c862d64499b72ff79aa228c59f9a82d8c17b161",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-09.png"
+            },
+            {
+              "file": "flange-02-input-iso-10.png",
+              "sha256": "54731f746a1e416ce256c27770df21c3e3330edc2dfa05bfc66d1fb7d5ac162b",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-10.png"
+            },
+            {
+              "file": "flange-02-input-iso-11.png",
+              "sha256": "ff75ac53db4474c1288e4d5bb070bc108a9646bffcd3f159aa378ba67a54d4fa",
+              "ordinal": 11,
+              "caption": "sheet-03.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-11.png"
+            },
+            {
+              "file": "flange-02-input-iso-12.png",
+              "sha256": "63227d5460b229c05a0404ae393969bde98c0a711e745e0cd9f632db51762f6a",
+              "ordinal": 12,
+              "caption": "sheet-03.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-12.png"
+            },
+            {
+              "file": "flange-02-input-iso-13.png",
+              "sha256": "56027ea52de1c38ebf6cf38437b7cac923677f59dcba36e1413d946e8acfb503",
+              "ordinal": 13,
+              "caption": "sheet-03.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-13.png"
+            },
+            {
+              "file": "flange-02-input-iso-14.png",
+              "sha256": "2d9500c3a8cea5d36685e0c8d45b551b812eaba3db4219d494a8ddbe73eb21d2",
+              "ordinal": 14,
+              "caption": "sheet-03.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-14.png"
+            },
+            {
+              "file": "flange-02-input-iso-15.png",
+              "sha256": "90f6b8e1cb6df9b6fb817052332c997268cca628ca1373ba9c3a6d8a82513cb4",
+              "ordinal": 15,
+              "caption": "sheet-03.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-15.png"
+            },
+            {
+              "file": "flange-02-input-iso-16.png",
+              "sha256": "749f916e593fe27f9e1d21645e48b04b3839bdafba82c1dc231be79b8d083c95",
+              "ordinal": 16,
+              "caption": "sheet-03.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-16.png"
+            },
+            {
+              "file": "flange-02-input-iso-17.png",
+              "sha256": "94588ddc15bd2e0b914447be020d583bd9fdb6ebd862420932c677ddec3612e3",
+              "ordinal": 17,
+              "caption": "sheet-04.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-17.png"
+            },
+            {
+              "file": "flange-02-input-iso-18.png",
+              "sha256": "d977f3be083a700aa532d30cfbcc6923dd90a645dbf36c9cd81ef8e049e04a91",
+              "ordinal": 18,
+              "caption": "sheet-04.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-18.png"
+            },
+            {
+              "file": "flange-02-input-iso-19.png",
+              "sha256": "158f9f7f5aa580613bebfadeb74baf56bf0ba06c935bbb5f79486c85a045e2cc",
+              "ordinal": 19,
+              "caption": "sheet-04.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-19.png"
+            },
+            {
+              "file": "flange-02-input-iso-20.png",
+              "sha256": "5a3e2aaefc64e84fe1439951c65476133d475c7f2511a97ec7c741803ee6919b",
+              "ordinal": 20,
+              "caption": "sheet-04.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-20.png"
+            },
+            {
+              "file": "flange-02-input-iso-21.png",
+              "sha256": "c63eb17a3ed1d10a573a903b391e8618084d5d4d160eb58df23ee6e55ca2eddb",
+              "ordinal": 21,
+              "caption": "sheet-04.png / rows 13-17 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-21.png"
+            },
+            {
+              "file": "flange-02-input-iso-22.png",
+              "sha256": "f14a748b575f40af5b2696b5a057d937d486ae5a3c0746e7c56dcb386f034ba7",
+              "ordinal": 22,
+              "caption": "sheet-04.png / rows 13-17 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/primary/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-22.png"
+            }
+          ],
+          "task_success": false,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        },
+        "gost": {
+          "images": [
+            {
+              "file": "flange-02-input-gost-01.png",
+              "sha256": "8a4a02f2bed61ffe700c6a2d76fd3a7c62914b1bfb4e5d77c99efeacdbca8e6f",
+              "ordinal": 1,
+              "caption": "RIGHT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-01.png"
+            },
+            {
+              "file": "flange-02-input-gost-02.png",
+              "sha256": "b6effdb24ecce4b2819fbaf1fb4deeef41f8dc3e00aa8c154f92a8713dfdaa79",
+              "ordinal": 2,
+              "caption": "FRONT / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-02.png"
+            },
+            {
+              "file": "flange-02-input-gost-03.png",
+              "sha256": "a4e29f5ae6ccbc95491ce7c013288408e07fd59b3fc5990153105a66eed3a9b8",
+              "ordinal": 3,
+              "caption": "TOP / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-03.png"
+            },
+            {
+              "file": "flange-02-input-gost-04.png",
+              "sha256": "4426cf090d113f381c79c06691b23ed9963dd3443daa7ce700ada3f003ee9d08",
+              "ordinal": 4,
+              "caption": "SECTION A-A / original overview crop",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-04.png"
+            },
+            {
+              "file": "flange-02-input-gost-05.png",
+              "sha256": "5344d247e41836db5c934cb1b37b59b03de7b37c9f191999fa90dfc3a1c2a4a5",
+              "ordinal": 5,
+              "caption": "sheet-02.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-05.png"
+            },
+            {
+              "file": "flange-02-input-gost-06.png",
+              "sha256": "70942041664ccb882f8b7e26a4fa44af019aa73d400f5997c65c84dc2d2d31ac",
+              "ordinal": 6,
+              "caption": "sheet-02.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-06.png"
+            },
+            {
+              "file": "flange-02-input-gost-07.png",
+              "sha256": "6d85cde75872b8f89ad1fa759d7c960bc58f1d2d79c08f06879844b57c2aa51a",
+              "ordinal": 7,
+              "caption": "sheet-02.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-07.png"
+            },
+            {
+              "file": "flange-02-input-gost-08.png",
+              "sha256": "ab6e7a1e804aebadcdc765e145f94b43aa474e09a6968e0ac3c8479fc3017642",
+              "ordinal": 8,
+              "caption": "sheet-02.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-08.png"
+            },
+            {
+              "file": "flange-02-input-gost-09.png",
+              "sha256": "47f994fb24ca796cc2892ef2aa1bc946c48881fa57eb46bf33511a577f75dfe1",
+              "ordinal": 9,
+              "caption": "sheet-02.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-09.png"
+            },
+            {
+              "file": "flange-02-input-gost-10.png",
+              "sha256": "7b2baf48a5109d57a11b055dfd0e6dd47d3aac68042d86273472e6b8303d0d83",
+              "ordinal": 10,
+              "caption": "sheet-02.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-10.png"
+            },
+            {
+              "file": "flange-02-input-gost-11.png",
+              "sha256": "24c9b3cc67fa9dbf891245aa99f7f75d245aaf1c08940ce5971ad18c8cb5ae7b",
+              "ordinal": 11,
+              "caption": "sheet-03.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-11.png"
+            },
+            {
+              "file": "flange-02-input-gost-12.png",
+              "sha256": "c03e179b8dfd53d8f95695c20f6a34646d64d00faaa9e61e780ca75559a27608",
+              "ordinal": 12,
+              "caption": "sheet-03.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-12.png"
+            },
+            {
+              "file": "flange-02-input-gost-13.png",
+              "sha256": "d1b26fcb23e44a560a0b1ebe9d4351ef88da0e54562576862b555b45ca7f7c7a",
+              "ordinal": 13,
+              "caption": "sheet-03.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-13.png"
+            },
+            {
+              "file": "flange-02-input-gost-14.png",
+              "sha256": "bd557824dd99960380247becbc4c670a9f49df25ff824277d9e0222e30e4e0c7",
+              "ordinal": 14,
+              "caption": "sheet-03.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-14.png"
+            },
+            {
+              "file": "flange-02-input-gost-15.png",
+              "sha256": "d1a3316aa1d3f809729386e10daa8c1d0833bc70884b8bded203aa42cbae2196",
+              "ordinal": 15,
+              "caption": "sheet-03.png / rows 13-18 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-15.png"
+            },
+            {
+              "file": "flange-02-input-gost-16.png",
+              "sha256": "13004a98fd28a5e1e4c619c295b44a5d45209c8878e59f1ca7b4b57725cc8ce1",
+              "ordinal": 16,
+              "caption": "sheet-03.png / rows 13-18 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-16.png"
+            },
+            {
+              "file": "flange-02-input-gost-17.png",
+              "sha256": "50cc18914151dba28161e81c199d3fcae5d96fea60a8953426abdfbc29013be5",
+              "ordinal": 17,
+              "caption": "sheet-04.png / rows 1-6 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-17.png"
+            },
+            {
+              "file": "flange-02-input-gost-18.png",
+              "sha256": "0a1e124580d753ed13618c1e3f8871bbd29a13c4f72a4e6dcb15947e088bc439",
+              "ordinal": 18,
+              "caption": "sheet-04.png / rows 1-6 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-18.png"
+            },
+            {
+              "file": "flange-02-input-gost-19.png",
+              "sha256": "a27997f68da83a4e94b3b535a27654a86d95a05c2e923725b13f631c0cc50ce8",
+              "ordinal": 19,
+              "caption": "sheet-04.png / rows 7-12 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-19.png"
+            },
+            {
+              "file": "flange-02-input-gost-20.png",
+              "sha256": "7ed173f4d1e5e9a9dc2082ac2fd7201c83882e75da4e1527aaa95635d7052a8c",
+              "ordinal": 20,
+              "caption": "sheet-04.png / rows 7-12 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-20.png"
+            },
+            {
+              "file": "flange-02-input-gost-21.png",
+              "sha256": "f18ac9fd1ffcc1292c64d5c15b964171425e65fea178df344a5cd02cd3b4fb25",
+              "ordinal": 21,
+              "caption": "sheet-04.png / rows 13-17 / POSITION",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-21.png"
+            },
+            {
+              "file": "flange-02-input-gost-22.png",
+              "sha256": "23841f3bc80bbf046be5a42b9569dc3876c6e3ab89392b2c8d1c77dd0d613881",
+              "ordinal": 22,
+              "caption": "sheet-04.png / rows 13-17 / SIZE / DEPTH",
+              "source": "artifacts/curriculum-benchmark-90-v1/paired/shards/hard-0002/dataset/drawings/b27cd7e1727bb4d64846877a/vlm/tile-22.png"
+            }
+          ],
+          "task_success": true,
+          "input_role": "actual ordered goal images from the model request; no current-candidate images"
+        }
+      },
+      "rendered_from": "flange-02-gost.FCStd",
+      "previews": {
+        "iso": {
+          "file": "flange-02-iso.png",
+          "sha256": "9428aa3b3a79c07c95dad8798f6510584772615eeab77e3896a152ff94b0cfd5"
+        },
+        "top": {
+          "file": "flange-02-top.png",
+          "sha256": "3c11407ba1aeef750802b66f4ec6f7d8457342ca327f21a1a111a8a20e034628"
+        }
+      }
+    }
+  ],
+  "result_unit": "90 parent tasks, ISO and GOST representations reported separately",
+  "results_by_representation": {
+    "iso": {
+      "tasks": 90,
+      "successes": 47
+    },
+    "gost": {
+      "tasks": 90,
+      "successes": 47
+    }
+  },
+  "paired_task_outcomes": {
+    "both": 40,
+    "iso_only": 7,
+    "gost_only": 7,
+    "neither": 36
+  },
+  "audit_source_sha256": "1f52e51384e7c77155038e09905397707a86e05ceb12ce79de7da507899a5bfa",
+  "comparison": {
+    "status": "complete",
+    "before": {
+      "easy": {
+        "iso": {
+          "evaluated": 30,
+          "successes": 0,
+          "mean_geometry_score": 0.1102012566295869,
+          "actions": 300,
+          "invalid_actions": 216
+        },
+        "gost": {
+          "evaluated": 30,
+          "successes": 0,
+          "mean_geometry_score": 0.1094687867616214,
+          "actions": 287,
+          "invalid_actions": 202
+        }
+      },
+      "hard": {
+        "iso": {
+          "evaluated": 30,
+          "successes": 0,
+          "mean_geometry_score": 0.1098390701216875,
+          "actions": 291,
+          "invalid_actions": 200
+        },
+        "gost": {
+          "evaluated": 30,
+          "successes": 0,
+          "mean_geometry_score": 0.06109474972419253,
+          "actions": 295,
+          "invalid_actions": 199
+        }
+      },
+      "medium": {
+        "iso": {
+          "evaluated": 30,
+          "successes": 0,
+          "mean_geometry_score": 0.00044963216330417367,
+          "actions": 275,
+          "invalid_actions": 215
+        },
+        "gost": {
+          "evaluated": 30,
+          "successes": 0,
+          "mean_geometry_score": 0.011502454230022193,
+          "actions": 289,
+          "invalid_actions": 218
+        }
+      }
+    },
+    "after": {
+      "easy": {
+        "iso": {
+          "evaluated": 30,
+          "successes": 30,
+          "mean_geometry_score": 1.0,
+          "actions": 386,
+          "invalid_actions": 6
+        },
+        "gost": {
+          "evaluated": 30,
+          "successes": 25,
+          "mean_geometry_score": 0.9994429238821426,
+          "actions": 357,
+          "invalid_actions": 30
+        }
+      },
+      "hard": {
+        "iso": {
+          "evaluated": 30,
+          "successes": 3,
+          "mean_geometry_score": 0.9929051093582958,
+          "actions": 2184,
+          "invalid_actions": 60
+        },
+        "gost": {
+          "evaluated": 30,
+          "successes": 6,
+          "mean_geometry_score": 0.9915630579040715,
+          "actions": 1909,
+          "invalid_actions": 85
+        }
+      },
+      "medium": {
+        "iso": {
+          "evaluated": 30,
+          "successes": 14,
+          "mean_geometry_score": 0.9971197666059379,
+          "actions": 1018,
+          "invalid_actions": 91
+        },
+        "gost": {
+          "evaluated": 30,
+          "successes": 16,
+          "mean_geometry_score": 0.9967203349140679,
+          "actions": 953,
+          "invalid_actions": 87
+        }
+      }
+    },
+    "model": "/home/user/workspace/cad-env/artifacts/iso-gost-sft-pilot-v1/merged",
+    "same_selection_sha256": "3d1ae5d53b22cba95ee0e80e5856d69b8624e818db2a43c519f66dabea212302",
+    "scope": "Same development-validation parents; interrupted episodes restarted; not final TEST."
+  }
+}

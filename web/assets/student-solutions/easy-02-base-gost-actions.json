@@ -1,0 +1,13 @@
+[
+  {
+    "op": "create_body",
+    "name": "Body"
+  },
+  {
+    "op": "sketch_rectangle",
+    "name": "BaseSketch",
+    "body": "Body",
+    "length": 220.0,
+    "width": 158.0
+  }
+]

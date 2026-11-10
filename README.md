@@ -90,6 +90,12 @@ replace the frozen FreeCAD benchmark or claim full CADBench/CADWorld coverage.
 Advanced native feature probes (arcs, revolves, fillets, chamfers, shells and
 multiple solids) use a separate [solid-graph contract](docs/SOLIDCAD.md).
 
+The opt-in [expanded FreeCAD v2 environment](docs/FREECAD_V2.md) adds explicit
+sketch planes, profile lofts and sweeps, selected-edge dress-ups, booleans,
+transforms, patterns, scalar edits and native-verified next-action datasets.
+It preserves the frozen v1 benchmark; current model scores do not establish
+mastery of the new tools.
+
 Аудит фактического GRPO, ограничений данных и нового эксперимента на 2000 шагов:
 [GRPO and data scaling audit](docs/GRPO_AND_DATA_AUDIT.md).
 Новый `python -m cad_env.learning.visual_scale --output <fresh-directory>`

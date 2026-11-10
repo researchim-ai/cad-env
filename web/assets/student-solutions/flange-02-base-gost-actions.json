@@ -1,0 +1,39 @@
+[
+  {
+    "op": "create_body",
+    "name": "Body"
+  },
+  {
+    "op": "sketch_rectangle",
+    "name": "BaseSketch",
+    "body": "Body",
+    "length": 240.0,
+    "width": 13.0
+  },
+  {
+    "op": "pad",
+    "name": "Level1",
+    "body": "Body",
+    "profile": "BaseSketch",
+    "length": 13.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "HoleSketch",
+    "body": "Body",
+    "support": "Level1",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 3.0
+      }
+    ]
+  },
+  {
+    "op": "set_parameter",
+    "target": "HoleSketch",
+    "parameter": "diameter_0",
+    "value": 6.0
+  }
+]

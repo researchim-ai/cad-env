@@ -161,6 +161,7 @@ dmypy.json
 # CAD Environment specific
 *.fcstd
 *.FCStd
+!web/assets/student-solutions/*.FCStd
 test_document.*
 output.*
 temp_*

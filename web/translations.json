@@ -431,10 +431,6 @@
     "en": "BACK TO TOP ↑",
     "ru": "НАВЕРХ ↑"
   },
-  "t112": {
-    "en": "Recorded results. This page does not show live training progress.",
-    "ru": "Сохранённые результаты. Ход текущего обучения здесь не отображается."
-  },
   "t113": {
     "en": "← Project home",
     "ru": "← На главную"
@@ -926,5 +922,297 @@
   "drawing_full": {
     "en": "Full-size image",
     "ru": "Изображение целиком"
+  },
+  "writeup_title": {
+    "en": "Training Qwen3.5-4B with paired ISO and GOST drawings",
+    "ru": "Как Qwen3.5-4B учили на парных чертежах ISO и ГОСТ"
+  },
+  "writeup_deck": {
+    "en": "The same CAD tasks in two drawing representations. We trained one model on ISO and GOST examples together. Below are the results, the actual input images and the parts it built.",
+    "ru": "Одни и те же CAD-задачи в двух представлениях чертежей. Одну модель обучали сразу на примерах ISO и ГОСТ. Ниже — результаты, изображения, которые она получила на вход, и построенные детали."
+  },
+  "writeup_scope": {
+    "en": "This compares untouched Qwen3.5-4B with a checkpoint that had several stages of CAD training. The difference measures that training history as a whole; it does not isolate the last SFT run.",
+    "ru": "Здесь сравниваются исходная Qwen3.5-4B и чекпоинт после нескольких этапов обучения CAD. Разница отражает весь этот тюн; приписывать её только последнему SFT-прогону нельзя."
+  },
+  "writeup_results_title": {
+    "en": "Results on the drawing benchmark",
+    "ru": "Результаты на задачах по чертежам"
+  },
+  "writeup_results_intro": {
+    "en": "The benchmark has 90 validation tasks: 30 easy, 30 medium and 30 hard. Each task has ISO and GOST drawing representations. We report the two representations separately on the same task set. Each attempt starts with an empty document.",
+    "ru": "В бенчмарке 90 задач из validation: 30 простых, 30 средних и 30 сложных. У каждой задачи есть представление чертежа в ISO и в ГОСТ. Результаты по этим представлениям считаем отдельно на одном и том же наборе задач. Каждое построение начинается с пустого документа."
+  },
+  "writeup_level": {
+    "en": "Level",
+    "ru": "Уровень"
+  },
+  "writeup_raw": {
+    "en": "Original model",
+    "ru": "Исходная модель"
+  },
+  "writeup_tuned": {
+    "en": "CAD-tuned",
+    "ru": "После тюна"
+  },
+  "writeup_iso": {
+    "en": "ISO · CAD-tuned",
+    "ru": "ISO · после тюна"
+  },
+  "writeup_gost": {
+    "en": "GOST · CAD-tuned",
+    "ru": "ГОСТ · после тюна"
+  },
+  "writeup_easy": {
+    "en": "Easy",
+    "ru": "Простые"
+  },
+  "writeup_medium": {
+    "en": "Medium",
+    "ru": "Средние"
+  },
+  "writeup_hard": {
+    "en": "Hard",
+    "ru": "Сложные"
+  },
+  "writeup_total": {
+    "en": "Total",
+    "ru": "Всего"
+  },
+  "writeup_table_caption": {
+    "en": "Tasks solved out of the same task set, by drawing representation",
+    "ru": "Решённые задачи из одного набора, отдельно по представлению чертежа"
+  },
+  "writeup_rate": {
+    "en": "ISO: 47/90 tasks solved. GOST: 47/90. The original model scored 0/90 on each representation under the same protocol. These are development-validation results, not final TEST scores.",
+    "ru": "ISO: решено 47/90 задач. ГОСТ: 47/90. Исходная модель на том же протоколе получила 0/90 для каждого представления. Это результаты на development-validation, не на финальном TEST."
+  },
+  "writeup_train_title": {
+    "en": "Joint training on the two representations",
+    "ru": "Совместное обучение на двух представлениях"
+  },
+  "writeup_train_body": {
+    "en": "The final SFT stage mixed ISO and GOST examples in one training set. For each selected next-action decision, we used the same parent geometry, CAD state and teacher action in both drawing profiles; only the goal images changed. The 1,000 rows comprise 500 ISO and 500 GOST examples from 267 TRAIN parent parts. One row supervises one action, not a complete build. Training started from our earlier CAD-tuned checkpoint.",
+    "ru": "В последнем SFT-прогоне примеры ISO и ГОСТ смешивались в одном обучающем наборе. Для каждого выбранного шага брали одну и ту же геометрию, состояние CAD и действие учителя в обоих представлениях; менялись изображения чертежей цели. В 1 000 строках было 500 примеров ISO и 500 ГОСТ из 267 TRAIN-деталей. Каждая строка обучала одному действию, а не целому построению. Стартовали с нашего предыдущего CAD-чекпоинта."
+  },
+  "writeup_train_settings": {
+    "en": "LoRA rank 16, BF16, learning rate 1e−5, one epoch and 250 optimizer updates. The effective batch was four examples. Adapters covered the language model and selected vision blocks/merger, with about 15.4 million trainable parameters. This was LoRA, not 4-bit QLoRA. Training used one RTX 3090 with 24 GB of memory.",
+    "ru": "LoRA ранга 16, BF16, learning rate 1e−5, одна эпоха и 250 обновлений оптимизатора. Эффективный батч — четыре примера. Адаптеры обучались в языковой части, выбранных зрительных блоках и merger; всего около 15,4 млн обучаемых параметров. Использовали LoRA, без 4-битной квантизации QLoRA. Обучение шло на одной RTX 3090 с 24 ГБ памяти."
+  },
+  "writeup_last_stage": {
+    "en": "A separate matched test isolates that last stage against its CAD-tuned parent: on 20 held-out parts in both profiles, success changed from 0/20 to 3/20 for ISO and from 0/20 to 6/20 for GOST. This is a different test set from the 90-design benchmark above.",
+    "ru": "Для последнего этапа есть отдельное сравнение с его CAD-тюнутым родительским чекпоинтом: на 20 отложенных деталях результат изменился с 0/20 до 3/20 для ISO и с 0/20 до 6/20 для ГОСТ. Это другой набор, его нельзя смешивать с бенчмарком на 90 деталях выше."
+  },
+  "writeup_episode_title": {
+    "en": "How an episode works",
+    "ru": "Как проходит эпизод"
+  },
+  "writeup_episode_body": {
+    "en": "The model receives goal-drawing crops and the current CAD state as JSON. It returns one typed action, FreeCAD executes it, and the model receives the new state or an error. The goal drawings stay the same. This evaluation does not feed a rendered image of the current candidate back to the model.",
+    "ru": "Модель получает фрагменты чертежа цели и текущее состояние CAD в JSON. Она возвращает одно действие, FreeCAD выполняет его и отдаёт новое состояние или ошибку. Чертежи цели остаются прежними. В этом тесте изображение текущей построенной детали обратно модели не передаётся."
+  },
+  "writeup_tools": {
+    "en": "The evaluated v1 API has seven actions: create a body, sketch a rectangle, sketch circles, pad, pocket, edit a parameter and finish. The newer v2 operations and composed-part dataset are separate work and are not included in these scores.",
+    "ru": "В проверенном API v1 семь действий: создать тело, начертить прямоугольник или окружности, выдавить, вырезать карман, изменить параметр и завершить. Новые операции v2 и набор составных деталей — отдельная работа, в этих результатах их нет."
+  },
+  "writeup_success": {
+    "en": "A pass requires the agent to finish, a valid single solid, matching native geometry, analytic volume/bounds checks and editable constrained sketches. A visually similar part or a high average geometry score is insufficient. The action budget is capped at 128.",
+    "ru": "Для успеха агент должен завершить построение. Проверяются одно корректное твёрдое тело, совпадение геометрии, расчётный объём и габариты, а также редактируемые эскизы с ограничениями. Похожего вида или высокого среднего геометрического score недостаточно. Лимит — до 128 действий."
+  },
+  "writeup_examples_title": {
+    "en": "Examples at each difficulty level",
+    "ru": "Примеры простых, средних и сложных задач"
+  },
+  "writeup_examples_intro": {
+    "en": "Two successful designs from each level are shown below. Easy and medium examples include plates and fixtures; the hard section contains two flange variants. These examples illustrate the results and do not replace the full benchmark counts.",
+    "ru": "Ниже — по два успешных примера каждого уровня. Среди простых и средних есть плиты и приспособления, а в сложной секции оставили два варианта фланца. Это иллюстрации к результатам, а не замена полной статистики теста."
+  },
+  "writeup_examples_scope": {
+    "en": "Each card pairs the saved model output with the exact ordered drawing crops sent to the model. Switch ISO/GOST to compare representations of the same task, then select a crop. The status refers to that specific input.",
+    "ru": "В каждой карточке рядом с результатом доступны точные фрагменты чертежа, отправленные модели, в исходном порядке. Переключайте ISO/ГОСТ, чтобы сравнить представления одной задачи, и выбирайте фрагмент. Статус относится именно к выбранному входу."
+  },
+  "writeup_open_title": {
+    "en": "Open the parts in FreeCAD",
+    "ru": "Как открыть детали во FreeCAD"
+  },
+  "writeup_open_body": {
+    "en": "Open an individual .FCStd file in FreeCAD with File → Open, then choose an axonometric view and Fit all. Expand Body to inspect sketches, pads and pockets. The links in each card distinguish tuned outputs from original-model attempts.",
+    "ru": "Откройте отдельный .FCStd во FreeCAD через «Файл → Открыть», затем выберите изометрический вид и «Вписать всё». В дереве Body доступны эскизы, выдавливания и карманы. В каждой карточке отдельно подписаны решения после тюна и попытки исходной модели."
+  },
+  "writeup_actions": {
+    "en": "Model actions · JSON",
+    "ru": "Действия модели · JSON"
+  },
+  "writeup_audit_title": {
+    "en": "We checked the saved solutions again",
+    "ru": "Как перепроверили решения"
+  },
+  "writeup_audit_body": {
+    "en": "We replayed the saved programs of both models for every task and representation in fresh FreeCAD processes. A separate verifier opened the saved candidate, replayed candidate, oracle and drawing model. We also checked logged actions, image and prompt hashes, finish events and the reported counts. The audit confirmed 0/90 for the original model and 47/90 for the tuned model separately for ISO and GOST.",
+    "ru": "Заново исполнили во FreeCAD сохранённые программы обеих моделей для каждой задачи и представления. Отдельный проверяющий код открыл сохранённую деталь, повторно построенную деталь, эталон и модель чертежа. Также сверили действия, хеши изображений и промптов, факт завершения и итоговые суммы. Аудит подтвердил 0/90 для исходной модели и 47/90 для обученной — отдельно для ISO и ГОСТ."
+  },
+  "writeup_exact": {
+    "en": "Every successful output in each representation had zero symmetric-difference volume against its reference. One easy solution repeated a counterbore cut without changing the final geometry; action efficiency is not a separate pass criterion.",
+    "ru": "Во всех успешных построениях для каждого представления симметрическая разность объёмов с эталоном равна нулю. В одном простом решении модель повторила вырезание той же цековки, не изменив итоговую геометрию. Эффективность по числу действий отдельно не оценивается."
+  },
+  "writeup_next_title": {
+    "en": "What these results leave open",
+    "ru": "Что ещё предстоит проверить"
+  },
+  "writeup_next_body": {
+    "en": "The checkpoint handles simple construction much better, but hard success is concentrated in one repetitive family. We need broader composed-part validation, examples that teach missing-feature recovery, and image ablations to measure how much the policy relies on the drawing. Generated references and successful native replay alone do not establish model skill.",
+    "ru": "Чекпоинт заметно лучше справляется с простыми построениями, но сложные успехи сосредоточены в одном семействе с повторяющейся структурой. Дальше нужны более разнообразные составные детали, обучение восстановлению пропущенных элементов и тесты с заменёнными или пустыми изображениями, чтобы измерить вклад чертежа. Одной корректной генерации эталонов для вывода о навыках модели недостаточно."
+  },
+  "writeup_standards": {
+    "en": "The ISO/GOST inputs use experimental drafting profiles. Full standards conformance has not been established. This report concerns geometric reconstruction in our bounded tool API.",
+    "ru": "Входные чертежи используют экспериментальные профили ISO/ГОСТ. Полное соответствие стандартам не подтверждено. Здесь оценивается восстановление геометрии через ограниченный набор CAD-инструментов."
+  },
+  "writeup_data": {
+    "en": "Results and example provenance · JSON",
+    "ru": "Результаты и происхождение примеров · JSON"
+  },
+  "writeup_audit_link": {
+    "en": "Audit method and checks · EN",
+    "ru": "Методика аудита и проверки · EN"
+  },
+  "writeup_hero_caption": {
+    "en": "A successful medium-level fixture built by the model in 35 actions. Preview rendered from its saved FreeCAD file.",
+    "ru": "Успешное решение средней задачи: приспособление, построенное моделью за 35 действий. Превью получено из сохранённого файла FreeCAD."
+  },
+  "writeup_blog_tag": {
+    "en": "EXPERIMENT / 10 NOV 2026",
+    "ru": "ЭКСПЕРИМЕНТ / 10 НОЯБРЯ 2026"
+  },
+  "writeup_read": {
+    "en": "Read the training report",
+    "ru": "Как обучали и что получилось"
+  },
+  "writeup_example_1": {
+    "en": "Flange 01 · 108 actions",
+    "ru": "Фланец 01 · 108 действий"
+  },
+  "writeup_example_2": {
+    "en": "Flange 02 · 108 actions",
+    "ru": "Фланец 02 · 108 действий"
+  },
+  "writeup_example_3": {
+    "en": "Flange 03 · 108 actions",
+    "ru": "Фланец 03 · 108 действий"
+  },
+  "writeup_example_4": {
+    "en": "Flange 04 · 108 actions",
+    "ru": "Фланец 04 · 108 действий"
+  },
+  "writeup_example_5": {
+    "en": "Flange 05 · 108 actions",
+    "ru": "Фланец 05 · 108 действий"
+  },
+  "writeup_example_6": {
+    "en": "Flange 06 · 108 actions",
+    "ru": "Фланец 06 · 108 действий"
+  },
+  "writeup_baseline_body": {
+    "en": "Outputs from the original model are saved too. The links marked Original model contain its actual incomplete attempts on these same parts. Some have a partial solid; others contain only a body or sketch. A failed task is still saved as a FreeCAD document.",
+    "ru": "Файлы исходной модели тоже сохранены. По ссылкам «Исходная модель» доступны её реальные попытки на тех же деталях: где-то есть часть тела, где-то только Body или эскиз. Неуспешная задача тоже сохраняется в формате FreeCAD."
+  },
+  "writeup_before_label": {
+    "en": "Original model · incomplete",
+    "ru": "Исходная модель · неуспех"
+  },
+  "writeup_after_label": {
+    "en": "CAD-tuned model",
+    "ru": "После CAD-тюна"
+  },
+  "showcase_easy_title": {
+    "en": "Easy · ISO 30/30 · GOST 25/30",
+    "ru": "Простые · ISO 30/30 · ГОСТ 25/30"
+  },
+  "showcase_easy_body": {
+    "en": "A plate with holes and a fixture with raised supports. These examples took 10 and 16 actions.",
+    "ru": "Плита с отверстиями и приспособление с выступающими опорами. На эти примеры потребовалось 10 и 16 действий."
+  },
+  "showcase_medium_title": {
+    "en": "Medium · ISO 14/30 · GOST 16/30",
+    "ru": "Средние · ISO 14/30 · ГОСТ 16/30"
+  },
+  "showcase_medium_body": {
+    "en": "A plate with a larger feature schedule and a fixture with several supports and cuts. The successful examples shown took 40 and 35 actions.",
+    "ru": "Плита с более длинной таблицей элементов и приспособление с несколькими опорами и вырезами. Показанные успешные построения заняли 40 и 35 действий."
+  },
+  "showcase_hard_title": {
+    "en": "Hard · ISO 3/30 · GOST 6/30",
+    "ru": "Сложные · ISO 3/30 · ГОСТ 6/30"
+  },
+  "showcase_hard_body": {
+    "en": "Two terraced flange examples: 18 levels, 35 holes and 108 actions each. ISO has 3/30 hard tasks solved and GOST 6/30, covering six distinct designs of this family. There were no hard successes in the other two families. These flanges have no counterbores.",
+    "ru": "Два примера ступенчатого фланца: по 18 уровней, 35 отверстий и 108 действий. На сложном уровне по ISO решены 3/30 задач, по ГОСТ — 6/30; успешные построения относятся к шести деталям этого семейства. В двух других семействах на сложном уровне успехов пока нет. Цековок в этих фланцах нет."
+  },
+  "showcase_plate": {
+    "en": "Plate with holes",
+    "ru": "Плита с отверстиями"
+  },
+  "showcase_fixture": {
+    "en": "Support fixture",
+    "ru": "Приспособление с опорами"
+  },
+  "showcase_flange": {
+    "en": "Terraced flange",
+    "ru": "Ступенчатый фланец"
+  },
+  "showcase_easy_01": {
+    "en": "Plate with holes · 10 actions",
+    "ru": "Плита с отверстиями · 10 действий"
+  },
+  "showcase_easy_02": {
+    "en": "Support fixture · 16 actions",
+    "ru": "Приспособление с опорами · 16 действий"
+  },
+  "showcase_medium_01": {
+    "en": "Plate with holes · 40 actions",
+    "ru": "Плита с отверстиями · 40 действий"
+  },
+  "showcase_medium_02": {
+    "en": "Support fixture · 35 actions",
+    "ru": "Приспособление с опорами · 35 действий"
+  },
+  "showcase_flange_01": {
+    "en": "Terraced flange · 108 actions",
+    "ru": "Ступенчатый фланец · 108 действий"
+  },
+  "showcase_flange_02": {
+    "en": "Terraced flange · 108 actions",
+    "ru": "Ступенчатый фланец · 108 действий"
+  },
+  "input_title": {
+    "en": "Model input",
+    "ru": "Что получила модель"
+  },
+  "input_previous": {
+    "en": "Previous",
+    "ru": "Назад"
+  },
+  "input_next": {
+    "en": "Next",
+    "ru": "Далее"
+  },
+  "input_open": {
+    "en": "Open original image",
+    "ru": "Открыть исходное изображение"
+  },
+  "input_paired_note": {
+    "en": "The exact input files are shown, including their original captions. All crops were sent together; choosing one here only changes the preview.",
+    "ru": "Показаны исходные файлы с их оригинальными подписями. Все фрагменты подавались вместе; выбор одного здесь меняет только превью."
+  },
+  "writeup_iso_raw": {
+    "en": "ISO · original",
+    "ru": "ISO · исходная"
+  },
+  "writeup_gost_raw": {
+    "en": "GOST · original",
+    "ru": "ГОСТ · исходная"
+  },
+  "writeup_paired": {
+    "en": "Looking at the 90 tasks as pairs: 40 were solved in both representations, 7 only in ISO, 7 only in GOST, and 36 in neither. Equal totals therefore do not mean that exactly the same tasks were solved.",
+    "ru": "Если сравнить представления для каждой из 90 задач: 40 решены и по ISO, и по ГОСТ, 7 — только по ISO, 7 — только по ГОСТ, 36 не решены ни в одном представлении. Одинаковый итоговый счёт не означает, что решены одни и те же задачи."
   }
 }

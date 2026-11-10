@@ -1,0 +1,1068 @@
+[
+  {
+    "op": "create_body",
+    "name": "Body"
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level1Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 120.0
+      }
+    ]
+  },
+  {
+    "op": "pad",
+    "name": "Level1",
+    "body": "Body",
+    "profile": "Level1Sketch",
+    "length": 13.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level2Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 114.0
+      }
+    ],
+    "support": "Level1"
+  },
+  {
+    "op": "pad",
+    "name": "Level2",
+    "body": "Body",
+    "profile": "Level2Sketch",
+    "length": 10.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level3Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 108.0
+      }
+    ],
+    "support": "Level2"
+  },
+  {
+    "op": "pad",
+    "name": "Level3",
+    "body": "Body",
+    "profile": "Level3Sketch",
+    "length": 6.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level4Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 102.0
+      }
+    ],
+    "support": "Level3"
+  },
+  {
+    "op": "pad",
+    "name": "Level4",
+    "body": "Body",
+    "profile": "Level4Sketch",
+    "length": 11.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level5Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 96.0
+      }
+    ],
+    "support": "Level4"
+  },
+  {
+    "op": "pad",
+    "name": "Level5",
+    "body": "Body",
+    "profile": "Level5Sketch",
+    "length": 6.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level6Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 91.0
+      }
+    ],
+    "support": "Level5"
+  },
+  {
+    "op": "pad",
+    "name": "Level6",
+    "body": "Body",
+    "profile": "Level6Sketch",
+    "length": 10.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level7Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 86.0
+      }
+    ],
+    "support": "Level6"
+  },
+  {
+    "op": "pad",
+    "name": "Level7",
+    "body": "Body",
+    "profile": "Level7Sketch",
+    "length": 8.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level8Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 80.0
+      }
+    ],
+    "support": "Level7"
+  },
+  {
+    "op": "pad",
+    "name": "Level8",
+    "body": "Body",
+    "profile": "Level8Sketch",
+    "length": 6.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level9Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 75.0
+      }
+    ],
+    "support": "Level8"
+  },
+  {
+    "op": "pad",
+    "name": "Level9",
+    "body": "Body",
+    "profile": "Level9Sketch",
+    "length": 5.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level10Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 69.0
+      }
+    ],
+    "support": "Level9"
+  },
+  {
+    "op": "pad",
+    "name": "Level10",
+    "body": "Body",
+    "profile": "Level10Sketch",
+    "length": 11.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level11Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 63.0
+      }
+    ],
+    "support": "Level10"
+  },
+  {
+    "op": "pad",
+    "name": "Level11",
+    "body": "Body",
+    "profile": "Level11Sketch",
+    "length": 13.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level12Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 57.0
+      }
+    ],
+    "support": "Level11"
+  },
+  {
+    "op": "pad",
+    "name": "Level12",
+    "body": "Body",
+    "profile": "Level12Sketch",
+    "length": 6.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level13Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 51.0
+      }
+    ],
+    "support": "Level12"
+  },
+  {
+    "op": "pad",
+    "name": "Level13",
+    "body": "Body",
+    "profile": "Level13Sketch",
+    "length": 5.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level14Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 46.0
+      }
+    ],
+    "support": "Level13"
+  },
+  {
+    "op": "pad",
+    "name": "Level14",
+    "body": "Body",
+    "profile": "Level14Sketch",
+    "length": 6.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level15Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 40.0
+      }
+    ],
+    "support": "Level14"
+  },
+  {
+    "op": "pad",
+    "name": "Level15",
+    "body": "Body",
+    "profile": "Level15Sketch",
+    "length": 10.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level16Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 34.0
+      }
+    ],
+    "support": "Level15"
+  },
+  {
+    "op": "pad",
+    "name": "Level16",
+    "body": "Body",
+    "profile": "Level16Sketch",
+    "length": 6.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level17Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 28.0
+      }
+    ],
+    "support": "Level16"
+  },
+  {
+    "op": "pad",
+    "name": "Level17",
+    "body": "Body",
+    "profile": "Level17Sketch",
+    "length": 8.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Level18Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 22.0
+      }
+    ],
+    "support": "Level17"
+  },
+  {
+    "op": "pad",
+    "name": "Level18",
+    "body": "Body",
+    "profile": "Level18Sketch",
+    "length": 9.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole01Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 0.0,
+        "y": 0.0,
+        "radius": 3.0
+      }
+    ],
+    "support": "Level18"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole01",
+    "body": "Body",
+    "profile": "Hole01Sketch",
+    "length": 149.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole02Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -117.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level1"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole02",
+    "body": "Body",
+    "profile": "Hole02Sketch",
+    "length": 13.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole03Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 117.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level1"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole03",
+    "body": "Body",
+    "profile": "Hole03Sketch",
+    "length": 13.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole04Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -111.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level2"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole04",
+    "body": "Body",
+    "profile": "Hole04Sketch",
+    "length": 5.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole05Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 111.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level2"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole05",
+    "body": "Body",
+    "profile": "Hole05Sketch",
+    "length": 5.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole06Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -105.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level3"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole06",
+    "body": "Body",
+    "profile": "Hole06Sketch",
+    "length": 29.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole07Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 105.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level3"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole07",
+    "body": "Body",
+    "profile": "Hole07Sketch",
+    "length": 29.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole08Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -99.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level4"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole08",
+    "body": "Body",
+    "profile": "Hole08Sketch",
+    "length": 5.5
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole09Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 99.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level4"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole09",
+    "body": "Body",
+    "profile": "Hole09Sketch",
+    "length": 5.5
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole10Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -93.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level5"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole10",
+    "body": "Body",
+    "profile": "Hole10Sketch",
+    "length": 46.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole11Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 93.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level5"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole11",
+    "body": "Body",
+    "profile": "Hole11Sketch",
+    "length": 46.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole12Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -88.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level6"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole12",
+    "body": "Body",
+    "profile": "Hole12Sketch",
+    "length": 5.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole13Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 88.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level6"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole13",
+    "body": "Body",
+    "profile": "Hole13Sketch",
+    "length": 5.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole14Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -83.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level7"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole14",
+    "body": "Body",
+    "profile": "Hole14Sketch",
+    "length": 64.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole15Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 83.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level7"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole15",
+    "body": "Body",
+    "profile": "Hole15Sketch",
+    "length": 64.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole16Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -77.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level8"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole16",
+    "body": "Body",
+    "profile": "Hole16Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole17Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 77.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level8"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole17",
+    "body": "Body",
+    "profile": "Hole17Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole18Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -72.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level9"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole18",
+    "body": "Body",
+    "profile": "Hole18Sketch",
+    "length": 75.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole19Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 72.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level9"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole19",
+    "body": "Body",
+    "profile": "Hole19Sketch",
+    "length": 75.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole20Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -66.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level10"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole20",
+    "body": "Body",
+    "profile": "Hole20Sketch",
+    "length": 5.5
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole21Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 66.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level10"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole21",
+    "body": "Body",
+    "profile": "Hole21Sketch",
+    "length": 5.5
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole22Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -60.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level11"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole22",
+    "body": "Body",
+    "profile": "Hole22Sketch",
+    "length": 99.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole23Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 60.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level11"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole23",
+    "body": "Body",
+    "profile": "Hole23Sketch",
+    "length": 99.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole24Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -54.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level12"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole24",
+    "body": "Body",
+    "profile": "Hole24Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole25Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 54.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level12"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole25",
+    "body": "Body",
+    "profile": "Hole25Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole26Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -48.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level13"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole26",
+    "body": "Body",
+    "profile": "Hole26Sketch",
+    "length": 110.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole27Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 48.5,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level13"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole27",
+    "body": "Body",
+    "profile": "Hole27Sketch",
+    "length": 110.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole28Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -43.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level14"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole28",
+    "body": "Body",
+    "profile": "Hole28Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole29Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 43.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level14"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole29",
+    "body": "Body",
+    "profile": "Hole29Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole30Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -37.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level15"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole30",
+    "body": "Body",
+    "profile": "Hole30Sketch",
+    "length": 126.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole31Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 37.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level15"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole31",
+    "body": "Body",
+    "profile": "Hole31Sketch",
+    "length": 126.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole32Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -31.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level16"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole32",
+    "body": "Body",
+    "profile": "Hole32Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole33Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 31.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level16"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole33",
+    "body": "Body",
+    "profile": "Hole33Sketch",
+    "length": 3.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole34Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": -25.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level17"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole34",
+    "body": "Body",
+    "profile": "Hole34Sketch",
+    "length": 140.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole35Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 25.0,
+        "y": 0.0,
+        "radius": 1.1
+      }
+    ],
+    "support": "Level17"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole35",
+    "body": "Body",
+    "profile": "Hole35Sketch",
+    "length": 140.0
+  },
+  {
+    "op": "finish"
+  }
+]

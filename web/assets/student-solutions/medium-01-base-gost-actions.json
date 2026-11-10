@@ -1,0 +1,13 @@
+[
+  {
+    "op": "create_body",
+    "name": "BasePad"
+  },
+  {
+    "op": "sketch_rectangle",
+    "name": "BaseSketch",
+    "body": "BasePad",
+    "length": 228.0,
+    "width": 150.0
+  }
+]

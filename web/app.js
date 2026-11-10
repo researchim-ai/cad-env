@@ -13,7 +13,6 @@ function renderEvidence() {
   $('#retention-summary').replaceChildren();
   const names={'Simple tasks':'simple','Complex builds':'complex','Visual selection':'grounding','Entity-labelled selection':'entities'};
   for(const result of data.retention||[]){const cell=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong'),profile=document.createElement('small');label.textContent=tr(names[result.name]||result.name);value.textContent=result.before+' → '+result.after+' / '+result.tasks;profile.textContent=tr('batch');cell.append(label,value,profile);$('#retention-summary').append(cell);}
-  $('#snapshot-time').textContent=tr('snapshot')+new Date(data.updated).toLocaleString(locale,{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Yekaterinburg'})+' UTC+5'+tr('telemetry');
 }
 function renderPartText(){if(!data)return;const example=data.examples.find(e=>e.family===selectedFamily);if(!example)return;$('#model-name').textContent=tr(selectedFamily);$('#model-subtitle').textContent=tr('nativeReference');$('#action-count').textContent=tr('actionCount',{count:example.actions.length});}
 document.addEventListener('cad-languagechange',()=>{renderEvidence();renderPartText();});

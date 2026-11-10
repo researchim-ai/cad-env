@@ -1,0 +1,143 @@
+[
+  {
+    "op": "create_body",
+    "name": "Body"
+  },
+  {
+    "op": "sketch_rectangle",
+    "name": "BaseSketch",
+    "body": "Body",
+    "length": 220.0,
+    "width": 158.0
+  },
+  {
+    "op": "pad",
+    "name": "BasePad",
+    "body": "Body",
+    "profile": "BaseSketch",
+    "length": 19.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Boss1Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 110.0,
+        "y": 79.0,
+        "radius": 12.0
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pad",
+    "name": "Boss1",
+    "body": "Body",
+    "profile": "Boss1Sketch",
+    "length": 18.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole01Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 110.0,
+        "y": 79.0,
+        "radius": 4.0
+      }
+    ],
+    "support": "Boss1"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole01",
+    "body": "Body",
+    "profile": "Hole01Sketch",
+    "length": 37.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole02Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 12.0,
+        "y": 12.0,
+        "radius": 2.5
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole02",
+    "body": "Body",
+    "profile": "Hole02Sketch",
+    "length": 19.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole03Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 208.0,
+        "y": 12.0,
+        "radius": 2.5
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole03",
+    "body": "Body",
+    "profile": "Hole03Sketch",
+    "length": 19.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole04Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 12.0,
+        "y": 146.0,
+        "radius": 2.5
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole04",
+    "body": "Body",
+    "profile": "Hole04Sketch",
+    "length": 19.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole05Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 208.0,
+        "y": 146.0,
+        "radius": 2.5
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole05",
+    "body": "Body",
+    "profile": "Hole05Sketch",
+    "length": 19.0
+  },
+  {
+    "op": "finish"
+  }
+]

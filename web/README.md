@@ -82,3 +82,11 @@ The homepage distinguishes the completed 20-part drawing SFT pilot from the
 earlier checkpoint-500 experiment. In both comparisons, the starting checkpoint
 had already received CAD training. Neither is advertised as a raw-model score.
 `assets/drawing-pilot-results.json` records the drawing pilot counts and scope.
+
+The bilingual report `tuning-results.html` describes joint SFT on paired ISO/GOST representations of the same tasks. It shows two audited student designs per difficulty level, individual tuned/baseline FCStd files, and the exact ordered model input crops for both profiles. The input viewer switches ISO/GOST, reports success per representation and lets readers browse every crop. `python web/scripts/export_solutions.py` copies inputs only after checking them against logged request hashes; `--reuse-previews` reuses unchanged renders. No ZIP downloads are generated.
+
+Report benchmark quality over the 90 parent tasks separately for ISO and GOST (30 tasks per difficulty), with paired agreement if helpful. Do not sum representation attempts into a combined task success rate.
+
+Page footers must not display automatic update timestamps or snapshot stamps.
+Keep recording dates in experiment data and dated posts; do not inject them into
+the shared footer. `scripts/check_site.py` checks this constraint.

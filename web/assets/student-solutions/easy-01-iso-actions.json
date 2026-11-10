@@ -1,0 +1,83 @@
+[
+  {
+    "op": "create_body",
+    "name": "Body"
+  },
+  {
+    "op": "sketch_rectangle",
+    "name": "BaseSketch",
+    "body": "Body",
+    "length": 216.0,
+    "width": 174.0
+  },
+  {
+    "op": "pad",
+    "name": "BasePad",
+    "body": "Body",
+    "profile": "BaseSketch",
+    "length": 16.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole01Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 72.0,
+        "y": 87.0,
+        "radius": 2.0
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole01",
+    "body": "Body",
+    "profile": "Hole01Sketch",
+    "length": 16.0
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole02Sketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 144.0,
+        "y": 87.0,
+        "radius": 3.0
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole02",
+    "body": "Body",
+    "profile": "Hole02Sketch",
+    "length": 11.2
+  },
+  {
+    "op": "sketch_circles",
+    "name": "Hole01CBSketch",
+    "body": "Body",
+    "circles": [
+      {
+        "x": 72.0,
+        "y": 87.0,
+        "radius": 4.0
+      }
+    ],
+    "support": "BasePad"
+  },
+  {
+    "op": "pocket",
+    "name": "Hole01CB",
+    "body": "Body",
+    "profile": "Hole01CBSketch",
+    "length": 4.0
+  },
+  {
+    "op": "finish"
+  }
+]
